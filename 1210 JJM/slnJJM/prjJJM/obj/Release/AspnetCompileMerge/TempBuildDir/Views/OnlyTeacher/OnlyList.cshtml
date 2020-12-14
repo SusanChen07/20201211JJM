@@ -1,0 +1,188 @@
+﻿@model prjJJM.ViewModels.TeacherVM.COnlyTeacherViewModel
+
+@{
+    ViewBag.Title = "OnlyList";
+}
+
+
+@section css{
+    <!--awesome font-->
+    <link href="~/Content/assets/css/all.min.css" rel="stylesheet">
+}
+
+<main id="main">
+    <section class="">
+        <div class="container">
+            <!--教練簡介-->
+            <div class="row">
+
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="row mt-4" style="text-align: center;">
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                            <img src="@Html.DisplayFor(model => model.teacherForOnlyT.tMember.m_imgPath)" class="rounded-circle img-responsive" width="80%">
+                        </div>
+                        <div class="col-1"></div>
+
+                    </div>
+                    <div class="row mt-4 mb-4">
+                        <div class="col-4 score" style="text-align:center;">
+                            <span class="fa-stack fa-2x">
+                                <i class="fa fa-circle fa-stack-2x" style="color: #f39800;"></i>
+                                <i class="fa fa-star fa-stack-1x" style="color: #fff;"></i>
+                            </span>
+                            <h5 class="mt-1">評價</h5>
+                            <h2 class="mt-1">@Html.DisplayFor(model => model.teacherForOnlyT.t_rateAvg)</h2>
+                        </div>
+                        <div class="col-4 score" style="text-align:center;">
+                            <span class="fa-stack fa-2x">
+                                <i class="fa fa-circle fa-stack-2x" style="color: #f39800;"></i>
+                                <i class="fa fa-book fa-stack-1x" style="color: #fff;"></i>
+                            </span>
+                            <h5 class="mt-1">課程</h5>
+                            <h2 class="mt-1">@Html.DisplayFor(model => model.teacherForOnlyT.t_classTotal)</h2>
+                        </div>
+                        <div class="col-4 score" style="text-align:center;">
+                            <span class="fa-stack fa-2x">
+                                <i class="fa fa-circle fa-stack-2x" style="color: #f39800;"></i>
+                                <i class="fa fa-users fa-stack-1x" style="color: #fff;"></i>
+                            </span>
+                            <h5 class="mt-1">學生</h5>
+                            <h2 class="mt-1">@Html.DisplayFor(model => model.teacherForOnlyT.t_studentTotal)</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8">
+                    <p class="display-4 bolder">@Html.DisplayFor(model => model.teacherForOnlyT.tMember.m_fullName)</p>
+                    <h3 class="title">@Html.DisplayFor(model => model.teacherForOnlyT.t_title)</h3>
+                    <p>@Html.DisplayFor(model => model.teacherForOnlyT.t_intro)</p>
+                    <div class="mt-3">
+                        <h5 class="title">教學經歷</h5>
+                        <p>@Html.DisplayFor(model => model.teacherForOnlyT.t_experience)</p>
+                    </div>
+                    <div class="mt-3">
+                        <h5 class="title">專長</h5>
+                        <p>@Html.DisplayFor(model => model.teacherForOnlyT.t_expertise)</p>
+                    </div>
+                    <div class="mt-3">
+                        <h5 class="title">資格證照</h5>
+                        <p>@Html.DisplayFor(model => model.teacherForOnlyT.t_certificateTxt)</p>
+                    </div>
+                    <div class="mt-3">
+                        <a href="@Html.DisplayFor(model => model.teacherForOnlyT.t_socialMedia1)"><i class="fab fa-facebook-square fa-2x mr-1"></i></a>
+                        <a href="@Html.DisplayFor(model => model.teacherForOnlyT.t_socialMedia2)"><i class="fab fa-twitter-square fa-2x mr-1"></i></a>
+                        <a href="@Html.DisplayFor(model => model.teacherForOnlyT.t_socialMedia3)"><i class="fab fa-instagram-square fa-2x mr-1"></i></a>
+                        <a href="@Html.DisplayFor(model => model.teacherForOnlyT.t_socialMedia4)"><i class="fab fa-line fa-2x mr-1"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!--End 教練簡介-->
+        </div>
+    </section><!-- End 教練簡介Section -->
+    <!--==============教練的課程================-->
+    <section class="section-bg3">
+        <!-- Topic Cards -->
+        <div>
+            <div class="container">
+
+                <div class="section-title2">
+                    <h2><a style="background-color: #f39800; font-size: 32px;">&nbsp;</a> 我的課程</h2>
+                    <!-- <p class="text-right"><a href="lessonall.html">更多課程 >></a></p> -->
+                </div>
+                <div class="col-lg-12">
+                    <div class="row">
+                        @foreach (var item in Model.classForOnlyT)
+                        {
+                            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+
+                                <div class="card card-inverse card-info card-all-f">
+
+                                    <div class="card-all-image">
+                                        <a href="@Url.Action("List","OnlyClass",new {id=item.classID})"><img class="card-img-top" src="@item.c_imgPath1"></a>
+                                    </div>
+                                    <div class="card-block">
+                                        @*<figure class="profile">
+                                                <a href="@Url.Action("OnlyList","OnlyTeacher",new {id=item.memberID})"><img src="@item.m_imgPath" class="profile-avatar" alt=""></a>
+
+                                            </figure>*@
+                                        <div class="row" style="float: right; margin-right: 2px;">
+                                            @if (item.c_level == "初級")
+                                            {
+                                                <h6 class="card-level-beg">@item.c_level</h6>
+                                            }
+                                            else if (item.c_level == "中級")
+                                            {
+                                                <h6 class="card-level-int">@item.c_level</h6>
+                                            }
+                                            else if (item.c_level == "高級")
+                                            {
+                                                <h6 class="card-level-adv">@item.c_level</h6>
+                                            }
+                                            else if (item.c_level == "大師級")
+                                            {
+                                                <h6 class="card-level-sup">@item.c_level</h6>
+                                            }
+                                        </div>
+                                        <a href="lesson.html">
+                                            <h4 class="card-title mt-4">@item.c_name</h4>
+                                        </a>
+                                        <!-- <a style="font-size: 15px; color: darkgrey;">針對個人量身設計運動菜單，並指導正確動作搭配飲食調整</a> -->
+                                        <div class="meta card-text">
+                                            <!-- <h6 style="color: #444;">IVAN教練</h6> -->
+                                            <a href="teacher.html" class="card-all-teacher"
+                                               style="font-size: 14px; color: rgb(117, 117, 117);">@Html.DisplayFor(model => model.teacherForOnlyT.tMember.m_fullName) 教練</a>
+                                        </div>
+                                        <div class="card-text">
+                                            <div class="entry-ratings">
+
+                                                <div class="empty_star">★★★★★</div>
+                                                @if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 0)
+                                                {
+                                                    <div class="entry-full_star0">★★★★★</div>
+                                                }
+                                                else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 1)
+                                                {
+                                                    <div class="entry-full_star1">★★★★★</div>
+                                                }
+                                                else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 2)
+                                                {
+                                                    <div class="entry-full_star2">★★★★★</div>
+                                                }
+                                                else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 3)
+                                                {
+                                                    <div class="entry-full_star3">★★★★★</div>
+                                                }
+                                                else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 4)
+                                                {
+                                                    <div class="entry-full_star4">★★★★★</div>
+                                                }
+                                                else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 5)
+                                                {
+                                                    <div class="entry-full_star">★★★★★</div>
+                                                }
+                                            </div>
+                                            <h6 class="myfont4 text-right" style="color: #444; font-size: 16px;">@item.c_hourRate 小時</h6>
+                                        </div>
+                                        <div class="card-text">
+                                            <a href="lesson.html">
+                                                <h4 class="text-right card-all-price">NT$ @item.c_discount</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="card-footer">
+                                          <small>Last updated 3 mins ago</small>
+                                          <button class="btn btn-info float-right btn-sm">Follow</button>
+                                      </div> -->
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End 教練的課程-->
+</main>

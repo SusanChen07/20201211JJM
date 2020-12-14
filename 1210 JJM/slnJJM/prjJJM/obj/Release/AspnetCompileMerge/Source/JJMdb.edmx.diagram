@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="520cfd3dd1f947e0863c814de37f5a98" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="JJMdbModel.tClass" Width="1.5" PointX="7" PointY="2" />
+        <EntityTypeShape EntityType="JJMdbModel.tDeposit" Width="1.5" PointX="2.125" PointY="7" />
+        <EntityTypeShape EntityType="JJMdbModel.tMember" Width="1.5" PointX="2.125" PointY="1.25" />
+        <EntityTypeShape EntityType="JJMdbModel.tOrder" Width="1.5" PointX="11.75" PointY="1.875" />
+        <EntityTypeShape EntityType="JJMdbModel.tOrder_Detail" Width="1.5" PointX="11.875" PointY="4.875" />
+        <EntityTypeShape EntityType="JJMdbModel.tPay" Width="1.5" PointX="4.5" PointY="8.125" />
+        <EntityTypeShape EntityType="JJMdbModel.tRating" Width="1.5" PointX="14" PointY="1.875" />
+        <EntityTypeShape EntityType="JJMdbModel.tShop" Width="1.5" PointX="9.625" PointY="1.875" />
+        <EntityTypeShape EntityType="JJMdbModel.tTeacher" Width="1.5" PointX="4.5" PointY="2" />
+        <EntityTypeShape EntityType="JJMdbModel.tWish" Width="1.5" PointX="9.625" PointY="4.875" />
+        <AssociationConnector Association="JJMdbModel.FK_tClass_tTeacher" />
+        <AssociationConnector Association="JJMdbModel.FK_tOrder_Detail_tClass" />
+        <AssociationConnector Association="JJMdbModel.FK_tRating_tClass" />
+        <AssociationConnector Association="JJMdbModel.FK_tShop_tClass" />
+        <AssociationConnector Association="JJMdbModel.FK_tWish_tClass" />
+        <AssociationConnector Association="JJMdbModel.FK_tDeposit_tMember" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="JJMdbModel.FK_tOrder_tMember" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="JJMdbModel.FK_tRating_tMember" />
+        <AssociationConnector Association="JJMdbModel.FK_tShop_tMember" />
+        <AssociationConnector Association="JJMdbModel.FK_tTeacher_tMember" />
+        <AssociationConnector Association="JJMdbModel.FK_tWish_tMember" />
+        <AssociationConnector Association="JJMdbModel.FK_tOrder_Detail_tOrder" />
+        <AssociationConnector Association="JJMdbModel.FK_tPay_tTeacher" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

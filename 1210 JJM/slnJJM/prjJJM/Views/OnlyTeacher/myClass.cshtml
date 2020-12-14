@@ -1,0 +1,200 @@
+﻿@model prjJJM.ViewModels.TeacherVM.COnlyTeacherViewModel
+
+@{
+    ViewBag.Title = "myClass";
+    var k = 0;
+    string collapse = "collapse";
+}
+
+@section css{
+    <!-- Template Main CSS File -->
+    <link href="~/Content/assets/css/lessonmgt.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/member.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/all.min.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="~/Content/assets/js/mylesson.js"></script>
+}
+
+@*<h2>myClass</h2>*@
+
+<main id="main">
+    <!-- ======= 頁面導航 Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="font-weight: 700;">管理課程</h2>
+                <ol>
+                    <li><a href="@Url.Action("Index", "Home")" style="font-size:16px;">首頁</a></li>
+                    <li><a href="@Url.Action("List","OnlyTeacher", new { id = (int)Session["ID"]})" style="font-size:16px;">教練管理</a></li>
+                    <li style="font-size:16px; font-weight: 600;">管理課程</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Section -->
+
+    <section class="">
+        <div class="container emp-profile">
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+                   @RenderPage("~/Views/Shared/_Layout_JJMTeacher.cshtml")
+
+                </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-12 text-right">
+                                <span class="mr-3 myfont1" style="font-size: 16px;">
+                                    <label>篩選：</label>
+                                    <select name="" id="" size="1" class="">
+                                        <option value="0" selected>全部課程</option>
+                                        <option value="1">未開始的課程</option>
+                                        <option value="2">上課中的課程</option>
+                                        <option value="3">已結束的課程</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="container">
+                                <div class="row" style="border: 2px;">
+                                    <div class="col-lg-12 col-xs-12">
+                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                            <div class="row classhead">
+                                                <div class="col-5">課程</div>
+                                                <div class="col-3">日期</div>
+                                                <div class="col-1 title2">編輯</div>
+                                                <div class="col-1 title2">刪除</div>
+                                                <div class="col-2">學員</div>
+                                            </div>
+
+                                            @foreach (var i in Model.classData)
+                                            {
+                                                k++;
+                                                string collapseID = collapse + k.ToString();
+                                                <div class="panel" id="collapseOne_container">
+                                                    <div class="panel-heading" role="tab" id="headingOne">
+                                                        <div class="panel-title">
+                                                            <div class="row classbody">
+                                                                <div class="col-2 pl-1 pr-0"><a href="@Url.Action("List","OnlyClass", new { id = i.classID})"><img src="@i.c_imgPath1" class="img-fluid"></a></div>
+                                                                <div class="col-2 ctitle1"><a href="@Url.Action("List","OnlyClass", new { id = i.classID})">@i.c_name</a></div>
+                                                                <div class="col-1 ctitle2">
+
+
+
+                                                                @if (DateTime.Now < i.c_startTime)
+                                                                {<span class="badge badge-warning">未開始</span>}
+                                                                else if ((i.c_startTime < DateTime.Now) && (DateTime.Now < i.c_endTime))
+                                                                {<span class="badge badge-success">上課中</span>}
+                                                                else if (i.c_endTime < DateTime.Now)
+                                                                {<span class="badge badge-secondary">已結束</span> }
+
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    @i.c_startTime.Value.ToLongDateString()<br><img src="~/Content/imgClass/verticaltilde.png" /><br> @i.c_endTime.Value.ToLongDateString()
+                                                                </div>
+                                                                <div class="col-1 title2">
+                                                                    @if (DateTime.Now < i.c_startTime)
+                                                                    {<a href="@Url.Action("EditClass","OnlyTeacher", new { id = i.classID})"><i class="fas fa-pencil-alt fa-2x"></i></a>}
+                                                                    else if ((i.c_startTime < DateTime.Now) && (DateTime.Now < i.c_endTime))
+                                                                    {<a href="#" onclick="noEdit();"><i class="fas fa-pencil-alt fa-2x"></i></a>}
+                                                                    else if (i.c_endTime < DateTime.Now)
+                                                                    {<a href="#" onclick="noEdit();"><i class="fas fa-pencil-alt fa-2x"></i></a>}
+
+                                                                    <script>
+                                                                        function noEdit() {
+                                                                            alert("上課中及已結束的課程無法修改");
+
+                                                                        }
+                                                                    </script>
+
+                                                                </div>
+                                                                <div class="col-1 title2">
+
+                                                                    @if (DateTime.Now < i.c_startTime)
+                                                                    {<a href="@Url.Action("DeleteClass","OnlyTeacher", new { id = i.classID})"><i class="fa fa-trash fa-2x"></i></a>}
+                                                                    else if ((i.c_startTime < DateTime.Now) && (DateTime.Now < i.c_endTime))
+                                                                    {<a href="#" onclick="noDel();"><i class="fa fa-trash fa-2x"></i></a>}
+                                                                    else if (i.c_endTime < DateTime.Now)
+                                                                    {<a href="#" onclick="noDel();"><i class="fa fa-trash fa-2x"></i></a>}
+
+                                                                    <script>
+                                                                        function noDel() {
+                                                                            alert("上課中及已結束的課程無法刪除");
+                                                                        }
+                                                                    </script>
+
+
+
+
+                                                                </div>
+                                                                <div class="col-2">
+                                                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#@collapseID"
+                                                                       aria-expanded="true" aria-controls="@collapseID">
+                                                                        <i aria-hidden="true"></i><i class="fa fa-child fa-3x"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div id="@collapseID" class="panel-collapse collapse in" role="tabpanel"
+                                                         aria-labelledby="headingOne">
+                                                        <div class="panel-body mx-2">
+                                                            <div class="row">
+                                                                <div class="col-2 title1">學員姓名</div>
+                                                                <div class="col-1 title1">性別</div>
+                                                                <div class="col-2 title1">年齡</div>
+                                                                <div class="col-3 title1">電話</div>
+                                                                <div class="col-4 title1">E-mail</div>
+                                                            </div>
+
+                                                            @*@{ JJMdbEntities dbv = new JJMdbEntities();
+                                                                var memV = dbv.tOrder_Detail.Where(x => x.classID == i.classID).ToList();
+
+                                                                var memForT = from od in dbv.tOrder_Detail
+                                                                              join o in dbv.tOrder on od.orderID equals o.orderID
+                                                                              join m in dbv.tMember on o.memberID equals m.memberID
+                                                                              where od.classID == i.classID
+                                                                              select m;*@
+
+
+                                                                @foreach (var j in Model.memForT)
+                                                                {
+                                                                    if (i.classID == j.classID)
+                                                                    {
+                                                        <div class="row">
+                                                            <div class="col-2 item1">@j.m_name</div>
+                                                            <div class="col-1 item1">@j.m_gender</div>
+                                                            @{
+                                                                int age =(Convert.ToInt32(DateTime.Today.Year.ToString())-Convert.ToInt32((((DateTime)j.m_birth).ToString("yyyy")))+1);
+                                                            }
+                                                            <div class="col-2 item1">@age</div>
+
+                                                            <div class="col-3 item1">@j.m_phone</div>
+                                                            <div class="col-4 item1">@j.m_email</div>
+                                                        </div>
+                                                                    }
+                                                                 }
+          
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</main>

@@ -1,0 +1,380 @@
+﻿@model prjJJM.ViewModels.ClassVM.CClassMgtImgViewModel
+
+@{
+    ViewBag.Title = "List籃球";
+}
+
+<main id="main">
+    <!-- ======= 進階篩選 ======= -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <!-- <a href="#">About</a> -->
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-1"></div>
+            <div class="col-11" style="margin-left:25px;">
+                @using (Html.BeginForm("List籃球", "ClassMgt", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <!-- ======= 關鍵字 ======= -->
+                    <div class="form-group" style="width: 250px;">
+                        <label class="col-form-label">關鍵字搜尋</label>
+                        <div class="form-group input-group" style="width: 250px;">
+                            <input type="text" class="form-control" name="keywordPost" placeholder="請輸入關鍵字">
+                            <div class="input-group-append">
+                                <select class="btn btn-outline-secondary dropdown-toggle" name="種類Post">
+                                    <option selected="selected" disabled>搜尋種類</option>
+                                    <option value="1">運動類別</option>
+                                    <option value="2">課程名稱</option>
+                                    <option value="3">教練姓名</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ======= 日期 ======= -->
+                    <div class="form-group" style="width: 250px;">
+                        <label for="date-start" class="col-form-label">課程日期區間</label>
+                        <div class="form-group input-group" style="width: 250px;">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">開始</label>
+                            </div>
+                            <input class="form-control" type="date" name="startdatePost" value="2020-12-11" id="date-start">
+                        </div>
+                        <div class="form-group input-group" style="width: 250px;">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">結束</label>
+                            </div>
+                            <input class="form-control" type="date" name="enddatePost" value="2021-02-28" id="date-end">
+                        </div>
+                    </div>
+                    <!-- ======= 地區 ======= -->
+                    <div class="form-group" style="width: 250px;">
+                        <label class="col-form-label">教室位置</label>
+                        <div class="input-group" style="width: 250px;">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">地區</label>
+                            </div>
+                            <select class="custom-select" name="areaPost" id="">
+                                <option value="1" selected>所有高雄區</option>
+                                <option value="2">左營區</option>
+                                <option value="3">鼓山區</option>
+                                <option value="4">三民區</option>
+                                <option value="5">苓雅區</option>
+                                <option value="6">新興區</option>
+                                <option value="7">前金區</option>
+                                <option value="8">鹽埕區</option>
+                                <option value="9">其它區</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- ======= 課程班別 ======= -->
+                    <div class="form-group" style="width: 250px;">
+                        <label class="col-form-label">課程班別</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="radio" aria-label="Radio button for following text input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Text input with radio button" value="所有課程" disabled>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="radio" aria-label="Radio button for following text input" name="optionsRadios" id="optionsRadios2" value="option2">
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Text input with radio button" value="團體課程" disabled>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="radio" aria-label="Radio button for following text input" name="optionsRadios" id="optionsRadios3" value="option3">
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Text input with radio button" value="一對一課程" disabled>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group mt-2" style="width: 250px;">
+                        <button type="submit" class="btn btn-warning btn-block">開始搜尋</button>
+                        <button type="reset" class="btn btn-secondary btn-block">重置欄位</button>
+                    </div>
+                }
+            </div>
+
+        </div>
+
+    </div>
+    <div id="overlay" onclick="off()"></div>
+
+    <!-- ======= Blog Section ======= -->
+    <section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-12 text-right">
+                    <div class="input-group" style="justify-content: center;">
+                        <div class="input-group-prepend mr-3 mb-2">
+                            <label class="input-group-text" for="">課程狀態</label>
+                            <select class="custom-select" id="">
+                                <option value="1" selected>所有課程</option>
+                                @*<option value="2">確定開課</option>
+                                <option value="3">募集中（人數未達標）</option>*@
+                            </select>
+                        </div>
+                        <div class="input-group-prepend mr-3 mb-2">
+                            <label class="input-group-text" for="">排序</label>
+                            <select class="custom-select" id="">
+                                <option value="1" selected>最新</option>
+                                <option value="2">評價最高</option>
+                                @*<option value="3">課程等級低→高</option>
+                                <option value="4">價格低→高</option>*@
+                            </select>
+                        </div>
+                        <span style="font-size:16px;cursor:pointer" onclick="openNav()" class="mb-2">
+                            <button class="btn btn-warning advsearch" onclick="on()">&#9776; 進階篩選</button> <!-- btn-outline-secondary 灰-->
+                        </span>
+                    </div>
+                    <hr>
+                    <!-- <span class="mr-4 myfont1" style="font-size: 16px;">
+                      <label>課程狀態：</label>
+                      <select name="" id="" size="1" class="">
+                        <option value="1">所有課程</option>
+                        <option value="2">確定開課</option>
+                        <option value="3">募集中（人數未達標）</option>
+                      </select>
+                    </span> -->
+                    <!-- <span class="mr-3 myfont1" style="font-size: 16px;">
+                    <label>排序：</label>
+                    <select name="" id="" size="1" class="">
+                      <option value="1">最新</option>
+                      <option value="2">評價最高</option>
+                      <option value="3">課程等級低→高</option>
+                      <option value="3">價格低→高</option>
+                    </select>
+                    </span> -->
+                </div>
+
+                <div class="col-lg-12 entries">
+
+                    <div class="col-lg-12">
+                        <div class="row">
+                            @foreach (var item in Model.classData)
+                            {
+
+
+                                <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+
+                                    <div class="card card-inverse card-info card-all-f">
+
+                                        <div class="card-all-image">
+                                            <a href="@Url.Action("List","OnlyClass",new {id=item.classID})"><img class="card-img-top" src="@item.c_imgPath1"></a>
+                                        </div>
+                                        <div class="card-block">
+                                            <figure class="profile">
+                                                <a href="@Url.Action("OnlyList","OnlyTeacher",new {id=item.memberID})"><img src="@item.m_imgPath" class="profile-avatar" alt=""></a>
+                                            </figure>
+                                            <div class="row" style="float: right; margin-right: 2px;">
+                                                @if (item.c_level == "初級")
+                                                {
+                                                    <h6 class="card-level-beg">初級</h6>
+                                                }
+                                                else if (item.c_level == "中級")
+                                                {
+                                                    <h6 class="card-level-int">中級</h6>
+                                                }
+                                                else if (item.c_level == "高級")
+                                                {
+                                                    <h6 class="card-level-adv">高級</h6>
+                                                }
+                                                else if (item.c_level == "大師級")
+                                                {
+                                                    <h6 class="card-level-sup">大師級</h6>
+                                                }
+                                            </div>
+                                            <a href="@Url.Action("List","OnlyClass",new {id=item.classID})"><h4 class="card-title mt-4">@item.c_name</h4></a>
+                                            <!-- <a style="font-size: 15px; color: darkgrey;">針對個人量身設計運動菜單，並指導正確動作搭配飲食調整</a> -->
+                                            <div class="meta card-text">
+                                                <!-- <h6 style="color: #444;">IVAN教練</h6> -->
+                                                <a href="@Url.Action("OnlyList","OnlyTeacher",new {id=item.memberID})" class="card-all-teacher" style="font-size: 14px; color: rgb(117, 117, 117);">@item.m_firstName @item.m_lastName</a>
+                                            </div>
+                                            <div class="card-text">
+
+                                                <div class="entry-ratings">
+
+                                                    <div class="empty_star">★★★★★</div>
+                                                    @if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 0)
+                                                    {
+                                                        <div class="entry-full_star0">★★★★★</div>
+                                                    }
+                                                    else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 1)
+                                                    {
+                                                        <div class="entry-full_star1">★★★★★</div>
+                                                    }
+                                                    else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 2)
+                                                    {
+                                                        <div class="entry-full_star2">★★★★★</div>
+                                                    }
+                                                    else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 3)
+                                                    {
+                                                        <div class="entry-full_star3">★★★★★</div>
+                                                    }
+                                                    else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 4)
+                                                    {
+                                                        <div class="entry-full_star4">★★★★★</div>
+                                                    }
+                                                    else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 5)
+                                                    {
+                                                        <div class="entry-full_star">★★★★★</div>
+                                                    }
+                                                </div>
+
+
+                                                <h6 style="font-size: 14px; color: darkgrey;">@item.c_rateTotal 則評論</h6>
+                                                <h6 class="myfont4 text-right" style="color: #444; font-size: 16px;">@item.c_hourRate 小時</h6>
+                                            </div>
+                                            <div class="card-text">
+                                                <a href="@Url.Action("List","OnlyClass",new {id=item.classID})"><h4 class="text-right card-all-price">NT$ @item.c_price</h4></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+
+                    <!-- <article class="entry">
+
+                      <div class="entry-img">
+                        <img src="assets/img/blog-post-1.jpg" alt="" class="img-fluid">
+                      </div>
+
+                      <h2 class="entry-title">
+                        <a href="blog-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia
+                          reiciendis</a>
+                      </h2>
+
+                      <div class="entry-meta">
+                        <ul>
+                          <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">John
+                              Doe</a></li>
+                          <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                          <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html">12
+                              Comments</a></li>
+                        </ul>
+                      </div>
+
+                      <div class="entry-content">
+                        <p>
+                          Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et
+                          laboriosam eius aut nostrum quidem aliquid dicta.
+                          Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos
+                          aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
+                        </p>
+                        <div class="read-more">
+                          <a href="blog-single.html">Read More</a>
+                        </div>
+                      </div>
+
+                    </article> -->
+                    <!-- End blog entry -->
+
+                    <div class="blog-pagination mt-5">
+                        <ul class="justify-content-center">
+                            <li><a><i class="icofont-rounded-left"></i></a></li>
+                            <li class="active"><a href="">1</a></li>
+                            @*<li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>*@
+                            <li><a><i class="icofont-rounded-right"></i></a></li>
+                        </ul>
+                    </div>
+
+                </div><!-- End blog entries list -->
+                <!-- <div class="col-lg-3">
+                  <div class="sidebar">
+
+                    <h3 class="sidebar-title">Search</h3>
+                    <div class="sidebar-item search-form">
+                      <form action="">
+                        <input type="text">
+                        <button type="submit"><i class="icofont-search"></i></button>
+                      </form>
+                    </div>
+
+                    <h3 class="sidebar-title">Categories</h3>
+                    <div class="sidebar-item categories">
+                      <ul>
+                        <li><a href="#">General <span>(25)</span></a></li>
+                        <li><a href="#">Lifestyle <span>(12)</span></a></li>
+                        <li><a href="#">Travel <span>(5)</span></a></li>
+                        <li><a href="#">Design <span>(22)</span></a></li>
+                        <li><a href="#">Creative <span>(8)</span></a></li>
+                        <li><a href="#">Educaion <span>(14)</span></a></li>
+                      </ul>
+
+                    </div>
+
+                    <h3 class="sidebar-title">Recent Posts</h3>
+                    <div class="sidebar-item recent-posts">
+                      <div class="post-item clearfix">
+                        <img src="assets/img/recent-posts-1.jpg" alt="">
+                        <h4><a href="blog-single.html">Nihil blanditiis at in nihil autem</a></h4>
+                        <time datetime="2020-01-01">Jan 1, 2020</time>
+                      </div>
+
+                      <div class="post-item clearfix">
+                        <img src="assets/img/recent-posts-2.jpg" alt="">
+                        <h4><a href="blog-single.html">Quidem autem et impedit</a></h4>
+                        <time datetime="2020-01-01">Jan 1, 2020</time>
+                      </div>
+
+                      <div class="post-item clearfix">
+                        <img src="assets/img/recent-posts-3.jpg" alt="">
+                        <h4><a href="blog-single.html">Id quia et et ut maxime similique occaecati ut</a></h4>
+                        <time datetime="2020-01-01">Jan 1, 2020</time>
+                      </div>
+
+                      <div class="post-item clearfix">
+                        <img src="assets/img/recent-posts-4.jpg" alt="">
+                        <h4><a href="blog-single.html">Laborum corporis quo dara net para</a></h4>
+                        <time datetime="2020-01-01">Jan 1, 2020</time>
+                      </div>
+
+                      <div class="post-item clearfix">
+                        <img src="assets/img/recent-posts-5.jpg" alt="">
+                        <h4><a href="blog-single.html">Et dolores corrupti quae illo quod dolor</a></h4>
+                        <time datetime="2020-01-01">Jan 1, 2020</time>
+                      </div>
+                    </div>
+
+                    <h3 class="sidebar-title">Tags</h3>
+                    <div class="sidebar-item tags">
+                      <ul>
+                        <li><a href="#">App</a></li>
+                        <li><a href="#">IT</a></li>
+                        <li><a href="#">Business</a></li>
+                        <li><a href="#">Business</a></li>
+                        <li><a href="#">Mac</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Office</a></li>
+                        <li><a href="#">Creative</a></li>
+                        <li><a href="#">Studio</a></li>
+                        <li><a href="#">Smart</a></li>
+                        <li><a href="#">Tips</a></li>
+                        <li><a href="#">Marketing</a></li>
+                      </ul>
+
+                    </div>
+
+                  </div>
+
+                </div> -->
+
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+
+    </section><!-- End Blog Section -->
+
+</main><!-- End #main -->

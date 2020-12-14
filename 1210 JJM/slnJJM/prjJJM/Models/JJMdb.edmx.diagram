@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="520cfd3dd1f947e0863c814de37f5a98" Name="Diagram1">
+        <EntityTypeShape EntityType="JJMdbModel.tMember" Width="1.5" PointX="0.5" PointY="1.125" />
+        <EntityTypeShape EntityType="JJMdbModel.tTeacher" Width="1.5" PointX="2.5" PointY="1.125" />
+        <AssociationConnector Association="JJMdbModel.FK_Teacher_Member" />
+        <AssociationConnector Association="JJMdbModel.FK_Teacher_Teacher" />
+        <EntityTypeShape EntityType="JJMdbModel.tClass" Width="1.5" PointX="4.625" PointY="1.125" />
+        <AssociationConnector Association="JJMdbModel.FK_Class_Teacher" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<prjJJM.ViewModels.OrderVM.COrderDetailViewModel>
+
+@{
+    ViewBag.Title = "訂單明細列表";
+    Layout = "~/Views/Shared/_Layout_JJMAdmin.cshtml";
+}
+
+@section css{
+    <link href="~/Content/Admin/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section scripts{
+
+    <script src="~/Content/Admin/plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+}
+
+<!--Content body start-->
+<div class="content-body">
+
+    <div class="row page-titles mx-0">
+        <div class="col p-md-0">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">首頁</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">訂單明細</a></li>
+            </ol>
+        </div>
+    </div>
+    <!-- row -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style="font-weight: 600;">訂單明細</h4>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-6">
+                                <p class="btn btn-outline-secondary" id="btnadd">
+                                    @Html.ActionLink("新增訂單明細", "Create")
+                                </p>
+                            </div>
+                            @*<div class="col-lg-10 col-md-10 col-sm-6" style="text-align:right;">
+                                <form method="post">
+                                    <input type="text" name="txtkeyword" style="margin-right: 5px" />
+                                    <input type="submit" class="btn btn-outline-info mr-2" value="查詢" />
+                                </form>
+                            </div>*@
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover zero-configuration">
+                                <!-- table-striped table-bordered -->
+                                <thead>
+                                    <tr>
+                                        <th>訂單項目編號</th>
+                                        <th>訂單編號</th>
+                                        <th>課程編號</th>
+                                        <th>課程名稱</th>
+                                        <th>課程價格</th>
+                                        <th>優惠價格</th>
+                                        <th>課程利潤</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.od_itemID)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.orderID)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.classID)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_name)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_price)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_discount)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.od_profit)</td>
+                                        <td>
+                                            @Html.ActionLink("修改", "Edit", new { id = item.od_itemID })<i class="fa fa-pencil color-muted"></i>
+                                            @Html.ActionLink("刪除", "Delete", "OrderDetail", new { id = item.od_itemID }, new { OnClick = "return confirm('確定要刪除嗎?')" })<i class="fa fa-close color-danger"></i>
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>訂單項目編號</th>
+                                        <th>訂單編號</th>
+                                        <th>課程編號</th>
+                                        <th>課程名稱</th>
+                                        <th>課程價格</th>
+                                        <th>優惠價格</th>
+                                        <th>課程利潤</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+</div>
+<!--Content body end-->

@@ -1,0 +1,296 @@
+﻿@model prjJJM.ViewModels.CTeacherViewModel
+
+@{
+    ViewBag.Title = "教練資料";
+}
+
+@section css{
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" rel="stylesheet">
+    <link href="~/Content/assets/css/member.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/all.min.css" rel="stylesheet" />
+}
+
+
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+}
+
+<!--Body Start-->
+<main id="main">
+    <!-- ======= 頁面導航 Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="font-weight: 700;">教練資料</h2>
+                <ol>
+                    <li><a href="@Url.Action("Index", "Home")" style="font-size:16px;">首頁</a></li>
+                    <li><a href="#" style="font-size:16px;">教練管理</a></li>
+                    <li style="font-size:16px; font-weight: 600;">教練資料</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Section -->
+
+    <!-- ======= 空白Section ======= -->
+    <section class="">
+        <div class="container emp-profile">
+            <form method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-4">
+
+                        @RenderPage("~/Views/Shared/_Layout_JJMTeacher.cshtml")
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="profile-head">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active forpadding1" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                                       aria-selected="true" style="font-size:1em;">教練資料</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link forpadding1" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                                       aria-selected="false" style="font-size:1em;">教練紀錄</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link forpadding1" id="profile-tab" data-toggle="tab" href="#profile2" role="tab" aria-controls="profile"
+                                       aria-selected="false" style="font-size:1em;">社群連結</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link forpadding1" id="profile-tab" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile"
+                                       aria-selected="false" style="font-size:1em;">資格證照</a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                            <div class="tab-content profile-tab" id="myTabContent">
+                                <div class="tab-pane fade show active align-items-center" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="container profile-tab">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>姓名</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                    <p>@Html.DisplayFor(model => model.memberForOnlyT.m_fullName)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>頭銜</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                    <p>@Html.DisplayFor(model => model.t_title)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>自我介紹</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                    <p>@Html.DisplayFor(model => model.t_intro)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>教學經歷</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                    <p>@Html.DisplayFor(model => model.t_experience)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>專長</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                        @Html.DisplayFor(model => model.t_expertise)
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="container profile-tab">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>累積留言總數</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                    <p>@Html.DisplayFor(model => model.t_messageTotal)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>累積點數總數</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                    <p>@Html.DisplayFor(model => model.t_moneyTotal)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>可兌換點數</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                    <p>@Html.DisplayFor(model => model.t_money)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>累積上課人數</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                    <p>@Html.DisplayFor(model => model.t_studentTotal)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>課程總數</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                    <p>@Html.DisplayFor(model => model.t_classTotal)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>課程評價平均</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="entry-ratings">
+                                                            <div class="empty_star">★★★★★</div>
+                                                            @if ((Math.Round((double)Model.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 0))
+                                                            {
+                                                                <div class="entry-full_star0">★★★★★</div>
+                                                            }
+                                                            else if (Math.Round((double)Model.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 1)
+                                                            {
+                                                                <div class="entry-full_star1">★★★★★</div>
+                                                            }
+                                                            else if (Math.Round((double)Model.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 2)
+                                                            {
+                                                                <div class="entry-full_star2">★★★★★</div>
+                                                            }
+                                                            else if (Math.Round((double)Model.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 3)
+                                                            {
+                                                                <div class="entry-full_star3">★★★★★</div>
+                                                            }
+                                                            else if (Math.Round((double)Model.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 4)
+                                                            {
+                                                                <div class="entry-full_star4">★★★★★</div>
+                                                            }
+                                                            else if (Math.Round((double)Model.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 5)
+                                                            {
+                                                                <div class="entry-full_star">★★★★★</div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile2" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="container profile-tab">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-3 socialpadding1">
+                                                        <label class="cotitle2"><i class="fab fa-facebook-square fa-lg"></i> Facebook</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                    <p><a href="">@Html.DisplayFor(model => model.t_socialMedia1)</a></p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3 socialpadding1">
+                                                        <label class="cotitle2"><i class="fab fa-twitter-square fa-lg"></i> Twitter</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                    <p><a href="">@Html.DisplayFor(model => model.t_socialMedia2)</a></p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3 socialpadding1">
+                                                        <label class="cotitle2"><i class="fab fa-instagram-square fa-lg"></i> Instagram</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                    <p><a href="">@Html.DisplayFor(model => model.t_socialMedia3)</a></p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3 socialpadding1">
+                                                        <label class="cotitle2"><i class="fab fa-line fa-lg"></i> Line</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                    <p><a href="">@Html.DisplayFor(model => model.t_socialMedia4)</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile3" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="row mx-1">
+                                        <div class="col-3">
+                                            <label>資格證照說明</label>
+                                        </div>
+                                        <div class="col-9">
+                                        <p>@Html.DisplayFor(model => model.t_certificateTxt)</p>
+                                        </div>
+                                    </div>
+                                    <div class="row ml-1 mb-5">
+                                        <div class="col-3">
+                                            <label>資格證照圖檔1</label>
+                                        </div>
+                                        <div class="col-8">
+                                        <img height="100" width="100" src="@Html.DisplayFor(model => model.t_certificateImg1)" />
+                                        </div>
+                                    </div>
+                                    <div class="row ml-1 mb-5">
+                                        <div class="col-3">
+                                            <label>資格證照圖檔2</label>
+                                        </div>
+                                        <div class="col-8">
+                                        <img height="100" width="100" src="@Html.DisplayFor(model => model.t_certificateImg2)" />
+                                        </div>
+                                    </div>
+                                    <div class="row ml-1 mb-5">
+                                        <div class="col-3">
+                                            <label>資格證照圖檔3</label>
+                                        </div>
+                                        <div class="col-8">
+                                        <img height="100" width="100" src="@Html.DisplayFor(model => model.t_certificateImg3)" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-5"></div>
+                                <div class="col-md-3">
+                                <button class="profile-edit-btn">@Html.ActionLink("編輯資料", "Edit", new { id = Model.teacherID })</button>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </form>
+        </div>
+    </section><!-- End Section -->
+</main><!-- End #main -->
+<!--Body End-->
+
+
+

@@ -1,0 +1,668 @@
+﻿@model  prjJJM.ViewModels.HomeVM.CPopularHomeViewModel
+@{
+    ViewBag.Title = "首頁";
+    Layout = "~/Views/Shared/_Layout_JJMHome.cshtml";
+}
+<!--===================Nivo Slider===================-->
+<div id="home" class="slider-area">
+    <div class="bend niceties preview-2">
+        <div id="ensign-nivoslider" class="slides">
+            <img src="~/Content/slider/slider1.jpg" alt="" title="#slider-direction-1" />
+            <img src="~/Content/slider/slider2.jpg" alt="" title="#slider-direction-2" />
+            <img src="~/Content/slider/slider3.jpg" alt="" title="#slider-direction-3" />
+        </div>
+
+        <!-- direction 1 -->
+        <div id="slider-direction-1" class="slider-direction slider-one">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="slider-content">
+                            <!-- layer 1 -->
+                            <div class="layer-1-1 hidden-xs wow animate__slideInDown animate__animated" data-wow-duration="2s"
+                                 data-wow-delay=".2s">
+                                <h2 class="title1"></h2>
+                            </div>
+                            <!-- layer 2 -->
+                            <div class="layer-1-2 wow animate__fadeIn animate__animated" data-wow-duration="2s"
+                                 data-wow-delay=".2s">
+                                <h1 class="title2 pt-3 myfont2">不怕練太壯 只怕變太美</h1>
+                            </div>
+                            <!-- layer 3 -->
+                            <div class="layer-1-3 hidden-xs wow animate__slideInUp animate__animated" data-wow-duration="2s"
+                                 data-wow-delay=".2s">
+                                <div class="s130 page-scroll">
+                                    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+                                    {
+                                        <div class="inner-form">
+                                            <div class="input-field first-wrap">
+                                                <div class="svg-wrapper">
+                                                </div>
+                                                <input id="s1" type="text" placeholder="尋找課程" name="txtkey" />
+                                            </div>
+                                            <div class="input-field second-wrap">
+                                                <button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                        <!-- <span class="info">進階搜尋</span>  -->
+                                    }
+
+                                </div>
+                            </div>
+
+                            <!-- layer 4 -->
+                            <div class="layer-1-4 hidden-xs wow animate__slideInUp animate__animated" data-wow-duration="2s"
+                                 data-wow-delay=".2s">
+                                <a class="ready-btn page-scroll" href="@Url.Action("List重訓","ClassMgt")">#重訓</a>
+                                <a class="ready-btn page-scroll" href="@Url.Action("TrxList","ClassMgt")">#TRX</a>
+                                <a class="ready-btn page-scroll" href="@Url.Action("List拳擊","ClassMgt")">#拳擊</a>
+                                <a class="ready-btn page-scroll" href="@Url.Action("List瑜珈","ClassMgt")">#瑜珈</a>
+                                <a class="ready-btn page-scroll" href="@Url.Action("List", "ClassMgt")">更多類別</a>
+                                <!-- <a class="ready-btn page-scroll" href="lessonall.html" data-toggle="modal" data-target="#searchpro">進階搜尋</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- direction 2 -->
+        <div id="slider-direction-2" class="slider-direction slider-two">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="slider-content text-center">
+                            <!-- layer 1 -->
+                            <div class="layer-1-1 hidden-xs wow animate__slideInDown animate__animated" data-wow-duration="2s"
+                                 data-wow-delay=".2s">
+                                <h2 class="title1"></h2>
+                            </div>
+                            <!-- layer 2 -->
+                            <div class="layer-1-2 wow animate__fadeIn animate__animated" data-wow-duration="2s"
+                                 data-wow-delay=".2s">
+                                <h1 class="title2 pt-3 myfont2">不怕練太壯 只怕變太美</h1>
+                            </div>
+                            <!-- layer 3 -->
+                            <div class="layer-1-3 hidden-xs wow animate__slideInUp animate__animated" data-wow-duration=".7s"
+                                 data-wow-delay=".2s">
+                                <div class="s130 page-scroll">
+                                    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+                                    {
+                                        <div class="inner-form">
+                                            <div class="input-field first-wrap">
+                                                <div class="svg-wrapper">
+                                                </div>
+                                                <input id="s1" type="text" placeholder="尋找課程" name="txtkey" />
+                                            </div>
+                                            <div class="input-field second-wrap">
+                                                <button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                        <!-- <span class="info">進階搜尋</span>  -->
+                                    }
+                                </div>
+                            </div>
+                            <!-- layer 4 -->
+                            <div class="layer-1-4 hidden-xs wow animate__slideInUp animate__animated" data-wow-duration="2s"
+                                 data-wow-delay=".2s">
+                                <a class="ready-btn page-scroll" href="@Url.Action("List重訓","ClassMgt")">#重訓</a>
+                                <a class="ready-btn page-scroll" href="@Url.Action("TrxList","ClassMgt")">#TRX</a>
+                                <a class="ready-btn page-scroll" href="@Url.Action("List拳擊","ClassMgt")">#拳擊</a>
+                                <a class="ready-btn page-scroll" href="@Url.Action("List瑜珈","ClassMgt")">#瑜珈</a>
+                                <a class="ready-btn page-scroll" href="@Url.Action("List", "ClassMgt")">更多類別</a>
+                                <!-- <a class="ready-btn page-scroll" href="lessonall.html" data-toggle="modal" data-target="#searchpro">進階搜尋</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- direction 3 -->
+        <div id="slider-direction-3" class="slider-direction slider-two">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="slider-content">
+                            <!-- layer 1 -->
+                            <div class="layer-1-1 hidden-xs wow animate__slideInDown animate__animated" data-wow-duration="2s"
+                                 data-wow-delay=".2s">
+                                <h2 class="title1"></h2>
+                            </div>
+                            <!-- layer 2 -->
+                            <div class="layer-1-2 wow animate__fadeIn animate__animated" data-wow-duration="2s"
+                                 data-wow-delay=".2s">
+                                <h1 class="title2 pt-3 myfont2">不怕練太壯 只怕變太美</h1>
+                            </div>
+                            <!-- layer 3 -->
+                            <div class="layer-1-3 hidden-xs wow animate__slideInUp animate__animated" data-wow-duration=".7s"
+                                 data-wow-delay=".2s">
+                                <div class="s130 page-scroll">
+                                    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+                                    {
+                                        <form>
+                                            <div class="inner-form">
+                                                <div class="input-field first-wrap">
+                                                    <div class="svg-wrapper">
+                                                    </div>
+                                                    <input id="s1" type="text" placeholder="尋找課程" name="txtkey" />
+                                                </div>
+                                                <div class="input-field second-wrap">
+                                                    <button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- <span class="info">進階搜尋</span>  -->
+                                        </form>
+                                    }
+                                </div>
+                            </div>
+                            <!-- layer 4 -->
+                            <div class="layer-1-4 hidden-xs wow animate__slideInUp animate__animated" data-wow-duration="2s"
+                                 data-wow-delay=".2s">
+                                <a class="ready-btn page-scroll" href="@Url.Action("List重訓","ClassMgt")">#重訓</a>
+                                <a class="ready-btn page-scroll" href="@Url.Action("TrxList","ClassMgt")">#TRX</a>
+                                <a class="ready-btn page-scroll" href="@Url.Action("List拳擊","ClassMgt")">#拳擊</a>
+                                <a class="ready-btn page-scroll" href="@Url.Action("List瑜珈","ClassMgt")">#瑜珈</a>
+                                <a class="ready-btn page-scroll" href="@Url.Action("List", "ClassMgt")">更多類別</a>
+                                <!-- <a class="ready-btn page-scroll" href="lessonall.html" data-toggle="modal" data-target="#searchpro">進階搜尋</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--========End Nivo Slider========-->
+
+<main id="main">
+
+    <!-- ======= 熱門課程 ======= -->
+    <section id="testimonials" class="testimonials ">
+        <div class="container aos-init aos-animate" data-aos="fade-up">
+
+            <div class="section-title2">
+                <h2><i class="fas fa-crown" style="font-size: 32px; color: #F39800;"></i> 熱門課程</h2>
+                <p></p>
+            </div>
+
+            <div class="row">
+                @{
+                    foreach (var item in Model.popularClass)
+                    {
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card card-inverse card-info card-all-f">
+                                <div class="card-all-image">
+                                    <a href="@Url.Action("List","OnlyClass",new {id=item.classID})"><img class="card-img-top" src="@item.c_imgPath1"></a>
+                                </div>
+                                <div class="card-block">
+                                    <figure class="profile">
+                                        <a href="@Url.Action("OnlyList","OnlyTeacher",new {id=item.memberID})"><img src="@item.m_imgPath" class="profile-avatar" alt=""></a>
+                                    </figure>
+                                    <div class="row" style="float: right; margin-right: 2px;">
+                                        @if (item.c_level == "初級")
+                                        {
+                                            <h6 class="card-level-beg">@item.c_level</h6>
+                                        }
+                                        else if (item.c_level == "中級")
+                                        {
+                                            <h6 class="card-level-int">@item.c_level</h6>
+                                        }
+                                        else if (item.c_level == "高級")
+                                        {
+                                            <h6 class="card-level-adv">@item.c_level</h6>
+                                        }
+                                        else
+                                        {
+                                            <h6 class="card-level-sup">@item.c_level</h6>
+                                        }
+                                    </div>
+                                    <a href="@Url.Action("List","OnlyClass",new {id=item.classID})"><h4 class="card-title mt-4">@item.c_name</h4></a>
+                                    <!-- <a style="font-size: 15px; color: darkgrey;">針對個人量身設計運動菜單，並指導正確動作搭配飲食調整</a> -->
+                                    <div class="meta card-text">
+                                        <!-- <h6 style="color: #444;">IVAN教練</h6> -->
+                                        <a href="@Url.Action("OnlyList","OnlyTeacher",new {id=item.memberID})" class="card-all-teacher" style="font-size: 14px; color: rgb(117, 117, 117);">@item.m_lastName @item.m_firstName</a>
+                                    </div>
+                                    <div class="card-text">
+                                        <div class="entry-ratings">
+                                            <div class="empty_star">★★★★★</div>
+                                            @if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 0)
+                                            {
+                                                <div class="entry-full_star0">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 1)
+                                            {
+                                                <div class="entry-full_star1">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 2)
+                                            {
+                                                <div class="entry-full_star2">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 3)
+                                            {
+                                                <div class="entry-full_star3">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 4)
+                                            {
+                                                <div class="entry-full_star4">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 5)
+                                            {
+                                                <div class="entry-full_star">★★★★★</div>
+                                            }
+                                        </div>
+                                        <h6 style="font-size: 14px; color: darkgrey;">@item.c_rateTotal 則評論</h6>
+                                        <h6 class="myfont4 text-right" style="color: #444; font-size: 16px;">@item.c_hourRate 小時</h6>
+                                    </div>
+                                    <div class="card-text">
+                                        <a href="@Url.Action("List","OnlyClass",new {id=item.classID})"><h4 class="text-right card-all-price">NT$ @item.c_price</h4></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+            <div class="owl-carousel testimonials-carousel owl-loaded owl-drag">
+                <p>
+                    <i class="bx quote-icon-left"></i>
+                    <i class="bx quote-icon-right"></i>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== 推薦課程(一對一) ====== -->
+    <section class="">
+        <!-- Topic Cards -->
+        <div>
+            <!--id="cards_landscape_wrap-2"-->
+            <div class="container">
+
+                <div class="section-title2">
+                    <h2><i class="fas fa-people-carry" style="font-size: 32px; color: #F39800;"></i> 一對一好評課程</h2>
+                    <p class="text-right"><a href="@Url.Action("List", "ClassMgt")" style="font-size: 18px; font-weight: bold;">更多課程 >></a></p>
+                </div>
+                <div class="row">
+                    @foreach (var item in Model.popular1v1)
+                    {
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card card-inverse card-info card-all-f">
+                                <div class="card-all-image">
+                                    <a href="@Url.Action("List","OnlyClass",new {id=item.classID})"><img class="card-img-top" src="@item.c_imgPath1"></a>
+                                </div>
+                                <div class="card-block">
+                                    <figure class="profile">
+                                        <a href="@Url.Action("OnlyList","OnlyTeacher",new {id=item.memberID})"><img src="@item.m_imgPath" class="profile-avatar" alt=""></a>
+                                    </figure>
+                                    <div class="row" style="float: right; margin-right: 2px;">
+                                        @if (item.c_level == "初級")
+                                        {
+                                            <h6 class="card-level-beg">@item.c_level</h6>
+                                        }
+                                        else if (item.c_level == "中級")
+                                        {
+                                            <h6 class="card-level-int">@item.c_level</h6>
+                                        }
+                                        else if (item.c_level == "高級")
+                                        {
+                                            <h6 class="card-level-adv">@item.c_level</h6>
+                                        }
+                                        else
+                                        {
+                                            <h6 class="card-level-sup">@item.c_level</h6>
+                                        }
+                                    </div>
+                                    <a href="@Url.Action("List","OnlyClass",new {id=item.classID})"><h4 class="card-title mt-4">@item.c_name</h4></a>
+                                    <!-- <a style="font-size: 15px; color: darkgrey;">針對個人量身設計運動菜單，並指導正確動作搭配飲食調整</a> -->
+                                    <div class="meta card-text">
+                                        <!-- <h6 style="color: #444;">IVAN教練</h6> -->
+                                        <a href="@Url.Action("OnlyList","OnlyTeacher",new {id=item.memberID})" class="card-all-teacher" style="font-size: 14px; color: rgb(117, 117, 117);">@item.m_lastName @item.m_firstName</a>
+                                    </div>
+                                    <div class="card-text">
+                                        <div class="entry-ratings">
+                                            <div class="empty_star">★★★★★</div>
+                                            @if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 0)
+                                            {
+                                                <div class="entry-full_star0">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 1)
+                                            {
+                                                <div class="entry-full_star1">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 2)
+                                            {
+                                                <div class="entry-full_star2">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 3)
+                                            {
+                                                <div class="entry-full_star3">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 4)
+                                            {
+                                                <div class="entry-full_star4">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 5)
+                                            {
+                                                <div class="entry-full_star">★★★★★</div>
+                                            }
+                                        </div>
+                                        <h6 style="font-size: 14px; color: darkgrey;">@item.c_rateTotal 則評論</h6>
+                                        <h6 class="myfont4 text-right" style="color: #444; font-size: 16px;">@item.c_hourRate 小時</h6>
+                                    </div>
+                                    <div class="card-text">
+                                        <a href="@Url.Action("List","OnlyClass",new {id=item.classID})"><h4 class="text-right card-all-price">NT$ @item.c_price</h4></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== 推薦課程(團體班) ====== -->
+    <section class="">
+        <!-- Topic Cards -->
+        <div>
+            <!--id="cards_landscape_wrap-2"-->
+            <div class="container">
+
+                <div class="section-title2">
+                    <h2><i class="fas fa-users" style="font-size: 32px; color: #F39800;"></i> 團體班推薦課程</h2>
+                    <p class="text-right"><a href="@Url.Action("List", "ClassMgt")" style="font-size: 18px; font-weight: bold;">更多課程 >></a></p>
+                </div>
+                <div class="row">
+                    @foreach (var item in Model.popularGroup)
+                    {
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card card-inverse card-info card-all-f">
+                                <div class="card-all-image">
+                                    <a href="@Url.Action("List","OnlyClass",new {id=item.classID})"><img class="card-img-top" src="@item.c_imgPath1"></a>
+                                </div>
+                                <div class="card-block">
+                                    <figure class="profile">
+                                        <a href="@Url.Action("OnlyList","OnlyTeacher",new {id=item.memberID})"><img src="@item.m_imgPath" class="profile-avatar" alt=""></a>
+                                    </figure>
+                                    <div class="row" style="float: right; margin-right: 2px;">
+                                        @if (item.c_level == "初級")
+                                        {
+                                            <h6 class="card-level-beg">@item.c_level</h6>
+                                        }
+                                        else if (item.c_level == "中級")
+                                        {
+                                            <h6 class="card-level-int">@item.c_level</h6>
+                                        }
+                                        else if (item.c_level == "高級")
+                                        {
+                                            <h6 class="card-level-adv">@item.c_level</h6>
+                                        }
+                                        else
+                                        {
+                                            <h6 class="card-level-sup">@item.c_level</h6>
+                                        }
+                                    </div>
+                                    <a href="@Url.Action("List","OnlyClass",new {id=item.classID})"><h4 class="card-title mt-4">@item.c_name</h4></a>
+                                    <!-- <a style="font-size: 15px; color: darkgrey;">針對個人量身設計運動菜單，並指導正確動作搭配飲食調整</a> -->
+                                    <div class="meta card-text">
+                                        <!-- <h6 style="color: #444;">IVAN教練</h6> -->
+
+                                        <a href="@Url.Action("OnlyList","OnlyTeacher",new {id=item.memberID})" class="card-all-teacher" style="font-size: 14px; color: rgb(117, 117, 117);">@item.m_lastName @item.m_firstName</a>
+                                    </div>
+                                    <div class="card-text">
+                                        <div class="entry-ratings">
+                                            <div class="empty_star">★★★★★</div>
+                                            @if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 0)
+                                            {
+                                                <div class="entry-full_star0">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 1)
+                                            {
+                                                <div class="entry-full_star1">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 2)
+                                            {
+                                                <div class="entry-full_star2">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 3)
+                                            {
+                                                <div class="entry-full_star3">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 4)
+                                            {
+                                                <div class="entry-full_star4">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.c_rate, 0, MidpointRounding.AwayFromZero) == 5)
+                                            {
+                                                <div class="entry-full_star">★★★★★</div>
+                                            }
+                                        </div>
+                                        <h6 style="font-size: 14px; color: darkgrey;">@item.c_rateTotal 則評論</h6>
+                                        <h6 class="myfont4 text-right" style="color: #444; font-size: 16px;">@item.c_hourRate 小時</h6>
+                                    </div>
+                                    <div class="card-text">
+                                        <a href="@Url.Action("List","OnlyClass",new {id=item.classID})"><h4 class="text-right card-all-price">NT$ @item.c_price</h4></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= 熱門教練 ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+        <div class="container aos-init aos-animate" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>熱門教練</h2>
+                <p></p>
+
+            </div>
+
+            <div class="owl-carousel testimonials-carousel owl-loaded owl-drag">
+
+                <div class="owl-stage-outer">
+                    <div class="owl-stage"
+                         style="transform: translate3d(-2170px, 0px, 0px); transition: all 0.5s ease 0s; width: 3410px;">
+                        @{
+                            foreach(var item in Model.popularTeacher){
+                                <div class="owl-item cloned" style="width: 310px;">
+                                    <div class="testimonial-item">
+                                        <a href="@Url.Action("OnlyList","OnlyTeacher",new {id=item.memberID})">
+                                            <img src="@item.m_imgPath" class="testimonial-img"
+                                                 alt="">
+                                        </a>
+                                        <h3>@item.m_lastName @item.m_firstName</h3>
+                                        <h4>@item.t_title</h4>
+                                         <p>
+                                          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                          @item.t_certificateTxt
+                                          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                        </p> 
+                                        <div class="ratings mb-2">
+                                            <div class="empty_star">★★★★★</div>
+                                            @if (Math.Round((double)item.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 0)
+                                            {
+                                                <div class="entry-full_star0">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 1)
+                                            {
+                                                <div class="entry-full_star1">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 2)
+                                            {
+                                                <div class="entry-full_star2">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 3)
+                                            {
+                                                <div class="entry-full_star3">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 4)
+                                            {
+                                                <div class="entry-full_star4">★★★★★</div>
+                                            }
+                                            else if (Math.Round((double)item.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 5)
+                                            {
+                                                <div class="entry-full_star">★★★★★</div>
+                                            }
+                                        </div>
+                                        <br>
+                                        <!-- <a href="#" class="btn btn-success mb-4">詳細資訊</a>  -->
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                <p>
+                    <i class="bx quote-icon-left"></i>
+                    <i class="bx quote-icon-right"></i>
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ====== 課程類別 ====== -->
+    <section class="portfolio">
+        <div class="container">
+            <div class="section-title2">
+                <h2>課程類別</h2>
+                <p></p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">全部</li>
+                        <li data-filter=".filter-gym">室內健身</li>
+                        <li data-filter=".filter-boxing">格鬥競技</li>
+                        <li data-filter=".filter-ball">球類運動</li>
+                        <li data-filter=".filter-water">水上運動</li>
+                        <li data-filter=".filter-other">其它</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+
+                <div class="col-lg-4 col-md-6 filter-gym">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("TrxList","ClassMgt")" title=""><img src="~/Content/assets/img/type/trx.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <h3><a href="@Url.Action("TrxList","ClassMgt")" class="index-type-font">TRX</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-gym">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List瑜珈","ClassMgt")" title=""><img src="~/Content/assets/img/type/瑜珈.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <h3><a href="@Url.Action("List瑜珈","ClassMgt")" class="index-type-font">瑜珈</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-gym">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List重訓","ClassMgt")" title=""><img src="~/Content/assets/img/type/重訓.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <h3><a href="@Url.Action("List重訓","ClassMgt")" class="index-type-font">重訓</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-boxing">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List武術","ClassMgt")" title=""><img src="~/Content/assets/img/type/武術.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <h3><a href="@Url.Action("List武術","ClassMgt")" class="index-type-font">武術</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-boxing">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List拳擊","ClassMgt")" title=""><img src="~/Content/assets/img/type/拳擊.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <h3><a href="@Url.Action("List拳擊","ClassMgt")" class="index-type-font">拳擊</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-other">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List其他","ClassMgt")" title=""><img src="~/Content/assets/img/type/other.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <h3><a href="@Url.Action("List其他","ClassMgt")" class="index-type-font">其它</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-ball">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List籃球","ClassMgt")" title=""><img src="~/Content/assets/img/type/basketball.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <h3><a href="@Url.Action("List籃球","ClassMgt")" class="index-type-font">籃球</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-ball">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List足球","ClassMgt")" title=""><img src="~/Content/assets/img/type/soccer.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <h3><a href="@Url.Action("List足球","ClassMgt")" class="index-type-font">足球</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-water">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List衝浪","ClassMgt")" title=""><img src="~/Content/assets/img/type/surfing.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <h3><a href="@Url.Action("List衝浪","ClassMgt")" class="index-type-font">衝浪</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-water">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List游泳","ClassMgt")" title=""><img src="~/Content/assets/img/type/swimming.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <h3><a href="@Url.Action("List游泳","ClassMgt")" class="index-type-font">游泳</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-ball">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List網球","ClassMgt")" title=""><img src="~/Content/assets/img/type/tennis.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <h3><a href="@Url.Action("List網球","ClassMgt")" class="index-type-font">網球</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-ball">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List棒球","ClassMgt")" title=""><img src="~/Content/assets/img/type/baseball.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <h3><a href="@Url.Action("List棒球","ClassMgt")" class="index-type-font">棒球</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Section -->
+</main><!-- End #main -->

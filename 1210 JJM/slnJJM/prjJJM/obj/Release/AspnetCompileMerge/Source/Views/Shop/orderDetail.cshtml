@@ -1,0 +1,159 @@
+﻿@model prjJJM.ViewModels.OrderVM.COrderDetailMgtViewModel
+
+@{
+    ViewBag.Title = "orderDetail";
+    int q = 0;
+    string collapse = "collapse";
+}
+
+@section css
+{
+
+    <link href="~/Content/assets/css/lookorder.css" rel="stylesheet" />
+}
+
+@*<h2>orderDetail</h2>*@
+<main id="main">
+    <!-- ======= 頁面導航 Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="font-weight: 700;">查詢訂單</h2>
+                <ol>
+                    <li><a href="@Url.Action("Index", "Home")" style="font-size:16px;">首頁</a></li>
+                    <li><a href="@Url.Action("List", "OnlyMember", new { id = (int)Session["ID"]})" style="font-size:16px;">個人檔案</a></li>
+                    <li style="font-size:16px; font-weight: 600;">查詢訂單</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Section -->
+
+    <section>
+        <div class="container emp-profile">
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+
+                    @RenderPage("~/Views/Shared/_Layout_JJMMember.cshtml")
+
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <span class="mr-3 myfont1" style="font-size: 16px;">
+                                <label>篩選：</label>
+                                <select name="" id="" size="1" class="">
+                                    <option value="0" selected>全部訂單</option>
+                                    <option value="1">近一周的訂單</option>
+                                    <option value="2">近一個月的訂單</option>
+                                    <option value="3">近一年的訂單</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="container">
+                            <div class="row" style="border: 2px;">
+                                <div class="col-lg-12 col-xs-12">
+                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                        <div class="row classhead">
+                                            <div class="col-3 title3">訂購時間</div>
+                                            <div class="col-3 title3">訂單編號</div>
+                                            <div class="col-2 title3">付款方式</div>
+                                            <div class="col-2 title3">訂單總額</div>
+                                            <div class="col-2 title3">課程數量</div>
+                                        </div>
+                                        @foreach (var i in Model.orderData)
+                                        {
+                                            var oDay = i.o_orderdate.Value.ToString("yyyyMMdd");
+                                            //var oNumber = string.Format("{0:yyyyMMdd}", oDay);
+                                            string oNumberID = oDay.ToString() + i.orderID.ToString();
+                                            var total = 0;
+                                            var count = 0;
+                                            string collapseID = collapse + q.ToString();
+                                            <div class="panel" id="collapseOne_container">
+                                                <div class="panel-heading" role="tab" id="headingOne">
+                                                    <div class="panel-title">
+                                                        <div class="row classbody1">
+                                                            <div class="col-3">@i.o_orderdate</div>
+                                                            <div class="col-3">@oNumberID</div>
+                                                            <div class="col-2">信用卡</div>
+                                                            @foreach (var j in Model.DetailData)
+                                                            {
+                                                                if (j.orderID == i.orderID)
+                                                                {
+                                                                    total = total + (int)j.c_price;
+                                                                    count += 1;
+                                                                }
+                                                            }
+                                                            <div class="col-2">@total</div>
+                                                            <div class="col-2">
+                                                                @count
+                                                            </div>
+                                                        </div>
+                                                        <div class="row classbody2">
+                                                            <div class="col-4" style="text-align: left;">
+                                                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#@collapseID"
+                                                                   aria-expanded="true" aria-controls="@collapseID">
+                                                                    <i aria-hidden="true"></i><i class="fa fa-caret-down fa-lg mr-1"></i>展開明細
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-8"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="@collapseID" class="panel-collapse collapse in" role="tabpanel"
+                                                     aria-labelledby="headingOne">
+                                                    <div class="panel-body ml-3">
+                                                        <div class="row mt-3">
+                                                            <div class="col-7 title1">課程</div>
+                                                            <div class="col-3 title1">日期</div>
+                                                            <div class="col-2 title1">價格</div>
+                                                        </div>
+                                                        @foreach (var k in Model.DetailData)
+                                                        {
+                                                            if (i.orderID == k.orderID)
+                                                            {
+                                                    <div class="row mt-1 title2">
+                                                        <div class="col-2 px-0 pb-1"><a href="@Url.Action("List","OnlyClass",new { id = k.classID })"><img src="@k.tClass.c_imgPath1" class="img-fluid"></a></div>
+                                                        <div class="col-3 item1 mt-2">@k.c_name</div>
+                                                        @if (DateTime.Now < k.tClass.c_startTime)
+                                                        {
+                                                            <div class="col-2 item1 mt-2 px-0"><span class="badge badge-warning">未開始</span></div>
+                                                        }
+                                                        else if ((k.tClass.c_startTime < DateTime.Now) && (DateTime.Now < k.tClass.c_endTime))
+                                                        {
+                                                            <div class="col-2 item1 mt-2"><span class="badge badge-success">上課中</span></div>
+                                                        }
+                                                        else if (k.tClass.c_endTime < DateTime.Now)
+                                                        {
+                                                            <div class="col-2 item1 mt-2 px-0"><span class="badge badge-secondary">已結束</span></div>
+                                                        }
+                                                    <div class="col-3 item1">
+                                                        @k.tClass.c_startTime.Value.ToLongDateString()<br><img src="~/Content/imgClass/verticaltilde.png" /><br>@k.tClass.c_endTime.Value.ToLongDateString()
+                                                    </div>
+                                                        <div class="col-2 item1">$@k.c_price</div>
+                                                    </div>
+                                                            }
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            q++;
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

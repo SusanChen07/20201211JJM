@@ -1,0 +1,13 @@
+                img.SaveAs(Server.MapPath(@"~/Content/imgMember/" + photoName));
+                try
+                {
+                    if(oldphoto != "/Content/imgMember/defaultMember.png")
+                    {
+                        System.IO.File.Delete(Server.MapPath(@"~" + oldphoto));
+                    }
+                    
+                }
+                catch
+                {
+                }
+                memMgt.m_imgPath = @"/Content/imgMember/" + photoName;

@@ -1,0 +1,305 @@
+﻿@model prjJJM.ViewModels.CTeacherViewModel
+
+@{
+    ViewBag.Title = "修改教練";
+    Layout = "~/Views/Shared/_Layout_JJMAdmin.cshtml";
+}
+
+<h2>修改會員</h2>
+
+
+@using (Html.BeginForm("Edit", "Teacher", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <!--Content body start-->
+    <div class="content-body">
+
+        <div class="row page-titles mx-0">
+            <div class="col p-md-0">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">首頁</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">會員名單</a></li>
+                </ol>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title" style="font-weight: 600;">修改會員</h4>
+                            <div class="form-horizontal">
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.teacherID)
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.teacherID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.teacherID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.teacherID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.t_certificateImg1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.t_certificateImg1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.t_certificateImg1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.t_certificateImg2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.t_certificateImg2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.t_certificateImg2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.t_certificateImg3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.t_certificateImg3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.t_certificateImg3, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.memberID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.memberID, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.memberID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.t_certificateTxt, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.t_certificateTxt, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.t_certificateTxt, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_intro, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_intro, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_intro, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_experience, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_experience, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_experience, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_expertise, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_expertise, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_expertise, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_messageTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_messageTotal, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_messageTotal, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_moneyTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_moneyTotal, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_moneyTotal, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_money, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_money, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_money, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_studentTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_studentTotal, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_studentTotal, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_classTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_classTotal, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_classTotal, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_rateAvg, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_rateAvg, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_rateAvg, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_socialMedia1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_socialMedia1, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_socialMedia1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_socialMedia2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_socialMedia2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_socialMedia2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_socialMedia3, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_socialMedia3, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_socialMedia3, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.t_socialMedia4, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.t_socialMedia4, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.t_socialMedia4, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+                                @*<div class="form-group">
+                                    @Html.LabelFor(model => model.t_getNow, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.t_getNow, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.t_getNow, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
+
+    <div class="form-group">
+        <p style="margin-left:15px;">
+            <input type="file" id="fileupload1" name="image1" onchange="openFile1()">
+            <img src="@Html.DisplayFor(model => model.t_certificateImg1)" id="imgpreview1" width="100" height="100" />
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p style="margin-left:15px;">
+            <input type="file" id="fileupload2" name="image2" onchange="openFile2()">
+            <img src="@Html.DisplayFor(model => model.t_certificateImg2)" id="imgpreview2" width="100" height="100" />
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p style="margin-left:15px;">
+            <input type="file" id="fileupload3" name="image3" onchange="openFile3()">
+            <img src="@Html.DisplayFor(model => model.t_certificateImg3)" id="imgpreview3" width="100" height="100" />
+        </p>
+    </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="儲存修改" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #/ container -->
+    </div>
+    <!--Content body end-->
+
+    <script>
+        function openFile1() {
+            var fileUpload = document.getElementById("fileupload1");
+            var imgPreview = document.getElementById("imgpreview1");
+            var imgone = fileUpload.files[0];
+
+            if (fileUpload.files.length > 0) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    imgPreview.src = reader.result;//
+                };
+
+                reader.readAsDataURL(imgone);
+            } else {
+                displayInfo.innerHTML = "";
+            }
+        }
+
+        function openFile2() {
+            var fileUpload = document.getElementById("fileupload2");
+            var imgPreview = document.getElementById("imgpreview2");
+            var imgone = fileUpload.files[0];
+
+            if (fileUpload.files.length > 0) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    imgPreview.src = reader.result;//
+                };
+
+                reader.readAsDataURL(imgone);
+            } else {
+                displayInfo.innerHTML = "";
+            }
+        }
+
+        function openFile3() {
+            var fileUpload = document.getElementById("fileupload3");
+            var imgPreview = document.getElementById("imgpreview3");
+            var imgone = fileUpload.files[0];
+
+            if (fileUpload.files.length > 0) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    imgPreview.src = reader.result;//
+                };
+
+                reader.readAsDataURL(imgone);
+            } else {
+                displayInfo.innerHTML = "";
+            }
+        }
+    </script>
+
+}
+
+<div>
+    @Html.ActionLink("返回教練列表", "List")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

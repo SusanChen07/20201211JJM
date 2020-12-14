@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JJMdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="JJMdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tClass" EntityType="JJMdbModel.tClass" />
+    <EntitySet Name="tDeposit" EntityType="JJMdbModel.tDeposit" />
+    <EntitySet Name="tMember" EntityType="JJMdbModel.tMember" />
+    <EntitySet Name="tOrder" EntityType="JJMdbModel.tOrder" />
+    <EntitySet Name="tOrder_Detail" EntityType="JJMdbModel.tOrder_Detail" />
+    <EntitySet Name="tPay" EntityType="JJMdbModel.tPay" />
+    <EntitySet Name="tRating" EntityType="JJMdbModel.tRating" />
+    <EntitySet Name="tShop" EntityType="JJMdbModel.tShop" />
+    <EntitySet Name="tTeacher" EntityType="JJMdbModel.tTeacher" />
+    <EntitySet Name="tWish" EntityType="JJMdbModel.tWish" />
+    <AssociationSet Name="FK_tClass_tTeacher" Association="JJMdbModel.FK_tClass_tTeacher">
+      <End Role="tTeacher" EntitySet="tTeacher" />
+      <End Role="tClass" EntitySet="tClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tOrder_Detail_tClass" Association="JJMdbModel.FK_tOrder_Detail_tClass">
+      <End Role="tClass" EntitySet="tClass" />
+      <End Role="tOrder_Detail" EntitySet="tOrder_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tRating_tClass" Association="JJMdbModel.FK_tRating_tClass">
+      <End Role="tClass" EntitySet="tClass" />
+      <End Role="tRating" EntitySet="tRating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tShop_tClass" Association="JJMdbModel.FK_tShop_tClass">
+      <End Role="tClass" EntitySet="tClass" />
+      <End Role="tShop" EntitySet="tShop" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tWish_tClass" Association="JJMdbModel.FK_tWish_tClass">
+      <End Role="tClass" EntitySet="tClass" />
+      <End Role="tWish" EntitySet="tWish" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tDeposit_tMember" Association="JJMdbModel.FK_tDeposit_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="tDeposit" EntitySet="tDeposit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tOrder_tMember" Association="JJMdbModel.FK_tOrder_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="tOrder" EntitySet="tOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tRating_tMember" Association="JJMdbModel.FK_tRating_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="tRating" EntitySet="tRating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tShop_tMember" Association="JJMdbModel.FK_tShop_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="tShop" EntitySet="tShop" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tTeacher_tMember" Association="JJMdbModel.FK_tTeacher_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="tTeacher" EntitySet="tTeacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tWish_tMember" Association="JJMdbModel.FK_tWish_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="tWish" EntitySet="tWish" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tOrder_Detail_tOrder" Association="JJMdbModel.FK_tOrder_Detail_tOrder">
+      <End Role="tOrder" EntitySet="tOrder" />
+      <End Role="tOrder_Detail" EntitySet="tOrder_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tPay_tTeacher" Association="JJMdbModel.FK_tPay_tTeacher">
+      <End Role="tTeacher" EntitySet="tTeacher" />
+      <End Role="tPay" EntitySet="tPay" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tClass">
+    <Key>
+      <PropertyRef Name="classID" />
+    </Key>
+    <Property Name="classID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="c_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="c_nameText" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="c_intro" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="c_startTime" Type="DateTime" Precision="0" />
+    <Property Name="c_endTime" Type="DateTime" Precision="0" />
+    <Property Name="c_hourRate" Type="Int32" />
+    <Property Name="c_registerStart" Type="DateTime" Precision="0" />
+    <Property Name="c_registerEnd" Type="DateTime" Precision="0" />
+    <Property Name="c_maxStudent" Type="Int32" />
+    <Property Name="c_minStudent" Type="Int32" />
+    <Property Name="c_student" Type="Int32" />
+    <Property Name="c_location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="c_price" Type="Int32" />
+    <Property Name="c_onsaleStart" Type="DateTime" Precision="0" />
+    <Property Name="c_onsaleEnd" Type="DateTime" Precision="0" />
+    <Property Name="c_discount" Type="Int32" />
+    <Property Name="c_level" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="c_requirement" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="c_rate" Type="Double" />
+    <Property Name="c_rateTotal" Type="Int32" />
+    <Property Name="c_imgPath1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="c_imgPath2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="c_imgPath3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="c_lable1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="c_lable2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="c_lable3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="c_lable4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="c_lable5" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="teacherID" Type="Int32" />
+    <Property Name="c_getNow" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tTeacher" Relationship="JJMdbModel.FK_tClass_tTeacher" FromRole="tClass" ToRole="tTeacher" />
+    <NavigationProperty Name="tOrder_Detail" Relationship="JJMdbModel.FK_tOrder_Detail_tClass" FromRole="tClass" ToRole="tOrder_Detail" />
+    <NavigationProperty Name="tRating" Relationship="JJMdbModel.FK_tRating_tClass" FromRole="tClass" ToRole="tRating" />
+    <NavigationProperty Name="tShop" Relationship="JJMdbModel.FK_tShop_tClass" FromRole="tClass" ToRole="tShop" />
+    <NavigationProperty Name="tWish" Relationship="JJMdbModel.FK_tWish_tClass" FromRole="tClass" ToRole="tWish" />
+  </EntityType>
+  <EntityType Name="tDeposit">
+    <Key>
+      <PropertyRef Name="depositID" />
+    </Key>
+    <Property Name="depositID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="d_point" Type="Int32" />
+    <Property Name="d_method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="d_memo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="d_getNow" Type="DateTime" Precision="3" />
+    <Property Name="memberID" Type="Int32" />
+    <NavigationProperty Name="tMember" Relationship="JJMdbModel.FK_tDeposit_tMember" FromRole="tDeposit" ToRole="tMember" />
+  </EntityType>
+  <EntityType Name="tMember">
+    <Key>
+      <PropertyRef Name="memberID" />
+    </Key>
+    <Property Name="memberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="m_firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_birth" Type="DateTime" Precision="0" />
+    <Property Name="m_gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="m_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_district" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="m_address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="m_role" Type="Int32" />
+    <Property Name="m_hobby" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="m_imgPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="m_Jpoint" Type="Int32" />
+    <Property Name="m_getNow" Type="DateTime" Precision="3" />
+    <Property Name="m_emailConfirm" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="tDeposit" Relationship="JJMdbModel.FK_tDeposit_tMember" FromRole="tMember" ToRole="tDeposit" />
+    <NavigationProperty Name="tOrder" Relationship="JJMdbModel.FK_tOrder_tMember" FromRole="tMember" ToRole="tOrder" />
+    <NavigationProperty Name="tRating" Relationship="JJMdbModel.FK_tRating_tMember" FromRole="tMember" ToRole="tRating" />
+    <NavigationProperty Name="tShop" Relationship="JJMdbModel.FK_tShop_tMember" FromRole="tMember" ToRole="tShop" />
+    <NavigationProperty Name="tTeacher" Relationship="JJMdbModel.FK_tTeacher_tMember" FromRole="tMember" ToRole="tTeacher" />
+    <NavigationProperty Name="tWish" Relationship="JJMdbModel.FK_tWish_tMember" FromRole="tMember" ToRole="tWish" />
+  </EntityType>
+  <EntityType Name="tOrder">
+    <Key>
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="orderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="memberID" Type="Int32" />
+    <Property Name="o_orderdate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tMember" Relationship="JJMdbModel.FK_tOrder_tMember" FromRole="tOrder" ToRole="tMember" />
+    <NavigationProperty Name="tOrder_Detail" Relationship="JJMdbModel.FK_tOrder_Detail_tOrder" FromRole="tOrder" ToRole="tOrder_Detail" />
+  </EntityType>
+  <EntityType Name="tOrder_Detail">
+    <Key>
+      <PropertyRef Name="od_itemID" />
+    </Key>
+    <Property Name="od_itemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderID" Type="Int32" />
+    <Property Name="classID" Type="Int32" />
+    <Property Name="c_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="c_price" Type="Int32" />
+    <Property Name="c_discount" Type="Int32" />
+    <Property Name="od_profit" Type="Int32" />
+    <NavigationProperty Name="tClass" Relationship="JJMdbModel.FK_tOrder_Detail_tClass" FromRole="tOrder_Detail" ToRole="tClass" />
+    <NavigationProperty Name="tOrder" Relationship="JJMdbModel.FK_tOrder_Detail_tOrder" FromRole="tOrder_Detail" ToRole="tOrder" />
+  </EntityType>
+  <EntityType Name="tPay">
+    <Key>
+      <PropertyRef Name="payID" />
+    </Key>
+    <Property Name="payID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="p_money" Type="Int32" />
+    <Property Name="p_getNow" Type="DateTime" Precision="3" />
+    <Property Name="p_status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="p_method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="p_getMoneyTime" Type="DateTime" Precision="3" />
+    <Property Name="p_memo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="teacherID" Type="Int32" />
+    <NavigationProperty Name="tTeacher" Relationship="JJMdbModel.FK_tPay_tTeacher" FromRole="tPay" ToRole="tTeacher" />
+  </EntityType>
+  <EntityType Name="tRating">
+    <Key>
+      <PropertyRef Name="ratingID" />
+    </Key>
+    <Property Name="ratingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="memberID" Type="Int32" />
+    <Property Name="classID" Type="Int32" />
+    <Property Name="r_send" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="r_sendText" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="r_star" Type="Int32" />
+    <Property Name="r_sendTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tClass" Relationship="JJMdbModel.FK_tRating_tClass" FromRole="tRating" ToRole="tClass" />
+    <NavigationProperty Name="tMember" Relationship="JJMdbModel.FK_tRating_tMember" FromRole="tRating" ToRole="tMember" />
+  </EntityType>
+  <EntityType Name="tShop">
+    <Key>
+      <PropertyRef Name="shopID" />
+    </Key>
+    <Property Name="shopID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="classID" Type="Int32" />
+    <Property Name="memberID" Type="Int32" />
+    <Property Name="s_getNow" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tClass" Relationship="JJMdbModel.FK_tShop_tClass" FromRole="tShop" ToRole="tClass" />
+    <NavigationProperty Name="tMember" Relationship="JJMdbModel.FK_tShop_tMember" FromRole="tShop" ToRole="tMember" />
+  </EntityType>
+  <EntityType Name="tTeacher">
+    <Key>
+      <PropertyRef Name="teacherID" />
+    </Key>
+    <Property Name="teacherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="t_certificateImg1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="t_certificateImg2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="t_certificateImg3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="t_certificateTxt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="t_title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="t_intro" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="t_experience" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="t_expertise" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="t_messageTotal" Type="Int32" />
+    <Property Name="t_moneyTotal" Type="Int32" />
+    <Property Name="t_money" Type="Int32" />
+    <Property Name="t_studentTotal" Type="Int32" />
+    <Property Name="t_classTotal" Type="Int32" />
+    <Property Name="t_rateAvg" Type="Double" />
+    <Property Name="t_socialMedia1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="t_socialMedia2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="t_socialMedia3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="t_socialMedia4" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="memberID" Type="Int32" />
+    <Property Name="t_getNow" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tClass" Relationship="JJMdbModel.FK_tClass_tTeacher" FromRole="tTeacher" ToRole="tClass" />
+    <NavigationProperty Name="tMember" Relationship="JJMdbModel.FK_tTeacher_tMember" FromRole="tTeacher" ToRole="tMember" />
+    <NavigationProperty Name="tPay" Relationship="JJMdbModel.FK_tPay_tTeacher" FromRole="tTeacher" ToRole="tPay" />
+  </EntityType>
+  <EntityType Name="tWish">
+    <Key>
+      <PropertyRef Name="WishID" />
+    </Key>
+    <Property Name="WishID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="classID" Type="Int32" />
+    <Property Name="memberID" Type="Int32" />
+    <Property Name="s_getNow" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tClass" Relationship="JJMdbModel.FK_tWish_tClass" FromRole="tWish" ToRole="tClass" />
+    <NavigationProperty Name="tMember" Relationship="JJMdbModel.FK_tWish_tMember" FromRole="tWish" ToRole="tMember" />
+  </EntityType>
+  <Association Name="FK_tClass_tTeacher">
+    <End Type="JJMdbModel.tTeacher" Role="tTeacher" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tClass" Role="tClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tTeacher">
+        <PropertyRef Name="teacherID" />
+      </Principal>
+      <Dependent Role="tClass">
+        <PropertyRef Name="teacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tOrder_Detail_tClass">
+    <End Type="JJMdbModel.tClass" Role="tClass" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tOrder_Detail" Role="tOrder_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tClass">
+        <PropertyRef Name="classID" />
+      </Principal>
+      <Dependent Role="tOrder_Detail">
+        <PropertyRef Name="classID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tRating_tClass">
+    <End Type="JJMdbModel.tClass" Role="tClass" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tRating" Role="tRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tClass">
+        <PropertyRef Name="classID" />
+      </Principal>
+      <Dependent Role="tRating">
+        <PropertyRef Name="classID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tShop_tClass">
+    <End Type="JJMdbModel.tClass" Role="tClass" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tShop" Role="tShop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tClass">
+        <PropertyRef Name="classID" />
+      </Principal>
+      <Dependent Role="tShop">
+        <PropertyRef Name="classID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tWish_tClass">
+    <End Type="JJMdbModel.tClass" Role="tClass" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tWish" Role="tWish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tClass">
+        <PropertyRef Name="classID" />
+      </Principal>
+      <Dependent Role="tWish">
+        <PropertyRef Name="classID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tDeposit_tMember">
+    <End Type="JJMdbModel.tMember" Role="tMember" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tDeposit" Role="tDeposit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="memberID" />
+      </Principal>
+      <Dependent Role="tDeposit">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tOrder_tMember">
+    <End Type="JJMdbModel.tMember" Role="tMember" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tOrder" Role="tOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="memberID" />
+      </Principal>
+      <Dependent Role="tOrder">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tRating_tMember">
+    <End Type="JJMdbModel.tMember" Role="tMember" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tRating" Role="tRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="memberID" />
+      </Principal>
+      <Dependent Role="tRating">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tShop_tMember">
+    <End Type="JJMdbModel.tMember" Role="tMember" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tShop" Role="tShop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="memberID" />
+      </Principal>
+      <Dependent Role="tShop">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tTeacher_tMember">
+    <End Type="JJMdbModel.tMember" Role="tMember" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tTeacher" Role="tTeacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="memberID" />
+      </Principal>
+      <Dependent Role="tTeacher">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tWish_tMember">
+    <End Type="JJMdbModel.tMember" Role="tMember" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tWish" Role="tWish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="memberID" />
+      </Principal>
+      <Dependent Role="tWish">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tOrder_Detail_tOrder">
+    <End Type="JJMdbModel.tOrder" Role="tOrder" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tOrder_Detail" Role="tOrder_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tOrder">
+        <PropertyRef Name="orderID" />
+      </Principal>
+      <Dependent Role="tOrder_Detail">
+        <PropertyRef Name="orderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tPay_tTeacher">
+    <End Type="JJMdbModel.tTeacher" Role="tTeacher" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tPay" Role="tPay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tTeacher">
+        <PropertyRef Name="teacherID" />
+      </Principal>
+      <Dependent Role="tPay">
+        <PropertyRef Name="teacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

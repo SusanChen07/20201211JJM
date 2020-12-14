@@ -1,0 +1,119 @@
+﻿@model prjJJM.ViewModels.CShopWishViewModel
+
+@{
+    ViewBag.Title = "order";
+}
+
+@*<h2>order</h2>*@
+<main id="main">
+    <!-- ======= Contact Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="font-weight: 700;">購買完成</h2>
+                <ol>
+                    <li><a href="@Url.Action("Index", "Home")" style="font-size:16px;">首頁</a></li>
+                    <li><a href="@Url.Action("List", "Shop", new { id = (int)Session["ID"]})" style="font-size:16px;">購物車</a></li>
+                    <li style="font-size:16px; font-weight: 600;">購買完成</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+    <!-- ======= Blog Section ======= -->
+    <section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <div class="container">
+
+            <!-- ======= 步驟條 ======= -->
+            <div class="row" style="margin-left: 20px; margin-right: 20px;">
+                <div class="col-lg-1"></div>
+                <div class="align-middle text-primary">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <span class="fa fa-stack-1x fa-check"></span>
+                    </span>
+                    <div class="d-inline-block">
+                        <p class="mb-1">購物車</p>
+                        <!-- <p class="position-absolute text-muted"></p> -->
+                    </div>
+                </div>
+                <span class="col border border-primary mx-3 my-auto"></span>
+                <div class="align-middle text-primary">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <span class="fa fa-stack-1x fa-check"></span>
+                    </span>
+                    <div class="d-inline-block">
+                        <p class="mb-1">選擇付款方式</p>
+                        <!-- <p class="position-absolute text-muted"></p> -->
+                    </div>
+                </div>
+                <span class="col border border-primary mx-3 my-auto"></span>
+                <div class="align-middle text-primary">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <span class="fa fa-stack-1x fa-check"></span>
+                    </span>
+                    <div class="d-inline-block">
+                        <p class="mb-1">購買完成</p>
+                        <!-- <p class="position-absolute text-muted"></p> -->
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div><!-- End .row -->
+            <br><br>
+            <div class="row">
+                <div class="col-lg-1 col-md-1"></div>
+                <div class="col-lg-10 col-md-10 col-sm-6 checkoutbg">
+                    <h3 style="text-align: center;" class="myfont4">付款完成！</h3>
+                    <br>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>您的訂單已送出！</strong>訂單資訊可點擊<a href="@Url.Action("orderDetail", "Shop")" class="alert-link lookallorder" style="font-size: 16px;">查詢訂單</a>查看，如有任何問題請至<a href="@Url.Action("ContactJJM", "FAQ")" class="alert-link lookallorder" style="font-size: 16px;">聯絡我們</a>，我們會盡快為您處理。
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div style="padding-left: 20px;">
+                        <h6>訂單編號： <a href="@Url.Action("orderDetail", "Shop")" class="ordernumber"><span>@Html.DisplayFor(model => model.Order.orderID)</span></a></h6>
+                        <h6>訂購時間： <span>@Html.DisplayFor(model => model.Order.o_orderdate)</span></h6>
+                        <h6>付款方式： <span>健美點數</span></h6>
+                        <h6>付款金額： NT$ <span>@Html.DisplayFor(model => model.total)</span></h6>
+                        <br>
+                        <h6 class="mb-3"><i class="fa fa-chevron-circle-right"> 購買課程：</i></h6>
+                    </div>
+                    <div class="checkoutpointbg">
+                        <div class="row">
+                            <div class="col-4"><h6 class="myfont4">課程</h6></div>
+                            <div class="col-5"><h6 class="myfont4">上課期間</h6></div>
+                            <div class="col-3"><h6 class="myfont4">教室位置</h6></div>
+                        </div>
+                        <hr>
+                        @foreach (var item in Model.classData)
+                        {
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6 class="lessontitle">@Html.DisplayFor(model => item.c_name)</h6>
+                                    <h6 class="teachertitle">@Html.DisplayFor(model => item.tTeacher.tMember.m_fullName)</h6>
+                                </div>
+                                <div class="col-5"><h6><span>@Html.DisplayFor(model => item.c_startTime)</span>至<span>@Html.DisplayFor(model => item.c_endTime)</span></div>
+                                <div class="col-3"><h6>@Html.DisplayFor(model => item.c_location)</h6></div>
+                            </div>
+                            <br>
+                        }
+
+                        <div style="text-align: center;">
+                            <a href="@Url.Action("Index", "Home")" class="mr-2"><button type="button" class="btn btn-secondary backhomebtn">回首頁</button></a>
+                            @Html.ActionLink("查看所有訂單", "orderDetail", "Shop", null, new { @class = "btn btn-warning lookallbtn" })
+                            @*<a href="lookorder.html"><button type="button" class="btn btn-warning lookallbtn">查看所有訂單</button></a>*@
+                            <!-- <button type="button" class="btn btn-warning pointbtn">列印此頁</button> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-1"></div>
+                </div>
+
+            </div><!-- End .container -->
+
+    </section><!-- End Blog Section -->
+</main>

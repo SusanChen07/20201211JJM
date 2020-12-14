@@ -1,0 +1,181 @@
+﻿@model prjJJM.ViewModels.CShopWishViewModel
+
+@{
+    ViewBag.Title = "check";
+}
+
+@*<h2>check</h2>*@
+
+<main id="main">
+    <!-- ======= Contact Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="font-weight: 700;">選擇付款方式</h2>
+                <ol>
+                    <li><a href="@Url.Action("Index", "Home")" style="font-size:16px;">首頁</a></li>
+                    <li><a href="@Url.Action("List", "Shop", new { id = (int)Session["ID"]})" style="font-size:16px;">購物車</a></li>
+                    <li style="font-size:16px; font-weight: 600;">選擇付款方式</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+    <section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <div class="container">
+
+            <!-- ======= 步驟條 ======= -->
+            <div class="row" style="margin-left: 20px; margin-right: 20px;">
+                <div class="col-lg-1"></div>
+                <div class="align-middle text-primary">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <span class="fa fa-stack-1x fa-check"></span>
+                    </span>
+                    <div class="d-inline-block">
+                        <p class="mb-1">購物車</p>
+                        <!-- <p class="position-absolute text-muted"></p> -->
+                    </div>
+                </div>
+                <span class="col border border-primary mx-3 my-auto"></span>
+                <div class="align-middle text-primary">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <span class="fa-stack-1x text-white">2</span>
+                    </span>
+                    <div class="d-inline-block">
+                        <p class="mb-1"><strong>選擇付款方式</strong></p>
+                        <!-- <p class="position-absolute text-muted"></p> -->
+                    </div>
+                </div>
+                <span class="col border mx-3 my-auto"></span>
+                <div class="align-middle text-muted">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <span class="fa-stack-1x">3</span>
+                    </span>
+                    <div class="d-inline-block">
+                        <p class="mb-1">購買完成</p>
+                        <!-- <p class="position-absolute text-muted"></p> -->
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div><!-- End .row -->
+            <br><br>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-6 checkoutbg">
+                    <div class="form-group">
+                        <label for="payment" class="myfont4"><i class="fa fa-chevron-circle-right"> 付款方式：</i></label>
+                        <select class="form-control custom-select" id="payment">
+                            <option selected>健美點數</option>
+                            <!-- <option disabled>信用卡</option> -->
+                        </select>
+                    </div>
+                    <h6 style="color:crimson; font-weight:bold;" class="mt-4">您的點數剩餘：<span>@Html.DisplayFor(model => Model.memberData.m_Jpoint)</span>p</h6>
+                    <br>
+                    <hr>
+                    <h6 style="color: rgb(124, 124, 124);" class="mb-3">點數不夠嗎？立即儲值</h6>
+                    @using (Html.BeginForm("check", "Shop", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <div class="row checkoutpointbg">
+                            <div class="col-lg-1 col-md-1 col-sm-1 mt-2">
+                                NT$
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-5 mt-2 mb-3">
+                                <input class="input1" type="text" name="Point" placeholder="請輸入儲值金額" style="width: 100%; text-align: right; ">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <!-- <input type="submit" value="儲值點數" class="btn btn-warning pointbtn"> -->
+
+                                <button type="submit" class="btn btn-warning pointbtn">儲值點數</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 checkoutbg">
+                    <h6 class="myfont4 mb-3"><i class="fa fa-chevron-circle-right"> 購買清單：</i></h6>
+                    <div class="row">
+                        <div class="col-8">
+                            <h6 class="myfont4">課程名稱</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6 class="myfont4">價格</h6>
+                        </div>
+                    </div>
+                    @foreach (var item in Model.classData)
+                    {
+                        <div class="row">
+                            <div class="col-8">
+                                <h6>@Html.DisplayFor(model => item.c_name)</h6>
+                            </div>
+                            <div class="col-4">
+                                <h6>@Html.DisplayFor(model => item.c_price)</h6>
+                            </div>
+                        </div>
+                    }
+                    <hr>
+                    <h4 class="myfont1">總計：</h4>
+                    <h3 class="myfont4">NT$ <span>@Html.DisplayFor(model => model.total)</span></h3>
+                    <br><br>
+                    @*@Html.ActionLink("確認付款", "order", "Shop", new { totalPrice = Model.total }, new { @class = "btn btn-danger btn-block mt-1"})*@
+
+
+                    <div style="text-align:center">
+                        <form method="post" action="@Url.Action("Ordercheck", "Shop")" enctype="multipart/form-data">
+                            <input type="hidden" value="@Model.total" id="wishlessonid" />
+                            @Html.ActionLink("確認付款", "Orderone", "Shop", new { totalPrice = Model.total }, new { @class = "btn btn-danger btn-block mt-1", id = "tryorder" })
+                            @*<button type="submit" id="btnOrder">
+                                    結帳
+                                </button>*@
+                        </form>
+                        <div id="msgcheckp" style="text-align:center;" class="mt-2"></div>
+                    </div>
+
+
+                    <script>
+
+                    $("#tryorder").click(function () {
+
+                                    //var formdata = new FormData();
+                                    var sentIDw = { total: $('#wishlessonid').val() };
+                                    console.log(sentIDw);
+
+                                        $.ajax({
+                                            url: '@Url.Action("Orderone", "Shop")',
+                                            type: "POST",
+                                            data: JSON.stringify(sentIDw),
+                                            contentType: "application/json; charset=utf-8",
+                                            datatype: "json",
+                                            success: function (result) {
+                                                if (result.toString() == "tooless") {
+                                                    $('#msgcheckp').html('<div class="alert alert-warning" style="width: 100%;" role="alert">餘額不足     </div>');
+                                                    setTimeout(function () { $('#msgcheckp').html(''); }, 1000);
+                                                }
+                                                else {
+                                                    window.location.href = '@Url.Action("order", "Shop")';
+                                                }
+                                        },
+                                            error: function (result) {
+                                            $('#msgcheckp').html('<div class="alert alert-danger" role="alert">連線錯誤，請重開網頁再試一次</div>');
+                                            setTimeout(function () { $('#msgcheckp').html(''); }, 3000);
+                                        }
+                                    });
+                                    return false;
+                                });
+
+                    </script>
+                    @*}*@
+                </div>
+
+            </div>
+
+        </div><!-- End .container -->
+
+    </section><!-- End Blog Section -->
+</main>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

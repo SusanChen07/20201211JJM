@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "ContactJJM";
+}
+
+@section css{
+    <link href="~/Content/assets/css/all.min.css" rel="stylesheet" />
+}
+
+<main id="main">
+
+    <!-- ======= Contact Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="font-weight: 700;">聯絡我們</h2>
+                <ol>
+                    <li><a href="@Url.Action("Index", "Home")" style="font-size:16px;">首頁</a></li>
+                    <li style="font-size:16px; font-weight: 600;">聯絡我們</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+    <!-- ======= About Section ======= -->
+    <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-9">
+                    <h1 class="myfont4" style="font-size: 34px;"><a style="background-color: #F39800; font-size: 34px;">&nbsp;</a> 健漸美 Jian Jian Mai</h1>
+                </div>
+                <div class="col-lg-3"></div>
+
+                <div class="col-lg-9">
+                    <h3 class="myfont1" style="color: #F39800; font-weight: 500;">不怕練太壯，只怕變太美！ 運動教練與學員間最佳的媒合平台</h3>
+                    <h5 class="myfont1" style="font-weight: 500;">聯絡信箱：JJM@google.com</h5>  <!--<i class="bx bx-envelope"></i>&nbsp;-->
+                    <h5 class="myfont1" style="font-weight: 500;">客服電話：(07)969-1234</h5>  <!--<i class="bx bx-phone-call"></i>&nbsp;-->
+                    <br>
+                </div>
+                <div class="col-lg-3">
+                    <img src="~/Content/assets/img/JJM-contact.png" style="width: 200px;">
+                </div>
+
+                <!-- <div class="col-lg-9">
+                  <h5 class="myfont1 mt-1" style="font-weight: 500; color: rgb(107, 107, 107);">點擊下方連結填寫表單給我們一些建議！ <i class="far fa-hand-point-down"></i></h5>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Services Section ======= -->
+    <section class="services">
+        <!-- <div class="contact-section-title">
+          <h2>問題回饋</h2>
+        </div>      -->
+        <div class="container">
+            <h5 class="myfont1 mb-4" style="font-weight: 500; color: rgb(107, 107, 107);">點擊下方連結填寫表單給我們一些建議！ <i class="far fa-hand-point-down"></i></h5>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+                    <div class="icon-box icon-box-pink">
+                        <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                        <a href="@Url.Action("客服反映表單", "FAQ")"> <h4 class="title" style="font-size: 20px;">客服反映表單</h4></a>
+                        <p class="description">對於網站或是課程有疑問嗎？有任何問題都歡迎填寫表單與我們聯絡！</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box icon-box-cyan">
+                        <div class="icon"><i class="bx bx-file"></i></div>
+                        <a href="@Url.Action("網站使用滿意度", "FAQ")"><h4 class="title" style="font-size: 20px;">網站使用滿意度</h4></a>
+                        <p class="description">喜歡我們的網站嗎？提供您的使用心得讓我們知道吧！</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box icon-box-green">
+                        <div class="icon"><i class="bx bx-tachometer"></i></div>
+                        <a href="@Url.Action("課程滿意度調查", "FAQ")"><h4 class="title" style="font-size: 20px;">課程滿意度</h4></a>
+                        <p class="description">給上完課程的您們，填寫表單讓我們更進步！</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box icon-box-blue">
+                        <div class="icon"><i class="bx bx-world"></i></div>
+                        <a href="@Url.Action("客服滿意度調查", "FAQ")"><h4 class="title" style="font-size: 20px;">客服滿意度</h4></a>
+                        <p class="description">反映完問題了嗎？對我們的客服還滿意嗎？</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Services Section -->
+    <!-- ======= Contact Section ======= -->
+    <!-- <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="info-box">
+                  <i class="bx bx-map"></i>
+                  <h3>地址</h3>
+                  <p>高雄市前金區中正四路211號8號樓之1</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bx bx-envelope"></i>
+                  <h3>聯絡信箱</h3>
+                  <p>JJM@test.com</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bx bx-phone-call"></i>
+                  <h3>客服電話</h3>
+                  <p>(07)969-1234</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="form-row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="姓名" data-rule="minlen:4" data-msg="請輸入您的姓名" />
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="電子郵件" data-rule="email" data-msg="請輸入您的信箱" />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="主旨" data-rule="minlen:4" data-msg="請輸入訊息主旨" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="請輸入您的問題" placeholder="內容"></textarea>
+                <div class="validate"></div>
+              </div>
+              <div class="mb-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">訊息已傳送 謝謝您!</div>
+              </div>
+              <div class="text-center"><button type="submit">傳送</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End Contact Section -->
+    <!-- ======= Map Section ======= -->
+    <!-- <section class="map mt-2">
+      <div class="container-fluid p-0">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s150%20Park%20Row%2C%20New%20York%2C%20NY%2010007%2C%20USA!5e0!3m2!1sen!2sbg!4v1579767901424!5m2!1sen!2sbg" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+      </div>
+    </section> -->
+    <!-- End Map Section -->
+
+</main><!-- End #main -->

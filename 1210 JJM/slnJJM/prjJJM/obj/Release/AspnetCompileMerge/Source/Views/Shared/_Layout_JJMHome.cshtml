@@ -1,0 +1,681 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - JJM 健漸美| 健身課程平台</title>
+    <!-- Favicons -->
+    <link href="~/Content/assets/img/JJM-icon.png" rel="icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+    <!--JQuery CSS-->
+    <link href="~/Content/jquery-ui/base/jquery-ui.min.css" rel="stylesheet" />
+
+    <!--jQuery JS-->
+    <script src="~/Scripts/jquery-ui/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui/jquery-ui.min.js"></script>
+
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/aos/aos.css" rel="stylesheet">
+    <!--For 推薦課程 CSS-->
+    <link href="~/Content/teacher/teacher.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="~/Content/assets/css/style.css" rel="stylesheet">
+    <!--Login CSS Files-->
+    <link href="~/Content/assets/css/loginstyle.css" rel="stylesheet" type="text/css">
+    <!--Nivo Slider CSS-->
+    <link href="~/Content/slider/animate.min.css" rel="stylesheet">
+    <!--輪播器上的標題動畫-->
+    <link href="~/Content/assets/css/all.min.css" rel="stylesheet">
+    <link href="~/Content/slider/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!--pre next 按鍵-->
+    <link href="~/Content/slider/nivo-slider.css" rel="stylesheet">
+    <link href="~/Content/slider/sliderstyle.css" rel="stylesheet">
+
+    <!--Search CSS-->
+    <link href="~/Content/search/main.css" rel="stylesheet" />
+    <link href="~/Content/search/mainwhite.css" rel="stylesheet">
+
+
+    <!--註冊alert訊息-->
+    @*@if (TempData["message"] != null)
+        {
+            <script type="text/javascript">
+            var message = @Html.Raw(Json.Encode(TempData["message"]));
+            alert(message);
+            </script>
+        }*@
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("css", required: false)
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-transparent">
+        <div class="container">
+
+            <div class="logo float-left">
+                <!-- <h1 class="text-light"><a href="index.html"><span>Jian Jian Mai</span></a></h1> -->
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/navbar-logo.png" alt="" class="img-fluid"></a> -->
+                <!--導覽列Logo超連結-->
+                <a href="@Url.Action("Index", "Home")">
+                    <img src='@Url.Content("~/Content/assets/img/navbar-logo-o.png")' alt="" class="img-fluid" id="showlogo1">
+                    <img src='@Url.Content("~/Content/assets/img/navbar-logo-w.png")' style="display: none;" alt="" class="img-fluid" id="showlogo2">
+                </a>
+                <!-- <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="assets/img/navbar-logo.png" style="height: 60px;" alt="" /></a> -->
+            </div>
+
+
+            <nav class="nav-menu float-right d-none d-lg-block myfont1">
+                <ul>
+                    <!-- <li class="active"><a href="index.html">Home</a></li> -->
+                    <li>
+                        <!--白框搜尋列-->
+                        <div class="ws130 page-scroll" id="showsearch" style="display: none;">
+                            <form>
+                                <div class="inner-form">
+                                    <div class="input-field first-wrap">
+                                        <div class="svg-wrapper">
+                                            <!--刪除svg圖-->
+                                        </div>
+                                        <input id="search" type="text" placeholder="尋找課程" />
+                                    </div>
+                                    <div class="input-field second-wrap">
+                                        <button class="btn-search" type="button"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                                <!-- <span class="info">進階搜尋</span>  -->
+                            </form>
+                        </div>
+                        <!--End 白框搜尋列-->
+                    </li>
+                    <li class="drop-down mr-2">
+                        <a href="">課程類別</a>
+                        <ul>
+                            <li>@Html.ActionLink("所有課程", "List", "ClassMgt")</li>
+                            <li class="drop-down">
+                                <a href="">室內健身</a>
+                                <ul>
+                                    <li><a>所有健身</a></li>
+                                    <li><a href="@Url.Action("List重訓","ClassMgt")">重訓</a></li>
+                                    <li><a href="@Url.Action("TRXList","ClassMgt")">TRX</a></li>
+                                    @*<li><a href="#">飛輪</a></li>*@
+                                    <li><a href="@Url.Action("List瑜珈","ClassMgt")">瑜珈</a></li>
+                                    <li><a href="@Url.Action("List其它","ClassMgt")">其它</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="">格鬥競技</a>
+                                <ul>
+                                    <li><a>所有格鬥競技</a></li>
+                                    <li><a href="@Url.Action("List拳擊","ClassMgt")">拳擊</a></li>
+                                    <li><a href="@Url.Action("List武術","ClassMgt")">武術</a></li>
+                                    <li><a href="@Url.Action("List其它","ClassMgt")">其它</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="">球類運動</a>
+                                <ul>
+                                    <li><a>所有球類</a></li>
+                                    <li><a href="@Url.Action("List籃球","ClassMgt")">籃球</a></li>
+                                    <li><a href="@Url.Action("List足球","ClassMgt")">足球</a></li>
+                                    @*<li><a href="#">桌球</a></li>
+                                    <li><a href="#">高爾夫</a></li>*@
+                                    <li><a href="@Url.Action("List網球","ClassMgt")">網球</a></li>
+                                    @*<li><a href="#">羽毛球</a></li>*@
+                                    <li><a href="@Url.Action("List棒球","ClassMgt")">棒球</a></li>
+                                    <li><a href="@Url.Action("List其它","ClassMgt")">其它</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="">水上運動</a>
+                                <ul>
+                                    <li><a>所有水上</a></li>
+                                    <li><a href="@Url.Action("List游泳","ClassMgt")">游泳</a></li>
+                                    @*<li><a href="#">SUP</a></li>
+                                    <li><a href="#">滑水</a></li>*@
+                                    <li><a href="@Url.Action("List衝浪","ClassMgt")">衝浪</a></li>
+                                    @*<li><a href="#">風帆</a></li>*@
+                                    <li><a href="@Url.Action("List其它","ClassMgt")">其它</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="@Url.Action("List其它","ClassMgt")">其它</a></li>
+                        </ul>
+                    </li>
+                    <!-- <li>
+      <form class="form-inline" action="/action_page.php">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="尋找課程">
+            <button class="btn btn-dark mr-4" style="background-color: #F39800; border:  #F39800;" type="submit">搜尋</button>
+        </div>
+      </form>
+    </li> -->
+                    @if (Session["Member"] == null)
+                    {
+                        <li><a href="#" data-toggle="modal" data-target="#modal-login"><span>成為教練</span></a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("becomeT","OnlyTeacher")"><span>成為教練</span></a></li>
+                    }
+                    <li><a href="@Url.Action("Question","FAQ")">常見問題</a></li>
+                    <!-- <li><a href="#">揪團室</a></li> -->
+
+                    @if (Session["Member"] == null)
+                    {
+                        <li><a href="#" data-toggle="modal" data-target="#modal-login">登入/註冊</a></li>
+                        <li></li>
+                    }
+                    else
+                    {
+                        <li class="drop-down">
+                            <!--style="display: none;"-->
+                            <a href="">
+                                <label style="color:rgb(85, 189, 98);">@Session["WelCome"]</label> 個人檔案
+                                <!--大頭貼-->
+                                <!-- <img src="assets/img/user.png" id="showhead" class="hideuserimg"> -->
+                            </a>
+                            <ul>
+
+                                <li>@Html.ActionLink("個人資料", "List", "OnlyMember", new { id = (int)Session["ID"] }, null)</li>
+                                <li>@Html.ActionLink("個人課程", "OnlyClass", "OnlyMember", new { id = (int)Session["ID"] }, null)</li>
+                                @*<li class="drop-down">
+                        <a href="@Url.Action("OnlyClass","OnlyMember", new { id = (int)Session["ID"] })">個人課程</a>
+                        <ul>
+                            <li><a href="#">正在上的課程</a></li>
+                            <li><a href="#">即將開始的課程</a></li>
+                            <li><a href="#">已結束的課程</a></li>
+                        </ul>
+                    </li>*@
+                                @if ((string)Session["Role"] == "2")
+                                {
+                                    <li>@Html.ActionLink("教練資料", "List", "OnlyTeacher", new { id = (int)Session["ID"] }, null)</li>
+                                }
+                                @*<li><a href="#">訊息通知</a></li>*@
+                                <li>@Html.ActionLink("查詢訂單", "orderDetail", "Shop")</li>
+                                <li>@Html.ActionLink("健美點數", "List", "Point", new { id = (int)Session["ID"] }, null)</li>
+
+                                <li>@Html.ActionLink("登出", "Logout", "Home")</li>
+                            </ul>
+                        </li>
+                    }
+
+
+                    @if (Session["Member"] == null)
+                    {
+                        <li><a href="#" data-toggle="modal" data-target="#modal-login"><i class="fa fa-shopping-cart fa-2x"></i></a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("List", "Shop")"><i class="fa fa-shopping-cart fa-2x"></i></a></li>
+
+                    }
+
+                    @if ((string)Session["Role"] == "3")
+                    {
+                        <li><a href="@Url.Action("List","Admin")"><label style="color:rgb(85, 189, 98);">健漸美後台管理</label></a></li>
+                    }
+                    else { }
+                </ul>
+            </nav><!-- .nav-menu -->
+        </div>
+    </header><!-- End Header -->
+    <!--=================Login Modal=====================-->
+    <div class="modal fade" id="modal-login" style="z-index: 10000;">
+        <div class="modal-dialog">
+            <div class="modal-content d-flex">
+
+                <!-- <div class="modal-header d-flex"> -->
+                <h3 class="modal-title login100-form-title">健客登入</h3>
+
+                <!-- </div> -->
+
+                <div class="modal-body wrap-login100 px-6 py-3">
+                    @*<div class="form-inline">
+                        <a href="#" class="btn-face mb-2 mx-1">
+                            <img src="~/Content/assets/img/icon/icon-facebook.png" class="mr-3" alt="FACEBOOK">
+                            Facebook
+                        </a>
+                        <a href="#" class="btn-google mb-2 ml-2">
+                            <img src="~/Content/assets/img/icon/icon-google.png" alt="GOOGLE">
+                            Google
+                        </a>
+
+                    </div>*@
+
+                    <form class="login100-form validate-form flex-sb flex-w" id="login" action="@Url.Action("Login",controllerName:"Home")" method="POST" enctype="multipart/form-data">
+                        <!-- action="register.aspx" method="POST" enctype="multipart/form-data"-->
+
+                        <div class="pt-3 pb-6">
+                            <span class="txt1">
+                                帳號Email
+                            </span>
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate="Username is required">
+                            <input class="input100" type="text" name="username" id="username" required>
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="pt-3 pb-6">
+                            <span class="txt1">
+                                密碼
+                            </span>
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate="Password is required">
+                            <input class="input100" type="password" name="password" id="password" required>
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="container-login100-form-btn mt-4">
+                            <button class="login100-form-btn" id="btnlogin">
+                                登入
+                            </button>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12">
+                                        @*<a href="#" class="txt2 bo1 ml-1 a-special" style="text-align:center;">忘記密碼?</a>*@
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <!--登入錯誤訊息-->
+                                        <div id="msglogin" class="msglogin" style="text-align:left"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="w-full pt-5" style="text-align:left;">
+                                            <span class="txt2">
+                                                還不是健客?
+                                            </span>
+                                            <a href="#" class="txt2 bo1 a-special" data-dismiss="modal" data-toggle="modal" data-target="#modal-signup">
+                                                快速成為健客
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--=================End Login Modal=====================-->
+    <!--=================Signup Modal=====================-->
+
+    <div class="modal fade" id="modal-signup">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content d-flex">
+
+
+                <h3 class="modal-title login100-form-title">成為健客</h3>
+
+                <div class="modal-body wrap-login100 px-6 py-3" id="msgok">
+                    @*<div class="form-inline">
+                        <a href="#" class="btn-face mb-2 mx-1">
+                            <img src="~/Content/assets/img/icon/icon-facebook.png" class="mr-3" alt="FACEBOOK">
+                            Facebook
+                        </a>
+                        <a href="#" class="btn-google mb-2 ml-2">
+                            <img src="~/Content/assets/img/icon/icon-google.png" alt="GOOGLE">
+                            Google
+                        </a>
+                    </div>*@
+
+                    <div class="order">
+                        <span style="white-space:pre">   </span><span class="line"></span>
+                        <span style="white-space:pre">   </span><span class="txt">註冊健漸美帳號</span>
+                        <span style="white-space:pre">   </span><span class="line"></span>
+                    </div>
+
+                    <!--註冊請求-->
+                    <form class="login100-form validate-form flex-sb flex-w" action="@Url.Action("Register",controllerName:"Home")" method="POST" enctype="multipart/form-data">
+
+                        <div class="pt-3 pb-6">
+                            <span class="txt1">
+                                帳號Email
+                            </span>
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate="">
+                            <input class="input100" type="email" name="e-mail" id="email">
+
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="pt-3 pb-6">
+                            <span class="txt1">
+                                密碼
+                            </span>
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate="">
+                            <input class="input100" type="password" name="pass" id="rpassword">
+
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <!--<div class="pt-3 pb-6">
+                            <span class="txt1">
+                                再次輸入密碼
+                            </span>
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate="">-->
+                        @*<input class="input100" type="password" name="pass">*@
+                        @*@Html.EditorFor(model => model.m_password, new { htmlAttributes = new { @class = "input100", @type = "password", @name = "m_password", required = "required" } })*@
+                        @*<span class="focus-input100"></span>
+                            </div>-->*@
+
+                        <div class="pt-3 pb-6">
+                            <span class="txt1">
+                                姓
+                            </span>
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate="">
+
+                            <input class="input100" type="text" name="name" id="lastname" required>
+
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="pt-3 pb-6">
+                            <span class="txt1">
+                                名
+                            </span>
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate="">
+                            <input class="input100" type="text" name="name" id="firstname">
+
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="pt-3 pb-6">
+                            <span class="txt1">
+                                電話
+                            </span>
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate="">
+                            <input class="input100" type="text" name="phone" id="phone">
+
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="pt-3 pb-6">
+                            <span class="txt1">
+                                生日
+                            </span>
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate="">
+
+                            <input class="input100" type="date" id="birth" name="bday" min="1920-07-01" max="2020-11-23" value="1990-07-01">
+
+                            <span class="focus-input100">
+                            </span>
+                        </div>
+
+                        <div class="pt-3 pb-6 mr-1">
+                            <span class="txt1">
+                                性別
+                            </span>
+
+                            <div class="radio-item">
+                                <input class="radio" type="radio" id="male" name="gender" value="男性" checked>
+                                <label for="male">男性</label>
+                            </div>
+
+                            <div class="radio-item">
+                                <input class="radio" type="radio" id="female" name="gender" value="女性">
+                                <label for="female">女性</label>
+                            </div>
+
+                        </div>
+                        <!--註冊訊息顯示-->
+                        <div style="text-align:center;">
+                            <div id="msgregister"></div>
+                        </div>
+
+
+                        <div class="container-login100-form-btn mt-3">
+
+                            <button class="login100-form-btn" type="submit" value="Register" id="btnregister">
+                                註冊
+                            </button>
+                        </div>
+
+                        <div class="w-full text-center pt-5">
+                            <span class="txt2">
+                                已經註冊?
+                            </span>
+
+                            <a href="#" class="txt2 bo1 a-special" data-dismiss="modal" data-toggle="modal" data-target="#modal-login" id="relogin">
+                                登入
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--=================End Signup Modal=====================-->
+    <!--Body Begins-->
+    @RenderBody()
+    <!--Body Ends-->
+    <!-- ======= Footer ======= -->
+    <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>會員服務</h4>
+                        <ul>
+                            @if (Session["Member"] == null)
+                            {
+
+                            }
+                            else
+                            {
+                                <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("List", "OnlyMember", new { id = (int)Session["ID"] })">個人資料</a></li>
+                            }
+                            @if (Session["Member"] == null)
+                            {
+                                <li><i class="bx bx-chevron-right"></i> <a href="#" data-toggle="modal" data-target="#modal-login">購物車</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#" data-toggle="modal" data-target="#modal-login">成為教練</a></li>
+                            }
+                            else
+                            {
+                                <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("List","Shop")">購物車</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("becomeT","OnlyTeacher")">成為教練</a></li>
+                            }
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">會員服務條款</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">隱私權政策</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>客服中心</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("Question","FAQ")">常見問題</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">購買說明</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("ContactJJM","FAQ")">聯絡我們</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>關於我們</h4>
+                        <p>
+                            <strong>健漸美&nbsp; Jian Jian Mai</strong><br>
+                            客服電話: (07)969-1234<br>
+                            聯絡信箱: JJM@google.com<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="copyright">
+                    Copyright &copy; @DateTime.Now.Year - All Rights Reserved to&nbsp;<strong><span>JJM Web Developer</span></strong>
+                </div>
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
+                    <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!--非同步登入-->
+    <script>
+        //清空有問題
+        $('#loginOnNav').click(function () {
+            $('#username').val() = "";
+            $('#password').val() = "";
+            $('#firstname').val() = "";
+            $('#lastname').val() = "";
+            $('#birth').val() = "";
+            $(".radio:checked").val() = "";
+            $('#email').val() = "";
+            $('#rpassword').val();
+            $('#phone').val();
+        });
+
+        //非同步登入
+        $("#btnlogin").click(function () {
+            //var formData = $(this).serialize();
+            var dataObj = { Username: $('#username').val(), Password: $('#password').val() };
+            $.ajax({
+                url: '@Url.Action("Login", controllerName:"Home")',
+                type: "POST",
+                data: JSON.stringify(dataObj),
+                contentType: "application/json; charset=utf-8",
+                datatype: "json",
+                success: function (result) {
+
+                    if (result.toString() == "pass") {
+                        //$('#login').html('<div>登入成功</div>');
+                        //$('#login').modal("hide");
+                        $('#login').html('<div class="alert alert-success" style="width: 100%;" role="alert">登入成功</div >');
+                        setTimeout(function () { window.location.reload(); }, 1000);
+                    }
+                    else {
+
+                        //alert(result);
+                        $('#username').val("");
+                        $('#password').val("");
+                        $('#username').focus();
+                        $('#msglogin').html('<div class= "alert alert-danger mt-1" role = "alert">帳號或密碼錯誤，請再試一次</div >');
+                        setTimeout(function () { $('#msglogin').html(''); }, 2000);
+                    }
+                },
+                error: function (result) {
+                    $('#msglogin').html('<div class= "alert alert-danger" role = "alert">連線錯誤，請重開網頁再試一次</div>');
+                }
+
+            });
+            return false;
+
+        });
+
+        //非同步註冊
+        $("#btnregister").click(function () {
+            //var formData = $(this).serialize();
+            var registerObj = {
+                m_firstName: $('#firstname').val(),
+                m_lastName: $('#lastname').val(),
+                m_birth: $('#birth').val(),
+                m_gender: $(".radio:checked").val(),
+                m_email: $('#email').val(),
+                m_password: $('#rpassword').val(),
+                m_phone: $('#phone').val(),
+            };
+
+            $.ajax({
+                url: '@Url.Action("Register", controllerName:"Home")',
+                type: "POST",
+                data: JSON.stringify(registerObj),
+                contentType: "application/json; charset=utf-8",
+                datatype: "json",
+                success: function (result) {
+
+                    if (result.toString() == "ok") {
+
+                        $('#msgok').html('<div class="alert alert-success" style="width: 100%;" role="alert">註冊成功,請重新登入</div>');
+                        setTimeout(function () { window.location.reload(); }, 1000);
+                        //window.location.reload();  //重新整理
+                    }
+                    else if (result.toString() == "emaildouble") {
+
+                        $('#msgregister').html('<div class="alert alert-warning" style="width: 100%; text-align:center;" role="alert">Email已經被註冊, 請換一個重新註冊!</div>');
+                        setTimeout(function () {$('#msgregister').html('');}, 3000);
+
+                    }
+                    else {
+
+                        //alert(result);
+                        $('#msgregister').html('<div class="alert alert-danger" role="alert">註冊失敗，請再試一次！</div>');
+                        setTimeout(function () { $('#msgregister').html(''); }, 3000);
+                    }
+                },
+                error: function (result) {
+                    $('#msgregister').html('<div class="alert alert-danger" role="alert">連線錯誤，請重開網頁再試一次</div>');
+                    setTimeout(function () { $('#msgregister').html(''); }, 3000);
+                }
+
+            });
+            return false;
+
+        });
+
+    </script>
+
+
+    <!-- Vendor JS Files -->
+    <script src="~/Scripts/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/Scripts/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/Scripts/assets/vendor/venobox/venobox.min.js"></script>
+    <script src="~/Scripts/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="~/Scripts/assets/vendor/counterup/counterup.min.js"></script>
+    <script src="~/Scripts/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/Scripts/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Scripts/assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Scripts/assets/js/mainindex.js"></script>
+
+    <!--Nivo Slider JS-->
+    <script src="~/Scripts/assets/slider/wow.min.js"></script>
+    <script src="~/Scripts/assets/slider/jquery.nivo.slider.js"></script>
+    <script src="~/Scripts/assets/slider/main.js"></script>
+
+    <!--生日最大值-->
+    <script>bday.max = new Date().toISOString().split("T", 1);</script>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

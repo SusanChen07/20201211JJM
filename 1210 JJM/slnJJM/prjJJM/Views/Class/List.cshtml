@@ -1,0 +1,178 @@
+﻿@model IEnumerable<prjJJM.ViewModels.CClassViewModel>
+
+@{
+    ViewBag.Title = "課程列表";
+    Layout = "~/Views/Shared/_Layout_JJMAdmin.cshtml";
+}
+
+@section css{
+    <link href="~/Content/Admin/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section scripts{
+
+    <script src="~/Content/Admin/plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+}
+
+<!--Content body start-->
+<div class="content-body">
+
+    <div class="row page-titles mx-0">
+        <div class="col p-md-0">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">首頁</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">課程名單</a></li>
+            </ol>
+        </div>
+    </div>
+    <!-- row -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style="font-weight: 600;">課程名單</h4>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-6">
+                                <p class="btn btn-outline-secondary" id="btnadd">
+                                    @Html.ActionLink("新增課程", "Create")
+                                </p>
+                            </div>
+                            @*<div class="col-lg-10 col-md-10 col-sm-6" style="text-align:right;">
+                                    <form method="post">
+                                        <input type="text" name="txtkeyword" style="margin-right: 5px" />
+                                        <input type="submit" class="btn btn-outline-info mr-2" value="查詢" />
+                                    </form>
+                                </div>*@
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover zero-configuration">
+                                <!-- table-striped table-bordered -->
+                                <thead>
+                                    <tr>
+                                        <th>課程編號</th>
+                                        <th>教練編號</th>
+                                        <th>課程名稱</th>
+                                        <th>課程副標</th>
+                                        <th>課程簡介</th>
+                                        <th>開課時間</th>
+                                        <th>完課時間</th>
+                                        <th>課程時數</th>
+                                        <th>開始報名時間</th>
+                                        <th>報名結束時間</th>
+                                        <th>課程人數上限</th>
+                                        <th>最少招生人數</th>
+                                        <th>已報名人數</th>
+                                        <th>教室位置</th>
+                                        <th>課程價格</th>
+                                        <th>優惠開始時間</th>
+                                        <th>優惠結束時間</th>
+                                        <th>優惠價格</th>
+                                        <th>課程分級</th>
+                                        <th>上課基本要求</th>
+                                        <th>課程評價</th>
+                                        <th>評價次數</th>
+                                        <th>搜尋標籤1</th>
+                                        <th>搜尋標籤2</th>
+                                        <th>搜尋標籤3</th>
+                                        <th>搜尋標籤4</th>
+                                        <th>搜尋標籤5</th>
+                                        <th>發佈時間</th>
+                                        <th>課程照片1</th>
+                                        <th>課程照片2</th>
+                                        <th>課程照片3</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.classID)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.teacherID)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_name)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_nameText)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_intro)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_startTime)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_endTime)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_hourRate)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_registerStart)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_registerEnd)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_maxStudent)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_minStudent)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_student)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_location)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_price)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_onsaleStart)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_onsaleEnd)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_discount)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_level)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_requirement)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_rate)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_rateTotal)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_lable1)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_lable2)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_lable3)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_lable4)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_lable5)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.c_getNow)</td>
+                                        <td><img height="100" width="100" src="@Html.DisplayFor(modelItem => item.c_imgPath1)" /></td>
+                                        <td><img height="100" width="100" src="@Html.DisplayFor(modelItem => item.c_imgPath2)" /></td>
+                                        <td><img height="100" width="100" src="@Html.DisplayFor(modelItem => item.c_imgPath3)" /></td>
+
+                                        <td>
+                                            @Html.ActionLink("修改", "Edit", new { id = item.classID })<i class="fa fa-pencil color-muted"></i>
+                                            @Html.ActionLink("刪除", "Delete", "Class", new { id = item.classID }, new { OnClick = "return confirm('確定要刪除嗎?')" })<i class="fa fa-close color-danger"></i>
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>課程編號</th>
+                                        <th>教練編號</th>
+                                        <th>課程名稱</th>
+                                        <th>課程副標</th>
+                                        <th>課程簡介</th>
+                                        <th>開課時間</th>
+                                        <th>完課時間</th>
+                                        <th>課程時數</th>
+                                        <th>開始報名時間</th>
+                                        <th>報名結束時間</th>
+                                        <th>課程人數上限</th>
+                                        <th>最少招生人數</th>
+                                        <th>已報名人數</th>
+                                        <th>教室位置</th>
+                                        <th>課程價格</th>
+                                        <th>優惠開始時間</th>
+                                        <th>優惠結束時間</th>
+                                        <th>優惠價格</th>
+                                        <th>課程分級</th>
+                                        <th>上課基本要求</th>
+                                        <th>課程評價</th>
+                                        <th>評價次數</th>
+                                        <th>搜尋標籤1</th>
+                                        <th>搜尋標籤2</th>
+                                        <th>搜尋標籤3</th>
+                                        <th>搜尋標籤4</th>
+                                        <th>搜尋標籤5</th>
+                                        <th>發佈時間</th>
+                                        <th>課程照片1</th>
+                                        <th>課程照片2</th>
+                                        <th>課程照片3</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+</div>
+<!--Content body end-->

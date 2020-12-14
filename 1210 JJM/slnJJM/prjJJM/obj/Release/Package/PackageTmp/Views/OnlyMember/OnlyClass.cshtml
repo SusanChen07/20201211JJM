@@ -1,0 +1,181 @@
+﻿@model prjJJM.ViewModels.MemberVM.CMemberOnlyClassViewModel
+
+@{
+    ViewBag.Title = "OnlyClass";
+    var h = 0;
+    string heading = "heading";
+    var k = 0;
+    string collapse = "collapse";
+}
+
+@section css{
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="~/Content/assets/css/mylesson.css">
+}
+<script src="~/Content/assets/css/mylesson.js"></script>
+<!-- ======= 空白Section ======= -->
+<main id="main">
+    <!-- ======= 頁面導航 Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="font-weight: 700;">個人課程</h2>
+                <ol>
+                    <li><a href="@Url.Action("Index", "Home")" style="font-size:16px;">首頁</a></li>
+                    <li><a href="@Url.Action("List", "OnlyMember", new { id = (int)Session["ID"]})" style="font-size:16px;">個人檔案</a></li>
+                    <li style="font-size:16px; font-weight: 600;">個人課程</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Section -->
+
+    <section class="">
+        <div class="container emp-profile">
+
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+                    @RenderPage("~/Views/Shared/_Layout_JJMMember.cshtml")
+
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <span class="mr-3 myfont1" style="font-size: 16px;">
+                                <label>篩選：</label>
+                                <select name="" id="" size="1" class="">
+                                    <option value="0" selected>全部課程</option>
+                                    <option value="1">未開始的課程</option>
+                                    <option value="2">上課中的課程</option>
+                                    <option value="3">已結束的課程</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="container">
+                            <div class="row" style="border: 2px;">
+                                <div class="col-lg-12 col-xs-12">
+                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                        <div class="row classhead">
+                                            <div class="col-5">課程</div>
+                                            <div class="col-3">日期</div>
+                                            <div class="col-2">教練</div>
+                                            <div class="col-2">評價</div>
+                                        </div>
+                                        @foreach (var item in Model.classData)
+                                        {
+                                            h++;
+                                            string headingID = heading + h.ToString();
+                                            k++;
+                                            string collapseID = collapse + k.ToString();
+
+                                            <div class="panel" id="@collapseID+_container">
+                                                <div class="panel-heading" role="tab" id="@headingID">
+                                                    <div class="panel-title">
+
+                                                        <div class="row classbody">
+                                                            <div class="col-2 pl-1 pr-0"><a href="@Url.Action("List","OnlyClass", new { id = item.classID})"><img src="@item.c_imgPath1" class="img-fluid"></a></div>
+                                                            <div class="col-2 ctitle1"><a href="@Url.Action("List","OnlyClass", new { id = item.classID})">@item.c_name</a></div>
+
+                                                            @if (DateTime.Now < item.c_startTime)
+                                                            {
+                                                                <div class="col-1 ctitle2"><span class="badge badge-warning">未開始</span></div>
+
+                                                            }
+                                                            else if ((item.c_startTime < DateTime.Now) && (DateTime.Now < item.c_endTime))
+                                                            {
+                                                                <div class="col-1 ctitle2"><span class="badge badge-success">上課中</span></div>
+                                                            }
+                                                            else if (item.c_endTime < DateTime.Now)
+                                                            {
+                                                                <div class="col-1 ctitle2"><span class="badge badge-secondary">已結束</span></div>
+                                                            }
+
+
+                                                            <div class="col-3">
+                                                                @item.c_startTime.Value.ToLongDateString()<br><img src="~/Content/imgClass/verticaltilde.png" /><br>@item.c_endTime.Value.ToLongDateString()
+                                                            </div>
+                                                            <div class="col-2">@item.tTeacher.tMember.m_fullName</div>
+
+                                                                <div class="col-2">
+                                                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#@collapseID"
+                                                                       aria-expanded="true" aria-controls="collapse1">
+                                                                        <i aria-hidden="true"></i><i class="fa fa-comment fa-2x"></i>
+                                                                    </a>
+                                                                </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div id="@collapseID" class="panel-collapse collapse in" role="tabpanel"
+                                                     aria-labelledby="@headingID">
+                                                    <div class="panel-body mx-2">
+                                                        <form action="@Url.Action("OnlyClass","OnlyMember")" method="POST" enctype="multipart/form-data">
+
+                                                            <input type="hidden" name="clasID" value="@item.classID" /> <!--手刻版隱藏-->
+
+                                                            <div class="row mt-1" id="allStar">
+                                                                <h6 class="ml-1 my-2">評分：</h6>
+                                                                <div class="score_star">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <!--顯示幾顆星星-->
+                                                                    <input type="text" name="inStar" />
+
+                                                                </div>
+                                                                <textarea class="form-control ml-1 mr-3" name="txtStar" placeholder="寫下評語支持教練或分享心得給其他學員知道👍"></textarea>
+                                                            </div>
+                                                            <div class="row my-2">
+                                                                <div class="col-12" style="text-align: right;">
+                                                                    <input type="submit" id="btnstar" class="btn btnstyle" value="送出">
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section><!-- End Section -->
+</main>
+
+@*<script>
+    var sentID = { inStar: $('#@collapseID2').val(), txtStar: $("#@collapseID3").val(), clasID: $("#@collapseID1").val() };
+
+    $('#@collapseID4').click(function () {
+        $.ajax({
+            url: '@Url.Action("OnlyClass", "OnlyMember")',
+            type: 'post',
+            data: JSON.stringify(sentID),
+            contentType: "application/json; charset=utf-8",
+            datatype: "json",
+            success: function (data) {
+                if (data.toString() == "pass") {
+                    $("#allStar").html('<div class="alert alert-success" style="width: 100%;" role="alert">感謝您的填寫，已送出評論</div >');
+                }
+            },
+            error: function (data) {
+                if (data.toString() == "fail") {
+                    $("#allStar").html('<div class="alert alert-success" style="width: 100%;" role="alert">傳送失敗</div >');
+                }
+            }
+        })
+    })
+    </script>*@

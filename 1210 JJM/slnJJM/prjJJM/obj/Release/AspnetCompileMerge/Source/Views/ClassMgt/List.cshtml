@@ -1,0 +1,157 @@
+﻿@model IEnumerable<prjJJM.ViewModels.CClassMgtViewModel>
+
+@{
+    ViewBag.Title = "課程列表";
+
+    //Layout = null;
+}
+
+@*<p>
+    @Html.ActionLink("新增會員", "Create")
+</p>*@
+
+<!-- ======= Portfolio Section ======= -->
+<main id="main">
+    <section class="portfolio">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">全部</li>
+                        <li data-filter=".filter-gym">室內健身</li>
+                        <li data-filter=".filter-boxing">格鬥競技</li>
+                        <li data-filter=".filter-ball">球類運動</li>
+                        <li data-filter=".filter-water">水上運動</li>
+                        <li data-filter=".filter-other">其它</li>
+                    </ul>
+                </div>
+            </div>
+            @*@Html.ActionLink("購物車", "List", "Shop")*@
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+
+                <div class="col-lg-4 col-md-6 filter-gym">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("TrxList","ClassMgt")" title=""><img src="~/Content/assets/img/type/trx.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <!-- <h3><a href="assets/img/type/trx.jpg" data-gall="portfolioGallery" class="venobox" title="健體1">Trx</a></h3>                -->
+                            <h3><a href="@Url.Action("TrxList","ClassMgt")" class="index-type-font">TRX</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-gym">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List瑜珈","ClassMgt")" title=""><img src="~/Content/assets/img/type/瑜珈.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <!-- <h3><a href="assets/img/type/瑜珈.jpg" data-gall="portfolioGallery" class="venobox" title="健體2">瑜珈</a></h3> -->
+                            <h3><a href="@Url.Action("List瑜珈","ClassMgt")" class="index-type-font">瑜珈</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-gym">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List重訓","ClassMgt")" title=""><img src="~/Content/assets/img/type/重訓.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <!-- <h3><a href="assets/img/type/重訓.jpg" data-gall="portfolioGallery" class="venobox" title="健體3">重訓</a></h3> -->
+                            <h3><a href="@Url.Action("List重訓","ClassMgt")" class="index-type-font">重訓</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-boxing">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List武術","ClassMgt")" title=""><img src="~/Content/assets/img/type/武術.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <!-- <h3><a href="assets/img/type/有氧.jpg" data-gall="portfolioGallery" class="venobox" title="健體4">有氧</a></h3> -->
+                            <h3><a href="@Url.Action("List武術","ClassMgt")" class="index-type-font">武術</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-boxing">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List拳擊","ClassMgt")" title=""><img src="~/Content/assets/img/type/拳擊.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <!-- <h3><a href="assets/img/type/拳擊.jpg" data-gall="portfolioGallery" class="venobox" title="健體5">拳擊</a></h3> -->
+                            <h3><a href="@Url.Action("List拳擊","ClassMgt")" class="index-type-font">拳擊</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-other">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List其它","ClassMgt")" title=""><img src="~/Content/assets/img/type/other.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <!-- <h3><a href="assets/img/type/other.jpg" data-gall="portfolioGallery" class="venobox" title="其它">其它</a></h3> -->
+                            <h3><a href="@Url.Action("List其它","ClassMgt")" class="index-type-font">其它</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-ball">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List籃球","ClassMgt")" title=""><img src="~/Content/assets/img/type/basketball.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <!-- <h3><a href="assets/img/type/basketball.jpg" data-gall="portfolioGallery" class="venobox" title="球類1">籃球</a></h3> -->
+                            <h3><a href="@Url.Action("List籃球","ClassMgt")" class="index-type-font">籃球</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-ball">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List足球","ClassMgt")" title=""><img src="~/Content/assets/img/type/soccer.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <!-- <h3><a href="assets/img/type/soccer.jpg" data-gall="portfolioGallery" class="venobox" title="球類2">足球</a></h3> -->
+                            <h3><a href="@Url.Action("List足球","ClassMgt")" class="index-type-font">足球</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-water">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List衝浪","ClassMgt")" title=""><img src="~/Content/assets/img/type/surfing.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <!-- <h3><a href="assets/img/type/surfing.jpg" data-gall="portfolioGallery" class="venobox" title="水上1">衝浪</a></h3> -->
+                            <h3><a href="@Url.Action("List衝浪","ClassMgt")" class="index-type-font">衝浪</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-water">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List游泳","ClassMgt")" title=""><img src="~/Content/assets/img/type/swimming.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <!-- <h3><a href="assets/img/type/swimming.jpg" data-gall="portfolioGallery" class="venobox" title="水上2">游泳</a></h3> -->
+                            <h3><a href="@Url.Action("List游泳","ClassMgt")" class="index-type-font">游泳</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-ball">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List網球","ClassMgt")" title=""><img src="~/Content/assets/img/type/tennis.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <!-- <h3><a href="assets/img/type/tennis.jpg" data-gall="portfolioGallery" class="venobox" title="球類3">網球</a></h3> -->
+                            <h3><a href="@Url.Action("List網球","ClassMgt")" class="index-type-font">網球</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 filter-ball">
+                    <div class="portfolio-item">
+                        <a href="@Url.Action("List棒球","ClassMgt")" title=""><img src="~/Content/assets/img/type/baseball.jpg" class="img-fluid" alt=""></a>
+                        <div class="portfolio-info">
+                            <!-- <h3><a href="assets/img/type/baseball.jpg" data-gall="portfolioGallery" class="venobox" title="ball 4">棒球</a></h3> -->
+                            <h3><a href="@Url.Action("List棒球","ClassMgt")" class="index-type-font">棒球</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Section -->
+</main>

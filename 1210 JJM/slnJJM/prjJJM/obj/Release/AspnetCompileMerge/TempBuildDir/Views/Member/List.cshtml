@@ -1,0 +1,135 @@
+﻿@model IEnumerable<prjJJM.ViewModels.CMemberViewModel>
+
+@{
+    ViewBag.Title = "會員列表";
+    Layout = "~/Views/Shared/_Layout_JJMAdmin.cshtml";
+}
+
+@section css{
+    <link href="~/Content/Admin/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section scripts{
+
+    <script src="~/Content/Admin/plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+}
+
+<!--Content body start-->
+<div class="content-body">
+
+    <div class="row page-titles mx-0">
+        <div class="col p-md-0">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">首頁</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">會員名單</a></li>
+            </ol>
+        </div>
+
+    </div>
+    <!-- row -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style="font-weight: 600;">會員名單</h4>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-6">
+                                <p class="btn btn-outline-secondary" id="btnadd">
+                                    @Html.ActionLink("新增會員", "Create")
+                                </p>
+                            </div>
+                            @*<div class="col-lg-10 col-md-10 col-sm-6" style="text-align:right;">
+                                <form method="post">
+                                    <input type="text" name="txtkeyword" style="margin-right: 5px" />
+                                    <input type="submit" class="btn btn-outline-info mr-2" value="查詢" />
+                                </form>
+                            </div>*@
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover zero-configuration">
+                                <!-- table-striped table-bordered -->
+                                <thead>
+                                    <tr>
+                                        <th>會員編號</th>
+                                        <th>姓</th>
+                                        <th>名</th>
+                                        <th>生日</th>
+                                        <th>性別</th>
+                                        <th>電子信箱</th>
+                                        <th>電子信箱認證</th>
+                                        <th>密碼</th>
+                                        <th>電話</th>
+                                        <th>地區</th>
+                                        <th>地址</th>
+                                        <th>權限</th>
+                                        <th>興趣</th>
+                                        <th>健美點數</th>
+                                        <th>註冊時間</th>
+                                        <th>頭像</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.memberID)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_lastName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_firstName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_birth)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_gender)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_email)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_emailConfirm)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_password)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_phone)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_district)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_address)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_role)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_hobby)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_Jpoint)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.m_getNow)</td>
+                                        <td><img height="100" width="100" src="@Html.DisplayFor(modelItem => item.m_imgPath)" /></td>
+
+                                        <!-- <th><a href=""><i class="icon-pencil menu-icon"></i></a></th> -->
+                                        <td>
+                                            @Html.ActionLink("修改", "Edit", new { id = item.memberID })<i class="fa fa-pencil color-muted"></i>
+                                            @Html.ActionLink("刪除", "Delete", "Member", new { id = item.memberID }, new { OnClick = "return confirm('確定要刪除嗎?')" })<i class="fa fa-close color-danger"></i>
+                                        </td>
+                                    </tr>
+                                    }
+                                    </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>會員編號</th>
+                                        <th>姓</th>
+                                        <th>名</th>
+                                        <th>生日</th>
+                                        <th>性別</th>
+                                        <th>電子信箱</th>
+                                        <th>電子信箱認證</th>
+                                        <th>密碼</th>
+                                        <th>電話</th>
+                                        <th>地區</th>
+                                        <th>地址</th>
+                                        <th>權限</th>
+                                        <th>興趣</th>
+                                        <th>健美點數</th>
+                                        <th>註冊時間</th>
+                                        <th>頭像</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+</div>
+<!--Content body end-->

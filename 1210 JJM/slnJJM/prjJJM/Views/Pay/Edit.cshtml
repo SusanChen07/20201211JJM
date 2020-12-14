@@ -1,0 +1,127 @@
+﻿@model prjJJM.ViewModels.PayVM.CPayViewModel
+
+@{
+    ViewBag.Title = "修改付款資訊";
+    Layout = "~/Views/Shared/_Layout_JJMAdmin.cshtml";
+}
+
+<h2>修改付款資訊</h2>
+
+
+@using (Html.BeginForm("Edit", "Pay", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <!--Content body start-->
+    <div class="content-body">
+
+        <div class="row page-titles mx-0">
+            <div class="col p-md-0">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">首頁</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">訂單付款資訊</a></li>
+                </ol>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title" style="font-weight: 600;">修改付款資訊</h4>
+                            <div class="form-horizontal">
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                @Html.HiddenFor(model => model.payID)
+
+                                @*<div class="form-group">
+                                        @Html.LabelFor(model => model.payID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.payID, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.payID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@                                
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.teacherID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.teacherID, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.teacherID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>                              
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.p_money, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.p_money, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.p_money, "", new { @class = "text-danger" })
+                                    </div>
+                                </div> 
+
+                                @*<div class="form-group">
+                                    @Html.LabelFor(model => model.p_getNow, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.p_getNow, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.p_getNow, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@ 
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.p_status, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.p_status, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.p_status, "", new { @class = "text-danger" })
+                                    </div>
+                                </div> 
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.p_method, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.p_method, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.p_method, "", new { @class = "text-danger" })
+                                    </div>
+                                </div> 
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.p_getMoneyTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.p_getMoneyTime, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.p_getMoneyTime, "", new { @class = "text-danger" })
+                                    </div>
+                                </div> 
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.p_memo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.p_memo, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.p_memo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div> 
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="儲存修改" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #/ container -->
+    </div>
+    <!--Content body end-->
+
+}
+
+<div>
+    @Html.ActionLink("返回訂單列表", "List")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

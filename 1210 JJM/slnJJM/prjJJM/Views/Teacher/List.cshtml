@@ -1,0 +1,148 @@
+﻿@model IEnumerable<prjJJM.ViewModels.CTeacherViewModel>
+
+@{
+    ViewBag.Title = "教練列表";
+    Layout = "~/Views/Shared/_Layout_JJMAdmin.cshtml";
+}
+
+@section css{
+    <link href="~/Content/Admin/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section scripts{
+
+    <script src="~/Content/Admin/plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+}
+
+<!--Content body start-->
+<div class="content-body">
+
+    <div class="row page-titles mx-0">
+        <div class="col p-md-0">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">首頁</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">教練名單</a></li>
+            </ol>
+        </div>
+    </div>
+    <!-- row -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style="font-weight: 600;">教練名單</h4>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-6">
+                                <p class="btn btn-outline-secondary" id="btnadd">
+                                    @Html.ActionLink("新增教練", "Create")
+                                </p>
+                            </div>
+                            @*<div class="col-lg-10 col-md-10 col-sm-6" style="text-align:right;">
+                                <form method="post">
+                                    <input type="text" name="txtkeyword" style="margin-right: 5px" />
+                                    <input type="submit" class="btn btn-outline-info mr-2" value="查詢" />
+                                </form>
+                            </div>*@
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover zero-configuration">
+                                <!-- table-striped table-bordered -->
+                                <thead>
+                                    <tr>
+                                        <th>教練編號</th>
+                                        <th>會員編號</th>
+                                        <th>證照列表</th>
+                                        <th>頭銜</th>
+                                        <th>自介</th>
+                                        <th>教學經歷</th>
+                                        <th>專長</th>
+                                        <th>留言總數</th>
+                                        <th>已累積點數</th>
+                                        <th>可兌換點數</th>
+                                        <th>已累積學生數</th>
+                                        <th>已累積課程數</th>
+                                        <th>課程平均評價</th>
+                                        <th>社群1</th>
+                                        <th>社群2</th>
+                                        <th>社群3</th>
+                                        <th>社群4</th>
+                                        <th>成為教練時間</th>
+                                        <th>證照1</th>
+                                        <th>證照2</th>
+                                        <th>證照3</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.teacherID)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.memberID)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_certificateTxt)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_title)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_intro)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_experience)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_expertise)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_messageTotal)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_moneyTotal)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_money)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_studentTotal)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_classTotal)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_rateAvg)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_socialMedia1)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_socialMedia2)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_socialMedia3)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_socialMedia4)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.t_getNow)</td>
+                                        <td><img height="100" width="100" src="@Html.DisplayFor(modelItem => item.t_certificateImg1)" /></td>
+                                        <td><img height="100" width="100" src="@Html.DisplayFor(modelItem => item.t_certificateImg2)" /></td>
+                                        <td><img height="100" width="100" src="@Html.DisplayFor(modelItem => item.t_certificateImg3)" /></td>
+
+                                        <td>
+                                            @Html.ActionLink("修改", "Edit", new { id = item.teacherID })<i class="fa fa-pencil color-muted"></i>
+                                            @Html.ActionLink("刪除", "Delete", "Teacher", new { id = item.teacherID }, new { OnClick = "return confirm('確定要刪除嗎?')" })<i class="fa fa-close color-danger"></i>
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>教練編號</th>
+                                        <th>會員編號</th>
+                                        <th>證照列表</th>
+                                        <th>頭銜</th>
+                                        <th>自介</th>
+                                        <th>教學經歷</th>
+                                        <th>專長</th>
+                                        <th>留言總數</th>
+                                        <th>已累積點數</th>
+                                        <th>可兌換點數</th>
+                                        <th>已累積學生數</th>
+                                        <th>已累積課程數</th>
+                                        <th>課程平均評價</th>
+                                        <th>社群1</th>
+                                        <th>社群2</th>
+                                        <th>社群3</th>
+                                        <th>社群4</th>
+                                        <th>成為教練時間</th>
+                                        <th>證照1</th>
+                                        <th>證照2</th>
+                                        <th>證照3</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+</div>
+<!--Content body end-->

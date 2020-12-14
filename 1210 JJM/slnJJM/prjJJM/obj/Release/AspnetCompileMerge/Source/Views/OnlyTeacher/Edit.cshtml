@@ -1,0 +1,430 @@
+﻿@model prjJJM.ViewModels.CTeacherViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@section css{
+    <link href="~/Content/assets/css/member.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/all.min.css" rel="stylesheet" />
+}
+
+@using (Html.BeginForm("Edit", "OnlyTeacher", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <main id="main">
+        <!-- ======= 頁面導航 Section ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 style="font-weight: 700;">編輯教練資料</h2>
+                    <ol>
+                        <li><a href="@Url.Action("Index", "Home")" style="font-size:16px;">首頁</a></li>
+                        <li><a href="@Url.Action("List","OnlyTeacher", new { id = (int)Session["ID"]})" style="font-size:16px;">教練管理</a></li>
+                        <li style="font-size:16px; font-weight: 600;">編輯教練資料</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Section -->
+        <!-- ======= 空白Section ======= -->
+
+        <section class="">
+            <div class="container emp-profile">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-4">
+
+                         @RenderPage("~/Views/Shared/_Layout_JJMTeacher.cshtml")
+
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="profile-head">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active forpadding1" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                           aria-controls="home" aria-selected="true" style="font-size:1em;">教練資料</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link forpadding1" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                           aria-controls="profile" aria-selected="false" style="font-size:1em;">教練紀錄</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link forpadding1" id="profile-tab" data-toggle="tab" href="#profile2" role="tab"
+                                           aria-controls="profile" aria-selected="false" style="font-size:1em;">社群連結</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link forpadding1" id="profile-tab" data-toggle="tab" href="#profile3" role="tab"
+                                           aria-controls="profile" aria-selected="false" style="font-size:1em;">資格證照</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content profile-tab" id="myTabContent">
+                                <div class="tab-pane fade show active align-items-center" id="home" role="tabpanel"
+                                     aria-labelledby="home-tab">
+                                    <div class="container profile-tab">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                                                <input type="hidden" name="teacherID" value="@Model.teacherID" /> <!--手刻版隱藏-->@*@Html.HiddenFor(model => model.teacherID)*@
+
+                                                @*<div class="row">
+                                                    <div class="col-3">
+                                                        <label>姓名</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @Html.DisplayFor(model => model.memberForOnlyT.m_fullName, "", new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => Model.memberForOnlyT.m_fullName, "", new { @class = "text-danger" })
+                                                        </p>
+                                                    </div>
+                                                </div>*@
+
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>頭銜</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @*<input type="text" placeholder="請輸入您的職稱">*@
+                                                            @Html.EditorFor(model => model.t_title, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                                                            @Html.ValidationMessageFor(model => model.t_title, "", new { @class = "text-danger" })
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>自我介紹</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @*<textarea name="" id="" cols="45" rows="5" style="resize: none; width: 100%;"></textarea>*@
+                                                            @Html.TextAreaFor(model => model.t_intro, new { @class = "form-control", cols = "45", rows = "5", style = "resize: none; width: 100%;" })
+                                                            @Html.ValidationMessageFor(model => model.t_intro, "", new { @class = "text-danger" })
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>教學經歷</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @*<textarea name="" id="" cols="45" rows="5" style="resize: none; width: 100%;"></textarea>*@
+                                                            @Html.TextAreaFor(model => model.t_experience, new { @class = "form-control", cols = "45", rows = "5", style = "resize: none; width: 100%;" })
+                                                            @Html.ValidationMessageFor(model => model.t_experience, "", new { @class = "text-danger" })
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>專長</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @*<textarea name="" id="" cols="45" rows="5" style="resize: none; width: 100%;"></textarea>*@
+                                                            @Html.TextAreaFor(model => model.t_expertise,new { @class = "form-control", cols = "45", rows = "5", style = "resize: none; width: 100%;"})
+                                                            @Html.ValidationMessageFor(model => model.t_expertise, "", new { @class = "text-danger" })
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="container profile-tab">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>累積留言總數</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @Html.DisplayFor(model => model.t_messageTotal, new { htmlAttributes = new { @class = "form-control" } })
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>累積點數總數</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @Html.DisplayFor(model => model.t_moneyTotal, new { htmlAttributes = new { @class = "form-control" } })
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>可兌換點數</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @Html.DisplayFor(model => model.t_money, new { htmlAttributes = new { @class = "form-control" } })
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>累積上課人數</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @Html.DisplayFor(model => model.t_studentTotal, new { htmlAttributes = new { @class = "form-control" } })
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>課程總數</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @Html.DisplayFor(model => model.t_classTotal, new { htmlAttributes = new { @class = "form-control" } })
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>課程評價平均</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="entry-ratings">
+                                                            <div class="empty_star">★★★★★</div>
+                                                            @if ((Math.Round((double)Model.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 0))
+                                                            {
+                                                                <div class="entry-full_star0">★★★★★</div>
+                                                            }
+                                                            else if (Math.Round((double)Model.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 1)
+                                                            {
+                                                                <div class="entry-full_star1">★★★★★</div>
+                                                            }
+                                                            else if (Math.Round((double)Model.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 2)
+                                                            {
+                                                                <div class="entry-full_star2">★★★★★</div>
+                                                            }
+                                                            else if (Math.Round((double)Model.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 3)
+                                                            {
+                                                                <div class="entry-full_star3">★★★★★</div>
+                                                            }
+                                                            else if (Math.Round((double)Model.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 4)
+                                                            {
+                                                                <div class="entry-full_star4">★★★★★</div>
+                                                            }
+                                                            else if (Math.Round((double)Model.t_rateAvg, 0, MidpointRounding.AwayFromZero) == 5)
+                                                            {
+                                                                <div class="entry-full_star">★★★★★</div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile2" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="container profile-tab">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-3 socialpadding1">
+                                                        <label class="cotitle2"><i class="fab fa-facebook-square fa-lg"></i> Facebook</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @*<input type="text" placeholder="">*@
+                                                            @Html.EditorFor(model => model.t_socialMedia1, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                                                            @Html.ValidationMessageFor(model => model.t_socialMedia1, "", new { @class = "text-danger" })
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3 socialpadding1">
+                                                        <label class="cotitle2"><i class="fab fa-twitter-square fa-lg"></i> Twitter</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @Html.EditorFor(model => model.t_socialMedia2, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                                                            @Html.ValidationMessageFor(model => model.t_socialMedia2, "", new { @class = "text-danger" })
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3 socialpadding1">
+                                                        <label class="cotitle2"><i class="fab fa-instagram-square fa-lg"></i> Instagram</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @Html.EditorFor(model => model.t_socialMedia3, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                                                            @Html.ValidationMessageFor(model => model.t_socialMedia3, "", new { @class = "text-danger" })
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3 socialpadding1">
+                                                        <label class="cotitle2"><i class="fab fa-line fa-lg"></i> Line</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <p>
+                                                            @Html.EditorFor(model => model.t_socialMedia4, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                                                            @Html.ValidationMessageFor(model => model.t_socialMedia4, "", new { @class = "text-danger" })
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="profile3" role="tabpanel" aria-labelledby="profile-tab">
+                                    @*<form action="#" method="POST" enctype="multipart/form-data">*@
+                                    <div class="row mx-1">
+                                        <div class="col-3">
+                                            <label>資格證照說明</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <p>
+                                                @*<textarea name="" id="" cols="50" rows="5" style="resize: none; width: 100%;"
+                                                    placeholder="請簡述證照名稱"></textarea>*@
+                                                @Html.EditorFor(model => model.t_certificateTxt, new
+                                                {
+                                                    htmlAttributes = new
+                                                    {
+                                                        @class = "form-control",
+                                               cols = "50",
+                                                        rows = "5",
+                                                        style = "resize: none; width: 100%;",
+                                                          placeholder = "請簡述證照名稱"
+                                                    }
+                                                })
+                                                @Html.ValidationMessageFor(model => model.t_certificateTxt, "", new { @class = "text-danger" })
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row ml-1 mb-5">
+                                        <div class="col-3">
+                                            <label>資格證照圖檔1</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <label for="fileupload" class="labelimg">
+                                                <input type="button" id="btnimg1" value="上傳圖檔"><span id="text1"></span>
+                                                <input type="file" id="fileupload1" name="image1" onchange="openFile1()" accept="image/*">
+                                            </label>
+                                            <div>圖檔預覽</div>
+                                            <img src="@Html.DisplayFor(model => model.t_certificateImg1)" id="imgpreview1" class="img-fluid" style="display: inline-block">
+                                        </div>
+                                    </div>
+
+                                    <div class="row ml-1 mb-5">
+                                        <div class="col-3">
+                                            <label>資格證照圖檔2</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <label for="fileupload" class="labelimg">
+                                                <input type="button" id="btnimg2" value="上傳圖檔"><span id="text2"></span>
+                                                <input type="file" id="fileupload2" name="image2" onchange="openFile2()" accept="image/*">
+                                            </label>
+                                            <div>圖檔預覽</div>
+                                            <img src="@Html.DisplayFor(model => model.t_certificateImg2)" id="imgpreview2" class="img-fluid" style="display: inline-block">
+                                        </div>
+                                    </div>
+
+                                    <div class="row ml-1 mb-5">
+                                        <div class="col-3">
+                                            <label>資格證照圖檔3</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <label for="fileupload" class="labelimg">
+                                                <input type="button" id="btnimg3" value="上傳圖檔"><span id="text3"></span>
+                                                <input type="file" id="fileupload3" name="image3" onchange="openFile3()" accept="image/*">
+                                            </label>
+                                            <div>圖檔預覽</div>
+                                            <img src="@Html.DisplayFor(model => model.t_certificateImg3)" id="imgpreview3" class="img-fluid" style="display: inline-block">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4"> </div>
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <br />
+                                    <button class="profile-edit-btn" type="submit">儲存資料</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section><!-- End Section -->
+
+    </main><!-- End #main -->
+    <script>
+        function openFile1() {
+            var fileUpload = document.getElementById("fileupload1");
+            var imgPreview = document.getElementById("imgpreview1");
+            var imgone = fileUpload.files[0];
+
+            if (fileUpload.files.length > 0) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    imgPreview.src = reader.result;//
+                };
+
+                reader.readAsDataURL(imgone);
+            } else {
+                displayInfo.innerHTML = "";
+            }
+        }
+
+        function openFile2() {
+            var fileUpload = document.getElementById("fileupload2");
+            var imgPreview = document.getElementById("imgpreview2");
+            var imgone = fileUpload.files[0];
+
+            if (fileUpload.files.length > 0) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    imgPreview.src = reader.result;//
+                };
+
+                reader.readAsDataURL(imgone);
+            } else {
+                displayInfo.innerHTML = "";
+            }
+        }
+
+        function openFile3() {
+            var fileUpload = document.getElementById("fileupload3");
+            var imgPreview = document.getElementById("imgpreview3");
+            var imgone = fileUpload.files[0];
+
+            if (fileUpload.files.length > 0) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    imgPreview.src = reader.result;//
+                };
+
+                reader.readAsDataURL(imgone);
+            } else {
+                displayInfo.innerHTML = "";
+            }
+        }
+    </script>
+
+}
+
+@*<div>
+    @Html.ActionLink("返回教練資料", "List", "OnlyTeacher", new { id = Model.teacherID }, null)
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

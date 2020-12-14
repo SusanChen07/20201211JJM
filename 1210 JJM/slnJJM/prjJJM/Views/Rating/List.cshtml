@@ -1,0 +1,105 @@
+﻿@model IEnumerable<prjJJM.ViewModels.RatingVM.CRatingViewModel>
+
+@{
+    ViewBag.Title = "評論內容";
+    Layout = "~/Views/Shared/_Layout_JJMAdmin.cshtml";
+}
+
+@section css{
+    <link href="~/Content/Admin/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section scripts{
+
+    <script src="~/Content/Admin/plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+}
+
+<!--Content body start-->
+<div class="content-body">
+
+    <div class="row page-titles mx-0">
+        <div class="col p-md-0">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">首頁</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">評論內容</a></li>
+            </ol>
+        </div>
+    </div>
+    <!-- row -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style="font-weight: 600;">評論內容</h4>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-6">
+                                <p class="btn btn-outline-secondary" id="btnadd">
+                                    @Html.ActionLink("新增評論內容", "Create")
+                                </p>
+                            </div>
+                            @*<div class="col-lg-10 col-md-10 col-sm-6" style="text-align:right;">
+                                <form method="post">
+                                    <input type="text" name="txtkeyword" style="margin-right: 5px" />
+                                    <input type="submit" class="btn btn-outline-info mr-2" value="查詢" />
+                                </form>
+                            </div>*@
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover zero-configuration">
+                                <!-- table-striped table-bordered -->
+                                <thead>
+                                    <tr>
+                                        <th>評價編號</th>
+                                        <th>會員編號</th>
+                                        <th>課程編號</th>
+                                        <th>評價人</th>
+                                        <th>評價內容</th>
+                                        <th>評價分數</th>
+                                        <th>傳送時間</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.ratingID)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.memberID)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.classID)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.r_send)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.r_sendText)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.r_star)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.r_sendTime)</td>
+                                        <td>
+                                            @Html.ActionLink("修改", "Edit", new { id = item.ratingID })<i class="fa fa-pencil color-muted"></i>
+                                            @Html.ActionLink("刪除", "Delete", "Rating", new { id = item.ratingID }, new { OnClick = "return confirm('確定要刪除嗎?')" })<i class="fa fa-close color-danger"></i>
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>評價編號</th>
+                                        <th>會員編號</th>
+                                        <th>課程編號</th>
+                                        <th>評價人</th>
+                                        <th>評價內容</th>
+                                        <th>評價分數</th>
+                                        <th>傳送時間</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+</div>
+<!--Content body end-->

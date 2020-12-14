@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - JJM 健漸美| 健身課程平台</title>
+
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/Admin/images/JJM-icon.png">
+
+    <!-- Pignose Calender -->
+    <link href="./plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+
+    <link href="~/Content/Admin/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet" />
+    <!-- Chartist -->
+    <link href="~/Content/Admin/plugins/chartist/css/chartist.min.css" rel="stylesheet" />
+    <link href="~/Content/Admin/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css" rel="stylesheet" />
+    <!-- Custom Stylesheet -->
+    <link href="~/Content/Admin/css/style.css" rel="stylesheet" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("css", required: false)
+</head>
+<body>
+    <!--*******************
+         Preloader start
+     ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header" style="background-color: #344955;">
+            <div class="brand-logo">
+                <a href="@Url.Action("Index", "Home")">
+                    <b class="logo-abbr"><img src="~/Content/Admin/images/JJM-o.png" alt=""> </b>
+                    <span class="logo-compact"><img src="~/Content/Admin/images/logo-text-o.png" alt="" style="width: 115px;"></span>
+                    <span class="brand-title">
+
+                        <img src="~/Content/Admin/images/logo-text-o.png" alt="" style="width: 115px;">
+                    </span>
+                </a>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content clearfix">
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    @*<div class="input-group icons">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                        </div>
+                        <input type="search" class="form-control" placeholder="Search" aria-label="Search Dashboard">
+                       
+                        <div class="drop-down animated flipInX d-md-none">
+                            <form action="#">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </form>
+                        </div>
+                    </div>*@
+                </div>
+
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative mr-2 mt-2" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="~/Content/Admin/images/user/f1.png" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Action("List", "Admin")"><i class="icon-user"></i> <span>管理員首頁</span></a>
+                                        </li>
+
+                                        <li>
+                                            <a href="@Url.Action("Index", "Home")"><i class="icon-globe"></i> <span>網站首頁</span></a>
+                                        </li>
+
+                                        <li><hr class="my-2"></li>
+                                        @*<li>
+                                            <a href="#"><i class="icon-lock"></i> <span>鎖定畫面</span></a>
+                                        </li>*@
+                                        <li><a href="@Url.Action("Logout", "Home")"><i class="icon-logout"></i> <span>登出</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll" style="background-color: #344955;">
+                <ul class="metismenu" id="menu" style="background: #344955;">
+
+                    <li>
+                        <a href="@Url.Action("List", "Admin")" aria-expanded="false">
+                            <i class="icon-home menu-icon"></i><span class="nav-text">管理員首頁</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-people menu-icon"></i><span class="nav-text">會員資訊</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="@Url.Action("List", "Member")" aria-expanded="false" id="slidertext-li">會員名單</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">教練資訊</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="@Url.Action("List", "Teacher")" aria-expanded="false" id="slidertext-li">教練名單</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-book-open menu-icon"></i><span class="nav-text">課程管理</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="@Url.Action("List", "Class")" aria-expanded="false" id="slidertext-li">課程名單</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-credit-card menu-icon"></i><span class="nav-text">訂單管理</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="@Url.Action("List", "Order")" aria-expanded="false" id="slidertext-li">訂單名單</a></li>
+                            <li><a href="@Url.Action("List", "OrderDetail")" aria-expanded="false" id="slidertext-li">訂單明細</a></li>
+                            <li><a href="@Url.Action("List", "Pay")" aria-expanded="false" id="slidertext-li">付款資訊</a></li>
+                            <li><a href="@Url.Action("List", "Deposit")" aria-expanded="false" id="slidertext-li">儲值明細</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">評論管理</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="@Url.Action("List", "Rating")" aria-expanded="false" id="slidertext-li">評論內容</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-basket menu-icon"></i> <span class="nav-text">購物車管理</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="@Url.Action("List", "ShopMgt")" aria-expanded="false" id="slidertext-li">購物車內容</a></li>
+                            <li><a href="@Url.Action("List", "WishMgt")" aria-expanded="false" id="slidertext-li">願望清單內容</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("Index", "Home")" aria-expanded="false">
+                            <i class="icon-globe menu-icon"></i><span class="nav-text">前往網站首頁</span>
+                        </a>
+                    </li>
+
+                    @*<li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-login menu-icon"></i><span class="nav-text">登入/註冊</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="@Url.Action("Login", "Home")" id="slidertext-li">登入</a></li>
+                            <li><a href="@Url.Action("Register", "Home")" id="slidertext-li">註冊</a></li>
+                        </ul>
+                    </li>*@
+                    <li>
+                        <a href="@Url.Action("Logout", "Home")" aria-expanded="false">
+                            <i class="icon-logout menu-icon"></i><span class="nav-text">登出</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--Sidebar end-->
+        <!--Body Begins-->
+        @RenderBody()
+        <!--Body Ends-->
+        <!--Footer start-->
+        <div class="footer">
+            <div class="copyright">
+                <!-- <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p> -->
+                Copyright &copy; @DateTime.Now.Year - All Rights Reserved to&nbsp;<strong><span>JJM Web Developer</span></strong>
+            </div>
+        </div>
+        <!--Footer end-->
+    </div>
+    <!--Main wrapper end-->
+    <!--Scripts-->
+    <script src="~/Content/Admin/plugins/common/common.min.js"></script>
+    <script src="~/Content/Admin/js/custom.min.js"></script>
+    <script src="~/Content/Admin/js/settings.js"></script>
+    <script src="~/Content/Admin/js/gleek.js"></script>
+    <script src="~/Content/Admin/js/styleSwitcher.js"></script>
+
+    <!-- Chartjs -->
+    <script src="~/Content/Admin/plugins/chart.js/Chart.bundle.min.js"></script>
+    <!-- Circle progress -->
+    <script src="~/Content/Admin/plugins/circle-progress/circle-progress.min.js"></script>
+    <!-- Datamap -->
+    <script src="~/Content/Admin/plugins/d3v3/index.js"></script>
+    <script src="~/Content/Admin/plugins/topojson/topojson.min.js"></script>
+    <script src="~/Content/Admin/plugins/datamaps/datamaps.world.min.js"></script>
+    <!-- Morrisjs -->
+    <script src="~/Content/Admin/plugins/raphael/raphael.min.js"></script>
+    <script src="~/Content/Admin/plugins/morris/morris.min.js"></script>
+    <!-- Pignose Calender -->
+    <script src="~/Content/Admin/plugins/moment/moment.min.js"></script>
+    <script src="~/Content/Admin/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+    <!-- ChartistJS -->
+    <script src="~/Content/Admin/plugins/chartist/js/chartist.min.js"></script>
+    <script src="~/Content/Admin/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+
+    <script src="~/Content/Admin/js/dashboard/dashboard-1.js"></script>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

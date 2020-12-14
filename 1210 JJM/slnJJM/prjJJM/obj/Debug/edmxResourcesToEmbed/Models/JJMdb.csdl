@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JJMdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="JJMdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tMember" EntityType="JJMdbModel.tMember" />
+    <EntitySet Name="tTeacher" EntityType="JJMdbModel.tTeacher" />
+    <AssociationSet Name="FK_Teacher_Member" Association="JJMdbModel.FK_Teacher_Member">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="tTeacher" EntitySet="tTeacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacher_Teacher" Association="JJMdbModel.FK_Teacher_Teacher">
+      <End Role="tTeacher" EntitySet="tTeacher" />
+      <End Role="tTeacher1" EntitySet="tTeacher" />
+    </AssociationSet>
+    <EntitySet Name="tClass" EntityType="JJMdbModel.tClass" />
+    <AssociationSet Name="FK_Class_Teacher" Association="JJMdbModel.FK_Class_Teacher">
+      <End Role="tTeacher" EntitySet="tTeacher" />
+      <End Role="tClass" EntitySet="tClass" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tMember">
+    <Key>
+      <PropertyRef Name="memberID" />
+    </Key>
+    <Property Name="memberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="m_firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_birth" Type="DateTime" Precision="0" />
+    <Property Name="m_gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="m_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_district" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="m_address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="m_role" Type="Int32" />
+    <Property Name="m_hobby" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="m_imgPath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="m_Jpoint" Type="Int32" />
+    <NavigationProperty Name="tTeacher" Relationship="JJMdbModel.FK_Teacher_Member" FromRole="tMember" ToRole="tTeacher" />
+  </EntityType>
+  <EntityType Name="tTeacher">
+    <Key>
+      <PropertyRef Name="teacherID" />
+    </Key>
+    <Property Name="teacherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="t_certificateImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="t_title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="t_intro" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="t_messageTotal" Type="Int32" />
+    <Property Name="t_moneyTotal" Type="Int32" />
+    <Property Name="t_money" Type="Int32" />
+    <Property Name="t_studentTotal" Type="Int32" />
+    <Property Name="t_classTotal" Type="Int32" />
+    <Property Name="t_rateAvg" Type="Double" />
+    <Property Name="t_socialMedia1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="t_socialMedia2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="t_socialMedia3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="t_socialMedia4" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="memberID" Type="Int32" />
+    <NavigationProperty Name="tMember" Relationship="JJMdbModel.FK_Teacher_Member" FromRole="tTeacher" ToRole="tMember" />
+    <NavigationProperty Name="tTeacher1" Relationship="JJMdbModel.FK_Teacher_Teacher" FromRole="tTeacher" ToRole="tTeacher1" />
+    <NavigationProperty Name="tTeacher2" Relationship="JJMdbModel.FK_Teacher_Teacher" FromRole="tTeacher1" ToRole="tTeacher" />
+    <NavigationProperty Name="tClass" Relationship="JJMdbModel.FK_Class_Teacher" FromRole="tTeacher" ToRole="tClass" />
+  </EntityType>
+  <Association Name="FK_Teacher_Member">
+    <End Type="JJMdbModel.tMember" Role="tMember" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tTeacher" Role="tTeacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="memberID" />
+      </Principal>
+      <Dependent Role="tTeacher">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacher_Teacher">
+    <End Type="JJMdbModel.tTeacher" Role="tTeacher" Multiplicity="1" />
+    <End Type="JJMdbModel.tTeacher" Role="tTeacher1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tTeacher">
+        <PropertyRef Name="teacherID" />
+      </Principal>
+      <Dependent Role="tTeacher1">
+        <PropertyRef Name="teacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tClass">
+    <Key>
+      <PropertyRef Name="classID" />
+    </Key>
+    <Property Name="classID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="c_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="c_nameText" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="c_intro" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="c_startTime" Type="DateTime" Precision="0" />
+    <Property Name="c_endTime" Type="DateTime" Precision="0" />
+    <Property Name="c_hourRate" Type="Int32" />
+    <Property Name="c_registerStart" Type="DateTime" Precision="0" />
+    <Property Name="c_registerEnd" Type="DateTime" Precision="0" />
+    <Property Name="c_maxStudent" Type="Int32" />
+    <Property Name="c_minStudent" Type="Int32" />
+    <Property Name="c_student" Type="Int32" />
+    <Property Name="c_location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="c_price" Type="Int32" />
+    <Property Name="c_onsaleStart" Type="DateTime" Precision="0" />
+    <Property Name="c_onsaleEnd" Type="DateTime" Precision="0" />
+    <Property Name="c_discount" Type="Int32" />
+    <Property Name="c_level" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="c_requirement" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="c_rate" Type="Double" />
+    <Property Name="c_imgPath1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="c_imgPath2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="c_imgPath3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="c_lable1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="c_lable2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="c_lable3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="c_lable4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="c_lable5" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="teacherID" Type="Int32" />
+    <NavigationProperty Name="tTeacher" Relationship="JJMdbModel.FK_Class_Teacher" FromRole="tClass" ToRole="tTeacher" />
+  </EntityType>
+  <Association Name="FK_Class_Teacher">
+    <End Type="JJMdbModel.tTeacher" Role="tTeacher" Multiplicity="0..1" />
+    <End Type="JJMdbModel.tClass" Role="tClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tTeacher">
+        <PropertyRef Name="teacherID" />
+      </Principal>
+      <Dependent Role="tClass">
+        <PropertyRef Name="teacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

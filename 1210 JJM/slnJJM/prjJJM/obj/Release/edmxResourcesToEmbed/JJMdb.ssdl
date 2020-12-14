@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JJMdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tClass">
+    <Key>
+      <PropertyRef Name="classID" />
+    </Key>
+    <Property Name="classID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="c_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="c_nameText" Type="nvarchar" MaxLength="100" />
+    <Property Name="c_intro" Type="nvarchar" MaxLength="500" />
+    <Property Name="c_startTime" Type="date" />
+    <Property Name="c_endTime" Type="date" />
+    <Property Name="c_hourRate" Type="int" />
+    <Property Name="c_registerStart" Type="date" />
+    <Property Name="c_registerEnd" Type="date" />
+    <Property Name="c_maxStudent" Type="int" />
+    <Property Name="c_minStudent" Type="int" />
+    <Property Name="c_student" Type="int" />
+    <Property Name="c_location" Type="nvarchar" MaxLength="100" />
+    <Property Name="c_price" Type="int" />
+    <Property Name="c_onsaleStart" Type="date" />
+    <Property Name="c_onsaleEnd" Type="date" />
+    <Property Name="c_discount" Type="int" />
+    <Property Name="c_level" Type="nvarchar" MaxLength="10" />
+    <Property Name="c_requirement" Type="nvarchar" MaxLength="500" />
+    <Property Name="c_rate" Type="float" />
+    <Property Name="c_rateTotal" Type="int" />
+    <Property Name="c_imgPath1" Type="nvarchar(max)" />
+    <Property Name="c_imgPath2" Type="nvarchar(max)" />
+    <Property Name="c_imgPath3" Type="nvarchar(max)" />
+    <Property Name="c_lable1" Type="nvarchar" MaxLength="20" />
+    <Property Name="c_lable2" Type="nvarchar" MaxLength="20" />
+    <Property Name="c_lable3" Type="nvarchar" MaxLength="20" />
+    <Property Name="c_lable4" Type="nvarchar" MaxLength="20" />
+    <Property Name="c_lable5" Type="nvarchar" MaxLength="20" />
+    <Property Name="teacherID" Type="int" />
+    <Property Name="c_getNow" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tDeposit">
+    <Key>
+      <PropertyRef Name="depositID" />
+    </Key>
+    <Property Name="depositID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="d_point" Type="int" />
+    <Property Name="d_method" Type="nvarchar" MaxLength="50" />
+    <Property Name="d_memo" Type="nvarchar" MaxLength="50" />
+    <Property Name="d_getNow" Type="datetime" />
+    <Property Name="memberID" Type="int" />
+  </EntityType>
+  <EntityType Name="tMember">
+    <Key>
+      <PropertyRef Name="memberID" />
+    </Key>
+    <Property Name="memberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="m_firstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="m_lastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="m_birth" Type="date" />
+    <Property Name="m_gender" Type="nvarchar" MaxLength="10" />
+    <Property Name="m_email" Type="nvarchar" MaxLength="50" />
+    <Property Name="m_password" Type="nvarchar" MaxLength="50" />
+    <Property Name="m_phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="m_district" Type="nvarchar" MaxLength="255" />
+    <Property Name="m_address" Type="nvarchar" MaxLength="255" />
+    <Property Name="m_role" Type="int" />
+    <Property Name="m_hobby" Type="nvarchar" MaxLength="255" />
+    <Property Name="m_imgPath" Type="nvarchar(max)" />
+    <Property Name="m_Jpoint" Type="int" />
+    <Property Name="m_getNow" Type="datetime" />
+    <Property Name="m_emailConfirm" Type="nchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="tOrder">
+    <Key>
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="orderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="memberID" Type="int" />
+    <Property Name="o_orderdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tOrder_Detail">
+    <Key>
+      <PropertyRef Name="od_itemID" />
+    </Key>
+    <Property Name="od_itemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderID" Type="int" />
+    <Property Name="classID" Type="int" />
+    <Property Name="c_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="c_price" Type="int" />
+    <Property Name="c_discount" Type="int" />
+    <Property Name="od_profit" Type="int" />
+  </EntityType>
+  <EntityType Name="tPay">
+    <Key>
+      <PropertyRef Name="payID" />
+    </Key>
+    <Property Name="payID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="p_money" Type="int" />
+    <Property Name="p_getNow" Type="datetime" />
+    <Property Name="p_status" Type="nvarchar" MaxLength="20" />
+    <Property Name="p_method" Type="nvarchar" MaxLength="50" />
+    <Property Name="p_getMoneyTime" Type="datetime" />
+    <Property Name="p_memo" Type="nvarchar" MaxLength="50" />
+    <Property Name="teacherID" Type="int" />
+  </EntityType>
+  <EntityType Name="tRating">
+    <Key>
+      <PropertyRef Name="ratingID" />
+    </Key>
+    <Property Name="ratingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="memberID" Type="int" />
+    <Property Name="classID" Type="int" />
+    <Property Name="r_send" Type="nvarchar" MaxLength="20" />
+    <Property Name="r_sendText" Type="nvarchar" MaxLength="1000" />
+    <Property Name="r_star" Type="int" />
+    <Property Name="r_sendTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tShop">
+    <Key>
+      <PropertyRef Name="shopID" />
+    </Key>
+    <Property Name="shopID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="classID" Type="int" />
+    <Property Name="memberID" Type="int" />
+    <Property Name="s_getNow" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tTeacher">
+    <Key>
+      <PropertyRef Name="teacherID" />
+    </Key>
+    <Property Name="teacherID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="t_certificateImg1" Type="nvarchar(max)" />
+    <Property Name="t_certificateImg2" Type="nvarchar(max)" />
+    <Property Name="t_certificateImg3" Type="nvarchar(max)" />
+    <Property Name="t_certificateTxt" Type="nvarchar(max)" />
+    <Property Name="t_title" Type="nvarchar" MaxLength="255" />
+    <Property Name="t_intro" Type="nvarchar" MaxLength="500" />
+    <Property Name="t_experience" Type="nvarchar" MaxLength="500" />
+    <Property Name="t_expertise" Type="nvarchar" MaxLength="500" />
+    <Property Name="t_messageTotal" Type="int" />
+    <Property Name="t_moneyTotal" Type="int" />
+    <Property Name="t_money" Type="int" />
+    <Property Name="t_studentTotal" Type="int" />
+    <Property Name="t_classTotal" Type="int" />
+    <Property Name="t_rateAvg" Type="float" />
+    <Property Name="t_socialMedia1" Type="nvarchar" MaxLength="500" />
+    <Property Name="t_socialMedia2" Type="nvarchar" MaxLength="500" />
+    <Property Name="t_socialMedia3" Type="nvarchar" MaxLength="500" />
+    <Property Name="t_socialMedia4" Type="nvarchar" MaxLength="500" />
+    <Property Name="memberID" Type="int" />
+    <Property Name="t_getNow" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tWish">
+    <Key>
+      <PropertyRef Name="WishID" />
+    </Key>
+    <Property Name="WishID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="classID" Type="int" />
+    <Property Name="memberID" Type="int" />
+    <Property Name="s_getNow" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_tClass_tTeacher">
+    <End Role="tTeacher" Type="Self.tTeacher" Multiplicity="0..1" />
+    <End Role="tClass" Type="Self.tClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tTeacher">
+        <PropertyRef Name="teacherID" />
+      </Principal>
+      <Dependent Role="tClass">
+        <PropertyRef Name="teacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tDeposit_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="0..1" />
+    <End Role="tDeposit" Type="Self.tDeposit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="memberID" />
+      </Principal>
+      <Dependent Role="tDeposit">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tOrder_Detail_tClass">
+    <End Role="tClass" Type="Self.tClass" Multiplicity="0..1" />
+    <End Role="tOrder_Detail" Type="Self.tOrder_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tClass">
+        <PropertyRef Name="classID" />
+      </Principal>
+      <Dependent Role="tOrder_Detail">
+        <PropertyRef Name="classID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tOrder_Detail_tOrder">
+    <End Role="tOrder" Type="Self.tOrder" Multiplicity="0..1" />
+    <End Role="tOrder_Detail" Type="Self.tOrder_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tOrder">
+        <PropertyRef Name="orderID" />
+      </Principal>
+      <Dependent Role="tOrder_Detail">
+        <PropertyRef Name="orderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tOrder_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="0..1" />
+    <End Role="tOrder" Type="Self.tOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="memberID" />
+      </Principal>
+      <Dependent Role="tOrder">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tPay_tTeacher">
+    <End Role="tTeacher" Type="Self.tTeacher" Multiplicity="0..1" />
+    <End Role="tPay" Type="Self.tPay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tTeacher">
+        <PropertyRef Name="teacherID" />
+      </Principal>
+      <Dependent Role="tPay">
+        <PropertyRef Name="teacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tRating_tClass">
+    <End Role="tClass" Type="Self.tClass" Multiplicity="0..1" />
+    <End Role="tRating" Type="Self.tRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tClass">
+        <PropertyRef Name="classID" />
+      </Principal>
+      <Dependent Role="tRating">
+        <PropertyRef Name="classID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tRating_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="0..1" />
+    <End Role="tRating" Type="Self.tRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="memberID" />
+      </Principal>
+      <Dependent Role="tRating">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tShop_tClass">
+    <End Role="tClass" Type="Self.tClass" Multiplicity="0..1" />
+    <End Role="tShop" Type="Self.tShop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tClass">
+        <PropertyRef Name="classID" />
+      </Principal>
+      <Dependent Role="tShop">
+        <PropertyRef Name="classID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tShop_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="0..1" />
+    <End Role="tShop" Type="Self.tShop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="memberID" />
+      </Principal>
+      <Dependent Role="tShop">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tTeacher_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="0..1" />
+    <End Role="tTeacher" Type="Self.tTeacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="memberID" />
+      </Principal>
+      <Dependent Role="tTeacher">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tWish_tClass">
+    <End Role="tClass" Type="Self.tClass" Multiplicity="0..1" />
+    <End Role="tWish" Type="Self.tWish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tClass">
+        <PropertyRef Name="classID" />
+      </Principal>
+      <Dependent Role="tWish">
+        <PropertyRef Name="classID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tWish_tMember">
+    <End Role="tMember" Type="Self.tMember" Multiplicity="0..1" />
+    <End Role="tWish" Type="Self.tWish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tMember">
+        <PropertyRef Name="memberID" />
+      </Principal>
+      <Dependent Role="tWish">
+        <PropertyRef Name="memberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="JJMdbModelStoreContainer">
+    <EntitySet Name="tClass" EntityType="Self.tClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tDeposit" EntityType="Self.tDeposit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tMember" EntityType="Self.tMember" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tOrder" EntityType="Self.tOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tOrder_Detail" EntityType="Self.tOrder_Detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tPay" EntityType="Self.tPay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tRating" EntityType="Self.tRating" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tShop" EntityType="Self.tShop" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tTeacher" EntityType="Self.tTeacher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tWish" EntityType="Self.tWish" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tClass_tTeacher" Association="Self.FK_tClass_tTeacher">
+      <End Role="tTeacher" EntitySet="tTeacher" />
+      <End Role="tClass" EntitySet="tClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tDeposit_tMember" Association="Self.FK_tDeposit_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="tDeposit" EntitySet="tDeposit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tOrder_Detail_tClass" Association="Self.FK_tOrder_Detail_tClass">
+      <End Role="tClass" EntitySet="tClass" />
+      <End Role="tOrder_Detail" EntitySet="tOrder_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tOrder_Detail_tOrder" Association="Self.FK_tOrder_Detail_tOrder">
+      <End Role="tOrder" EntitySet="tOrder" />
+      <End Role="tOrder_Detail" EntitySet="tOrder_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tOrder_tMember" Association="Self.FK_tOrder_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="tOrder" EntitySet="tOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tPay_tTeacher" Association="Self.FK_tPay_tTeacher">
+      <End Role="tTeacher" EntitySet="tTeacher" />
+      <End Role="tPay" EntitySet="tPay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tRating_tClass" Association="Self.FK_tRating_tClass">
+      <End Role="tClass" EntitySet="tClass" />
+      <End Role="tRating" EntitySet="tRating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tRating_tMember" Association="Self.FK_tRating_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="tRating" EntitySet="tRating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tShop_tClass" Association="Self.FK_tShop_tClass">
+      <End Role="tClass" EntitySet="tClass" />
+      <End Role="tShop" EntitySet="tShop" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tShop_tMember" Association="Self.FK_tShop_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="tShop" EntitySet="tShop" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tTeacher_tMember" Association="Self.FK_tTeacher_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="tTeacher" EntitySet="tTeacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tWish_tClass" Association="Self.FK_tWish_tClass">
+      <End Role="tClass" EntitySet="tClass" />
+      <End Role="tWish" EntitySet="tWish" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tWish_tMember" Association="Self.FK_tWish_tMember">
+      <End Role="tMember" EntitySet="tMember" />
+      <End Role="tWish" EntitySet="tWish" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

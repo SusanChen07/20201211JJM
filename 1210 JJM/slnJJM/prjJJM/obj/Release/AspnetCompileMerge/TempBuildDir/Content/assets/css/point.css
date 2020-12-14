@@ -1,0 +1,263 @@
+/* styles for desktop */
+.bigscreen1 { display: block; }
+.mobile1 { display: none; }
+
+/* styles for mobile */
+@media screen and (max-width: 767px) {
+    .bigscreen1 { display: none; }
+    .mobile1 { display: block }
+}
+
+
+.entryp {
+    padding: 30px;
+    margin-bottom: 60px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    margin-top: 5%;
+    
+  }
+.record1{
+    padding: 30px;
+    margin-bottom: 60px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    background-color: #e9e8e8;
+    height: 70%;
+    line-height: 30px;
+}
+
+.input1{
+    outline: 0;
+}
+.input1::placeholder{
+    font-size: 0.8em;
+}
+
+.money1{
+      font-size: 1.1em;
+      padding: 30px;
+      margin-bottom: 20px;
+      background-color: rgb(235, 182, 92,0.3);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      color: #6b4400;
+      font-weight: 600;
+      
+  }
+.pointnow{
+    font-size: 1.4em;
+    height: 25px;         
+    line-height: 25px;
+}
+.point1{
+    padding-left: 38px;
+}
+.btnpoint{ 
+    padding: 5px 10px;   
+    font-size: 1.4em;
+    border: none;
+    border-radius: 5px;
+    background-color:#F39800;
+    color: #6b4400;    
+
+}
+.btnpoint:hover{
+    background-color:#f5c065;
+    color: black;
+    
+}
+.btnpoint:focus{ 
+    outline:0;
+}
+
+.store{
+    color: darkgreen;
+}
+.pay{
+    color: red;
+}
+  
+  @media (max-width: 991px) {
+    .point1{
+        padding-left: 20px;
+    }
+    
+  }
+  
+  @media (max-width: 768px) {
+    .input1::placeholder{
+        font-size: 0.7em;
+    }
+    .money1{
+        font-size: 0.9em;
+    }
+    .pointnow{
+        font-size: 1.2em;
+    }
+    .point1{
+        padding-left: 5px;
+    }
+  }
+  
+  @media (max-width: 420px) {
+    .input1::placeholder{
+        font-size: em;
+    }
+    .money1{
+        font-size: 0.8em;
+        padding: 5px;
+        height: 60px;         
+        line-height: 60px;
+    }
+    .pointnow{
+        font-size: 1.1em;
+        height: 60px;         
+        line-height: 60px;
+    }
+    .entryp{
+        padding: 20px;
+    }
+    .record1{
+        padding: 5px;
+        font-size: 0.6em;
+    }
+    
+  }
+
+
+
+
+
+
+/*以下與member.css相同*/
+.cotitle1{
+    font-size: 22px;
+    color: #F39800;
+    font-weight: 600;
+    margin-top: 5%;
+    margin-bottom: 0px;
+}
+.list-group-item{
+    padding: 2px 5px;
+}
+
+.emp-profile{
+    border-radius: 0.5rem;
+    background: #fff;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -18%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #F39800;
+}
+.profile-work{
+    padding: 8%;
+    margin-top: -15%;
+}
+.profile-work2{
+    padding: 10%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 22px;
+    color: #F39800;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work p a{
+    font-size: 22px;
+    color: #F39800;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    margin: 2px;
+    color: #495057;
+    font-weight: 550;
+    font-size: 20px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-work li a{
+    text-decoration: none;
+    margin: 2px;
+    color: #495057;
+    font-weight: 550;
+    font-size: 20px;
+}
+.profile-work li{
+    border: 0ch;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #6c757d;
+}
+.profile-tab input{
+    font-size: 15px;
+    color: #6c757d;
+}
+.profile-tab input label{
+    font-size: 15px;
+    color: #6c757d;
+}
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }

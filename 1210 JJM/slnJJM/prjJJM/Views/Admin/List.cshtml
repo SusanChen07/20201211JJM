@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout_JJMAdmin.cshtml";
+
+}
+<!--Content body start-->
+<div class="content-body">
+
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-lg-8 col-md-6 col-sm-6 mt-2 ml-5">
+                <h1 style="font-weight: bold; color: #444;">健漸美 Jian Jian Mai</h1>
+                <h3 style="font-weight: bold; color: #444;">後台管理系統</h3>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4 mr-2" style="text-align: right;">
+                <div>
+                    <img src="~/Content/Admin/images/JJM-contact.png" style="width: 180px;">
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-lg-3 col-sm-6">
+                <div class="card gradient-1">
+                    <div class="card-body">
+                        <h3 class="card-title text-white" style="font-weight: 600;">會員增加數</h3>
+                        <div class="d-inline-block">
+                            <h2 class="text-white">21</h2>
+                            <p class="text-white mb-0">2020/10 ~ 12</p>
+                        </div>
+                        <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card gradient-2">
+                    <div class="card-body">
+                        <h3 class="card-title text-white" style="font-weight: 600;">成為教練數</h3>
+                        <div class="d-inline-block">
+                            <h2 class="text-white">16</h2>
+                            <p class="text-white mb-0">2020/10 ~ 12</p>
+                        </div>
+                        <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card gradient-3">
+                    <div class="card-body">
+                        <h3 class="card-title text-white" style="font-weight: 600;">開放中課程</h3>
+                        <div class="d-inline-block">
+                            <h2 class="text-white">6</h2>
+                            <p class="text-white mb-0">2020/12</p>
+                        </div>
+                        <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card gradient-4">
+                    <div class="card-body">
+                        <h3 class="card-title text-white" style="font-weight: 600;">訂單增加數</h3>
+                        <div class="d-inline-block">
+                            <h2 class="text-white">8</h2>
+                            <p class="text-white mb-0">2020/12</p>
+                        </div>
+                        <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <span class="display-5"><i class="icon-people gradient-4-text"></i></span>
+                            <h2 class="mt-3">21 會員</h2>
+                            <p>目前的會員數</p><a href="@Url.Action("List", "Member")" class="btn gradient-4 btn-lg border-0 btn-rounded px-5" style="width: 100%;">詳細名單</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <span class="display-5"><i class="icon-badge gradient-9-text"></i></span>
+                            <h2 class="mt-3">16 教練</h2>
+                            <p>目前的教練數</p><a href="@Url.Action("List", "Teacher")" class="btn gradient-9 btn-lg border-0 btn-rounded px-5" style="width: 100%;">詳細名單</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <span class="display-5"><i class="icon-book-open gradient-3-text"></i></span>
+                            <h2 class="mt-3">23 課程</h2>
+                            <p>目前的課程數</p><a href="@Url.Action("List", "Class")" class="btn gradient-3 btn-lg border-0 btn-rounded px-5" style="width: 100%;">詳細名單</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <span class="display-5"><i class="icon-credit-card gradient-4-text"></i></span>
+                            <h2 class="mt-3">8 訂單</h2>
+                            <p>目前的訂單數</p><a href="@Url.Action("List", "Order")" class="btn gradient-4 btn-lg border-0 btn-rounded px-5" style="width: 100%;">詳細名單</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <!-- #/ container -->
+</div>
+<!--Content body end-->

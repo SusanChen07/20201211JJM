@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+
+
+.circleimg{
+    width: 70%;
+    height: 80%;
+    border-radius: 50%;
+}
+  
+  @media (max-width: 991px) {
+    html {
+      font-size: 1.0em;
+    }
+    .datetime1{
+      font-size: 0.5em !important;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    html {
+      font-size: 0.8em;
+    }
+  }
+  
+  @media (max-width: 420px) {
+    html {
+      font-size: 0.8em;
+    }
+  }
+  
+.card {
+    border: none;
+}
+
+.score{
+    text-align: center;
+}
+.section-bg3{
+    background-color: #f3f3f3;
+}
+.countmsg{
+    color: #444444;
+    font-size: 12px;
+}
+.classinfo{    
+    font-size: 14px;
+    color: #444444 !important;
+    margin-top: 2px;
+    
+}
+.price1{
+    text-align: right;
+    vertical-align: bottom;
+    padding: 0px 3px;
+}
+
+.price2{
+    font-family: "微軟正黑體";
+    font-weight: bolder;
+    font-size: 26px;
+    margin-top: 5px;
+    color: #f39800;
+    text-shadow: 0px 1px 0 rgba(0, 0, 0, 0.50);
+    text-align: right;    
+    
+}
+.title {
+    font-weight: bolder;
+}

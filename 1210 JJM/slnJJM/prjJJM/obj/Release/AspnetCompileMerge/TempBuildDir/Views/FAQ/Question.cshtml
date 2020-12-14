@@ -1,0 +1,338 @@
+﻿
+@{
+    ViewBag.Title = "Question";
+}
+
+@section css{
+    <!--FAQ CSS Files-->
+    <link href="~/Content/assets/css/faq.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/icofont/icofont.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/boxicons/css/boxicons.min.css" rel="stylesheet" />
+}
+
+<main id="main">
+
+    <!-- ======= 頁面導航 Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="font-weight: 700;">常見問題</h2>
+                <ol>
+                    <li><a href="@Url.Action("Index", "Home")" style="font-size:16px;">首頁</a></li>
+                    <li>常見問題</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Section -->
+    <!-- ======= FAQ Category Section ======= -->
+    <section id="services" class="services section-bg pb-0 pt-4">
+        <div class="container">
+
+            <div class="section-title" data-aos="fade-up">
+                <h2>F.A.Q</h2>
+                <p>常見問題類別</p>
+            </div>
+
+
+            <div class="row" style="display: block;">
+                <ul class="nav nav-tabs tab1" id="myTab">
+                    <li class="active col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <a href="#lesson" data-toggle="tab">
+                            <div class="" data-aos="zoom-in" data-aos-delay="100">
+                                <div class="icon-box">
+                                    <div class="icon"><i class="icofont-read-book"></i></div>
+                                    <h4 class="title">課程問題</h4>
+                                    <p class="description">課程內容、上課方式、評價課程</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <a href="#buy" data-toggle="tab">
+                            <div class="" data-aos="zoom-in" data-aos-delay="200">
+                                <div class="icon-box">
+                                    <div class="icon"><i class="icofont-shopping-cart"></i></div>
+                                    <h4 class="title">購買與退款問題</h4>
+                                    <p class="description">購買課程、付款方式、退款機制</p>
+                                </div>
+
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <a href="#acount" data-toggle="tab">
+                            <div class="" data-aos="zoom-in" data-aos-delay="300">
+                                <div class="icon-box">
+                                    <div class="icon"><i class="icofont-ui-user"></i></div>
+                                    <h4 class="title">帳號問題</h4>
+                                    <p class="description">註冊會員、帳號設定、填寫個人資料</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <a href="#web" data-toggle="tab">
+                            <div class="" data-aos="zoom-in" data-aos-delay="400">
+                                <div class="icon-box">
+                                    <div class="icon"><i class="bx bx-world"></i></div>
+                                    <h4 class="title">網站功能問題</h4>
+                                    <p class="description">功能異常、無法觀看課程介紹、聯絡客服</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </section><!-- End FAQ Category Section -->
+    <!-- ======= FAQ Section ======= -->
+    <section id="faq" class="faq section-bg tab-content mt-0 pt-0">
+        <div class="container tab-pane fade show active" id="lesson">
+            <div class="section-title" data-aos="fade-up">
+                <h2></h2>
+                <p>課程問題</p>
+            </div>
+
+            <ul class="faq-list">
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <a data-toggle="collapse" class="" href="#faq1">
+                        課程介紹看完之後對於課程有其他問題? <i class="icofont-simple-up"></i>
+                    </a>
+                    <div id="faq1" class="collapse show" data-parent=".faq-list">
+                        <p>
+                            在購買課程前，對於課程有任何疑慮或問題，歡迎前往該課程頁面>課程問答，會由開課教練來一一為你解惑！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="200">
+                    <a data-toggle="collapse" href="#faq2" class="collapsed">無法確認自己是否適合此課程或符合此難度的基本要求? <i class="icofont-simple-up"></i></a>
+                    <div id="faq2" class="collapse" data-parent=".faq-list">
+                        <p>
+                            歡迎前往該課程頁面>課程問答留言或於教練頁面於社群網站中聯繫教練！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="300">
+                    <a data-toggle="collapse" href="#faq3" class="collapsed">對於上課方式或授課地點不清楚? <i class="icofont-simple-up"></i></a>
+                    <div id="faq3" class="collapse" data-parent=".faq-list">
+                        <p>
+                            歡迎前往該課程頁面>課程問答留言或於教練頁面於社群網站中聯繫教練！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="400">
+                    <a data-toggle="collapse" href="#faq4" class="collapsed">如何發表課程評價? <i class="icofont-simple-up"></i></a>
+                    <div id="faq4" class="collapse" data-parent=".faq-list">
+                        <p>
+                            在課程時間結束後一個月內，前往個人檔案>個人課程>按下評價，發表對於這門課程的評價及回饋，你的建議與支持都是教練進步的動力！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="500">
+                    <a data-toggle="collapse" href="#faq5" class="collapsed">如何得知課程處於優惠期間? <i class="icofont-simple-up"></i></a>
+                    <div id="faq5" class="collapse" data-parent=".faq-list">
+                        <p>
+                            歡迎時常回來查詢優惠課程及訂閱本網站通知！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="600">
+                    <a data-toggle="collapse" href="#faq6" class="collapsed">如何保留或收藏喜歡的課程? <i class="icofont-simple-up"></i></a>
+                    <div id="faq6" class="collapse" data-parent=".faq-list">
+                        <p>
+                            可以在課程介紹中加入收藏清單或放入您的專屬購物車內等待結帳。
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container tab-pane fade" id="buy">
+            <div class="section-title" data-aos="fade-up">
+                <h2></h2>
+                <p>購買與退款問題</p>
+            </div>
+            <ul class="faq-list">
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <a data-toggle="collapse" class="" href="#faq1">
+                        課程介紹看完之後對於課程有其他問題? <i class="icofont-simple-up"></i>
+                    </a>
+                    <div id="faq1" class="collapse show" data-parent=".faq-list">
+                        <p>
+                            在購買課程前，對於課程有任何疑慮或問題，歡迎前往該課程頁面>課程問答，會由開課教練來一一為你解惑！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="200">
+                    <a data-toggle="collapse" href="#faq2" class="collapsed">無法確認自己是否適合此課程或符合此難度的基本要求? <i class="icofont-simple-up"></i></a>
+                    <div id="faq2" class="collapse" data-parent=".faq-list">
+                        <p>
+                            歡迎前往該課程頁面>課程問答留言或於教練頁面於社群網站中聯繫教練！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="300">
+                    <a data-toggle="collapse" href="#faq3" class="collapsed">對於上課方式或授課地點不清楚? <i class="icofont-simple-up"></i></a>
+                    <div id="faq3" class="collapse" data-parent=".faq-list">
+                        <p>
+                            歡迎前往該課程頁面>課程問答留言或於教練頁面於社群網站中聯繫教練！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="400">
+                    <a data-toggle="collapse" href="#faq4" class="collapsed">如何發表課程評價? <i class="icofont-simple-up"></i></a>
+                    <div id="faq4" class="collapse" data-parent=".faq-list">
+                        <p>
+                            在課程時間結束後一個月內，前往個人檔案>個人課程>按下評價，發表對於這門課程的評價及回饋，你的建議與支持都是教練進步的動力！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="500">
+                    <a data-toggle="collapse" href="#faq5" class="collapsed">如何得知課程處於優惠期間? <i class="icofont-simple-up"></i></a>
+                    <div id="faq5" class="collapse" data-parent=".faq-list">
+                        <p>
+                            歡迎時常回來查詢優惠課程及訂閱本網站通知！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="600">
+                    <a data-toggle="collapse" href="#faq6" class="collapsed">如何保留或收藏喜歡的課程? <i class="icofont-simple-up"></i></a>
+                    <div id="faq6" class="collapse" data-parent=".faq-list">
+                        <p>
+                            可以在課程介紹中加入收藏清單或放入您的專屬購物車內等待結帳。
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container tab-pane fade" id="acount">
+            <div class="section-title" data-aos="fade-up">
+                <h2></h2>
+                <p>帳號問題</p>
+            </div>
+            <ul class="faq-list">
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <a data-toggle="collapse" class="" href="#faq1">
+                        課程介紹看完之後對於課程有其他問題? <i class="icofont-simple-up"></i>
+                    </a>
+                    <div id="faq1" class="collapse show" data-parent=".faq-list">
+                        <p>
+                            在購買課程前，對於課程有任何疑慮或問題，歡迎前往該課程頁面>課程問答，會由開課教練來一一為你解惑！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="200">
+                    <a data-toggle="collapse" href="#faq2" class="collapsed">無法確認自己是否適合此課程或符合此難度的基本要求? <i class="icofont-simple-up"></i></a>
+                    <div id="faq2" class="collapse" data-parent=".faq-list">
+                        <p>
+                            歡迎前往該課程頁面>課程問答留言或於教練頁面於社群網站中聯繫教練！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="300">
+                    <a data-toggle="collapse" href="#faq3" class="collapsed">對於上課方式或授課地點不清楚? <i class="icofont-simple-up"></i></a>
+                    <div id="faq3" class="collapse" data-parent=".faq-list">
+                        <p>
+                            歡迎前往該課程頁面>課程問答留言或於教練頁面於社群網站中聯繫教練！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="400">
+                    <a data-toggle="collapse" href="#faq4" class="collapsed">如何發表課程評價? <i class="icofont-simple-up"></i></a>
+                    <div id="faq4" class="collapse" data-parent=".faq-list">
+                        <p>
+                            在課程時間結束後一個月內，前往個人檔案>個人課程>按下評價，發表對於這門課程的評價及回饋，你的建議與支持都是教練進步的動力！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="500">
+                    <a data-toggle="collapse" href="#faq5" class="collapsed">如何得知課程處於優惠期間? <i class="icofont-simple-up"></i></a>
+                    <div id="faq5" class="collapse" data-parent=".faq-list">
+                        <p>
+                            歡迎時常回來查詢優惠課程及訂閱本網站通知！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="600">
+                    <a data-toggle="collapse" href="#faq6" class="collapsed">如何保留或收藏喜歡的課程? <i class="icofont-simple-up"></i></a>
+                    <div id="faq6" class="collapse" data-parent=".faq-list">
+                        <p>
+                            可以在課程介紹中加入收藏清單或放入您的專屬購物車內等待結帳。
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container tab-pane fade" id="web">
+            <div class="section-title" data-aos="fade-up">
+                <h2></h2>
+                <p>網站功能問題</p>
+            </div>
+
+            <ul class="faq-list">
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <a data-toggle="collapse" class="" href="#faq1">
+                        課程介紹看完之後對於課程有其他問題? <i class="icofont-simple-up"></i>
+                    </a>
+                    <div id="faq1" class="collapse show" data-parent=".faq-list">
+                        <p>
+                            在購買課程前，對於課程有任何疑慮或問題，歡迎前往該課程頁面>課程問答，會由開課教練來一一為你解惑！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="200">
+                    <a data-toggle="collapse" href="#faq2" class="collapsed">無法確認自己是否適合此課程或符合此難度的基本要求? <i class="icofont-simple-up"></i></a>
+                    <div id="faq2" class="collapse" data-parent=".faq-list">
+                        <p>
+                            歡迎前往該課程頁面>課程問答留言或於教練頁面於社群網站中聯繫教練！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="300">
+                    <a data-toggle="collapse" href="#faq3" class="collapsed">對於上課方式或授課地點不清楚? <i class="icofont-simple-up"></i></a>
+                    <div id="faq3" class="collapse" data-parent=".faq-list">
+                        <p>
+                            歡迎前往該課程頁面>課程問答留言或於教練頁面於社群網站中聯繫教練！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="400">
+                    <a data-toggle="collapse" href="#faq4" class="collapsed">如何發表課程評價? <i class="icofont-simple-up"></i></a>
+                    <div id="faq4" class="collapse" data-parent=".faq-list">
+                        <p>
+                            在課程時間結束後一個月內，前往個人檔案>個人課程>按下評價，發表對於這門課程的評價及回饋，你的建議與支持都是教練進步的動力！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="500">
+                    <a data-toggle="collapse" href="#faq5" class="collapsed">如何得知課程處於優惠期間? <i class="icofont-simple-up"></i></a>
+                    <div id="faq5" class="collapse" data-parent=".faq-list">
+                        <p>
+                            歡迎時常回來查詢優惠課程及訂閱本網站通知！
+                        </p>
+                    </div>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="600">
+                    <a data-toggle="collapse" href="#faq6" class="collapsed">如何保留或收藏喜歡的課程? <i class="icofont-simple-up"></i></a>
+                    <div id="faq6" class="collapse" data-parent=".faq-list">
+                        <p>
+                            可以在課程介紹中加入收藏清單或放入您的專屬購物車內等待結帳。
+                        </p>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+    </section>
+    <!-- End FAQ Section -->
+</main><!-- End #main -->

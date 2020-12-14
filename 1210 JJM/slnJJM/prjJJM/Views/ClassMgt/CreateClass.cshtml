@@ -1,0 +1,446 @@
+﻿@model prjJJM.ViewModels.CClassViewModel
+
+@{
+    ViewBag.Title = "新增課程";
+}
+
+@*<h2>新增課程</h2>*@
+
+@using (Html.BeginForm("CreateClass", "ClassMgt", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <main id="main">
+        <!-- ======= 頁面導航 Section ======= -->
+        <section class="breadcrumbs">
+          <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+              <h2 style="font-weight: 700;">發佈課程</h2>
+
+              <ol>
+                <li><a href="@Url.Action("Index","Home")" style="font-size:16px;">首頁</a></li>
+                <li><a href="@Url.Action("List","OnlyTeacher", new { id = (int)Session["ID"]})" style="font-size:16px;">教練管理</a></li>
+                <li style="font-size:16px; font-weight: 600;">發佈課程</li>
+              </ol>
+            </div>
+          </div>
+        </section><!-- End Blog Section -->
+        <!-- ======= 發表課程 Section ======= -->
+        <section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+            <div class="container">
+
+                <div class="row">
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="return checkFormData()">
+                    <!-- ======= 課程資訊 ======= -->
+                    <div class="col-lg-8 entries">
+                        
+                            <article class="entry entry-single myfont1">
+                                <div class="entry-title">
+                                    <h5 class="myfont4">
+                                        <label>課程類別：</label>
+                                        <select name="ClassType" id="type-list" onchange="changeType(this.selectedIndex)" size="1" style="font-size: 16px;"></select>
+                                        <select name="ClassSector" id="sector-list" size="1" style="font-size: 16px;"></select>
+                                    </h5>
+                                    <h5 class="myfont4">
+                                        課程等級：
+                                        <select name="LevelType" id="levellist" size="1" style="font-size: 16px;">
+                                            <option>初級</option>
+                                            <option>中級</option>
+                                            <option>高級</option>
+                                            <option>大師級</option>
+                                        </select>
+                                    </h5>
+                                    
+                                    <div class="myfont4 mb-2">
+                                        <h2 class="myfont4 mb-2">
+                                            @Html.EditorFor(model => model.c_name, new { htmlAttributes = new { @class = "form-control", style = "font-size: 20px; width: 100%; box-sizing:border-box;", placeholder = "課程名稱" } })
+                                            @Html.ValidationMessageFor(model => model.c_name, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                        </h2>
+                                    </div>
+                                    <div class="myfont4 mb-2">
+                                        <h6 class="myfont4 mb-2">
+                                            @Html.TextAreaFor(model => model.c_nameText, new { @class = "mb-2", style = "width: 100%;", placeholder = "請簡短敘述課程" })
+                                            @Html.ValidationMessageFor(model => model.c_nameText, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                        </h6>
+                                    </div>
+                                    <div class="myfont4 mb-2">
+                                        <h6 class="myfont4">
+                                            教室位置：
+                                        </h6>
+                                        <div>
+                                            @Html.EditorFor(model => model.c_location, new { htmlAttributes = new { @class = "form-control", placeholder = "地址", style = "width: 200px;" } })
+                                            @Html.ValidationMessageFor(model => model.c_location, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                        </div>
+                                    </div>
+                                    <div class="myfont4 mb-2">
+                                        <h6 class="myfont4">
+                                            開課時間：
+                                        </h6>
+                                        <div>
+                                            @Html.EditorFor(model => model.c_startTime, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                                            @Html.ValidationMessageFor(model => model.c_startTime, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                        </div>
+                                    </div>
+                                    <div class="myfont4 mb-2">
+                                        <h6 class="myfont4">
+                                            結束時間：
+                                        </h6>
+                                        <div>
+                                            @Html.EditorFor(model => model.c_endTime, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                                            @Html.ValidationMessageFor(model => model.c_endTime, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                        </div>
+                                    </div>
+                                    <div class="myfont4 mb-2">
+                                        <h6 class="myfont4">
+                                            課程時數：
+                                        </h6>
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-1 col-sm-3">
+                                                @Html.EditorFor(model => model.c_hourRate, new { htmlAttributes = new { @class = "form-control", type = "number", min = "1", step = "1", value = "", style = "width: 75px;" } })
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-3 smmargin" style="margin-left: 30px; padding-top:9px;">
+                                                <h6 class="myfont4">小時</h6>
+                                            </div>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.c_hourRate, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                    </div>
+                                    <div class="myfont4 mb-2">
+                                        <h6 class="myfont4">
+                                            課程上限人數：
+                                        </h6>
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-1 col-sm-3">
+                                                @Html.EditorFor(model => model.c_maxStudent, new { htmlAttributes = new { @class = "form-control", type = "number", min = "1", step = "1", value = "", style = "width: 75px;" } })
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-3 smmargin" style="margin-left: 30px; padding-top:9px;">
+                                                <h6 class="myfont4">人</h6>
+                                            </div>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.c_maxStudent, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                    </div>
+                                    <div class="myfont4 mb-2">
+                                        <h6 class="myfont4">
+                                            最少招生人數：
+                                        </h6>
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-1 col-sm-3">
+                                                @Html.EditorFor(model => model.c_minStudent, new { htmlAttributes = new { @class = "form-control", type = "number", min = "1", step = "1", value = "", style = "width: 75px;" } })
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-3 smmargin" style="margin-left: 30px; padding-top:9px;">
+                                                <h6 class="myfont4">人</h6>
+                                            </div>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.c_minStudent, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row mb-2">
+                                        <div class="col-lg-7 col-md-7 col-sm-6">
+                                            <label class="myfont4">課程封面照片：</label>
+                                            <input type="file" name="image1" id="fileupload1" onchange=" openFile1()" />
+                                        </div>
+                                        <div class="col-lg-5 col-md-5 col-sm-6">
+                                            <img scr="~/Content/imgClass/@Html.DisplayFor(model => model.c_imgPath1)" id="imgpreview1" height="100" class="mt-2" />
+                                            @Html.ValidationMessageFor(model => model.c_imgPath1, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                        </div>
+                                    </div>           
+                                    <div class="row mb-2">
+                                        <div class="col-lg-7 col-md-7 col-sm-6">
+                                            <label class="myfont4">其它相關照片1：</label>
+                                            <input type="file" name="image2" id="fileupload2" onchange=" openFile2()" />
+                                        </div>
+                                        <div class="col-lg-5 col-md-5 col-sm-6">
+                                            <img scr="~/Content/imgClass/@Html.DisplayFor(model => model.c_imgPath2)" id="imgpreview2" height="100" class="mt-2" />
+                                            @Html.ValidationMessageFor(model => model.c_imgPath2, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-7 col-md-7 col-sm-6">
+                                            <label class="myfont4">其它相關照片2：</label>
+                                            <input type="file" name="image3" id="fileupload3" onchange=" openFile3()" />
+                                        </div>
+                                        <div class="col-lg-5 col-md-5 col-sm-6">
+                                            <img scr="~/Content/imgClass/@Html.DisplayFor(model => model.c_imgPath3)" id="imgpreview3" height="100" class="mt-2" />
+                                            @Html.ValidationMessageFor(model => model.c_imgPath3, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+
+                                    <div class="entry-content">
+                                        <hr />
+                                        <h3>課程介紹</h3>
+                                        <p>
+                                            @Html.TextAreaFor(model => model.c_intro, new { @class = "", @cols = "45", @rows = "5", @style = "width: 100%;" })
+                                            @Html.ValidationMessageFor(model => model.c_intro, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                        </p>
+                                        <h3>課程要求</h3>
+                                        <p>
+                                            @Html.TextAreaFor(model => model.c_requirement, new { @class = "", @cols = "45", @rows = "5", style = "width: 100%;" })
+                                            @Html.ValidationMessageFor(model => model.c_requirement, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                        </p>
+                                        <br>                       
+                                    </div>
+
+                                    <div class="entry-footer clearfix">
+                                        <div class="float-left">
+
+                                            <div class="mt-2">
+                                                <i class="icofont-tags"></i>
+                                                <ul class="tags" style="font-size: 16px;">
+                                                    <li>Tag1： &nbsp;</li>
+                                                    @Html.RadioButtonFor(model => model.c_lable3, "團體課程", new { @class = "" })
+                                                    <li>團體課程&nbsp;</li>
+                                                    @Html.RadioButtonFor(model => model.c_lable3, "一對一課程", new { @class = "" })
+                                                    <li>一對一課程&nbsp;</li>
+                                                    @Html.ValidationMessageFor(model => model.c_lable3, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                                </ul>
+                                            </div>
+
+                                            <div class="mt-2">
+                                                <i class="icofont-tags" style="margin-top: 9px;"></i>
+                                                <ul class="tags" style="font-size: 16px;">
+                                                    <li>
+                                                        <div class="row">
+                                                            <div class="col-3" style="margin-top: 9px;"><label>Tag2：&nbsp;</label></div>
+                                                            <div class="col-9">
+                                                                <select name="LocationType" id="locationlist" size="1" class="custom-select">
+                                                                    <option selected>所有高雄區</option>
+                                                                    <option>左營區</option>
+                                                                    <option>鼓山區</option>
+                                                                    <option>三民區</option>
+                                                                    <option>苓雅區</option>
+                                                                    <option>新興區</option>
+                                                                    <option>前金區</option>
+                                                                    <option>鹽埕區</option>
+                                                                    <option>其它區</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    @*<li>
+                                                        <div class="row">
+                                                            <div class="col-2" style="margin-top: 9px;"><label>Tag2： </label></div>
+                                                            <div class="col-10">
+                                                                @Html.EditorFor(model => model.c_lable4, new { htmlAttributes = new { @class = "form-control", placeholder = "#" } })
+                                                                @Html.ValidationMessageFor(model => model.c_lable4, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                                            </div>
+                                                        </div>
+                                                    </li>*@
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="mt-2">
+                                                <i class="icofont-tags" style="margin-top: 9px;"></i>
+                                                <ul class="tags" style="font-size: 16px;">
+                                                    <li>
+                                                        <div class="row">
+                                                            <div class="col-2" style="margin-top: 9px;"><label>Tag3：&nbsp;</label></div>
+                                                            <div class="col-10">
+                                                                @Html.EditorFor(model => model.c_lable5, new { htmlAttributes = new { @class = "form-control", placeholder = "#" } })
+                                                                @Html.ValidationMessageFor(model => model.c_lable5, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                            </article><!-- End blog entry -->
+
+                        
+                    </div><!-- End blog entries list -->
+                    <!-- ======= 價格&加入購物車 ======= -->
+                    <div class="col-lg-4">
+
+                        <div class="sidebar text-center" id="fixedshoppingcart">
+
+                            <div class="myfont4">
+                                @*<h5 class="myfont4"></h5>*@
+                                <div class="row mb-2">
+                                    <div class="col-5"><h5 class="myfont4" style="margin-top: 6px;">定價NT$</h5></div>
+                                    <div class="col-4">
+                                        @Html.EditorFor(model => model.c_price, new { htmlAttributes = new { @class = "form-control", type = "number", style = "width: 150px;", min = "1", step = "1" } })
+                                        @Html.ValidationMessageFor(model => model.c_price, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="myfont4">
+                                @*<h5 class="myfont4"><label></label></h5>*@
+                                <div class="row mb-2">
+                                    <div class="col-5"><h5 class="myfont4" style="margin-top: 6px;">優惠價NT$</h5></div>
+                                    <div class="col-4">@Html.EditorFor(model => model.c_discount, new { htmlAttributes = new { @class = "form-control", type = "number", style = "width: 150px;", min = "1", step = "1" } })</div>
+                                    @Html.ValidationMessageFor(model => model.c_discount, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                                </div>
+                            </div>
+
+                            <!-- <h6><del>NT$ 1200</del> &nbsp;6折</h6> -->
+                            <h6 class="mt-3"></h6>
+                            <h6 class="mb-3 myfont4" style="color: #444; font-size: 16px;">
+                                開放報名
+                                @Html.EditorFor(model => model.c_registerStart, new { htmlAttributes = new { @class = "form-control mt-1", type = "date" } })
+                                @Html.ValidationMessageFor(model => model.c_registerStart, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                            </h6>
+                            <h6 class="mb-3 myfont4" style="color: #444; font-size: 16px;">
+                                截止報名至
+                                @Html.EditorFor(model => model.c_registerEnd, new { htmlAttributes = new { @class = "form-control mt-1 mb-1", type = "date" } }) 止
+                                @Html.ValidationMessageFor(model => model.c_registerEnd, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                            </h6>
+
+
+                            <br>
+
+                            <input type="submit" value="加入購物車" class="btn btn-warning mb-3 btn-block shoppingcart" disabled="disabled">
+
+                            <input type="submit" value="立即購買" class="btn btn-outline-secondary mb-4 btn-block shoppingnow" disabled="disabled">
+
+                            <h6 class="mt-3"></h6>
+
+                            <span style="color:darkslategrey; font-weight: 600; font-size: 15px;">
+                                ※此優惠將於 @Html.EditorFor(model => model.c_onsaleStart, new { htmlAttributes = new { @class = "form-control mt-1", type = "date" } })
+                                開始
+                                @Html.ValidationMessageFor(model => model.c_onsaleStart, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                            </span>
+                            <h6 class="mt-3"></h6>
+                            <span style="color: red; font-weight: 600; font-size: 15px;">
+                                ※此優惠將於 @Html.EditorFor(model => model.c_onsaleEnd, new { htmlAttributes = new { @class = "form-control mt-1", type = "date" } }) 結束
+                                @Html.ValidationMessageFor(model => model.c_onsaleEnd, "", new { @class = "text-danger", style = "font-size: 16px;" })
+                            </span>
+                            <br>
+                            <h6></h6>
+                            <a class="" style="color: rgb(88, 88, 88); font-weight: normal; font-size: 14px;">開課前14天可全額退費</a>
+                        </div>
+                        <!-- End sidebar -->
+
+                    </div><!-- End blog sidebar -->
+                    <!-- <div class="col-lg-4"></div> -->
+                    <!-- ======= 送出表單 ======= -->
+                    <div class="col-lg-8 entries mb-3 mt-1">
+                        <div class="text-center" style="float: right;">
+                            <input class="btn btn-outline-secondary button-lnow" type="reset" value="清空表單" style="width: 90px;">
+                            <input class="btn btn-warning button-lpush" type="submit" value="送出課程" style="width: 195px;" id="btnpush">
+                            @*<input type="hidden" name="form_no" id="" value="che0023">*@ <!--隱藏欄位,ex:試卷編號-->
+                        </div>
+                    </div>
+
+                    </form>
+                </div><!-- End row -->
+
+            </div><!-- End container -->
+
+        </section><!-- End Blog Section -->
+
+    </main><!-- End #main -->
+
+    <script>
+        function openFile1() {
+            var fileUpload = document.getElementById("fileupload1");
+            var imgPreview = document.getElementById("imgpreview1");
+            var imgone = fileUpload.files[0];
+
+            if (fileUpload.files.length > 0) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    imgPreview.src = reader.result;//
+                };
+
+                reader.readAsDataURL(imgone);
+            } else {
+                displayInfo.innerHTML = "";
+            }
+        }
+
+        function openFile2() {
+            var fileUpload = document.getElementById("fileupload2");
+            var imgPreview = document.getElementById("imgpreview2");
+            var imgone = fileUpload.files[0];
+
+            if (fileUpload.files.length > 0) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    imgPreview.src = reader.result;//
+                };
+
+                reader.readAsDataURL(imgone);
+            } else {
+                displayInfo.innerHTML = "";
+            }
+        }
+
+        function openFile3() {
+            var fileUpload = document.getElementById("fileupload3");
+            var imgPreview = document.getElementById("imgpreview3");
+            var imgone = fileUpload.files[0];
+
+            if (fileUpload.files.length > 0) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    imgPreview.src = reader.result;//
+                };
+
+                reader.readAsDataURL(imgone);
+            } else {
+                displayInfo.innerHTML = "";
+            }
+        }
+
+        var types = ['室內健身', '格鬥競技', '球類運動', '水上運動', '其它類別'];
+        var typeSelect = document.getElementById("type-list");
+        var inner = "";
+        for (var i = 0; i < types.length; i++) {
+            inner = inner + '<option>' + types[i] + '</option>';
+        }
+        typeSelect.innerHTML = inner;
+
+
+        var sectors = new Array();
+        sectors[0] = ['重訓', 'TRX', ' 瑜珈', ' 其它'];
+        sectors[1] = ['拳擊 ', ' 武術 ', ' 其它 '];
+        sectors[2] = ['籃球 ', ' 足球 ', ' 網球 ', ' 棒球 ', ' 其它 '];
+        sectors[3] = ['游泳', ' 衝浪 ', ' 其它 '];
+        sectors[4] = ['其它']
+        function changeType(index) {
+            var Sinner = "";
+            for (var i = 0; i < sectors[index].length; i++) {
+                Sinner = Sinner + '<option>' + sectors[index][i] + '</option>';
+            }
+            var sectorSelect = document.getElementById("sector-list");
+            sectorSelect.innerHTML = Sinner;
+        }
+        changeType(document.getElementById("type-list").selectedIndex);
+
+            $("#btnpush").click(function () {
+            var obj = {
+            ClassType: $("#type-list option:selected").val(),
+            ClassSector: $("#sector-list option:selected").val(),
+            LevelType: $("#levellist option:selected").val(),
+            LocationType: $("#locationlist option:selected").val()
+
+        }
+        $.ajax({
+                    url: '@Url.Action("CreateClass", "ClassMgt")',
+                    type: 'post',
+                    data: JSON.stringify(obj),
+                    dataType: 'json',
+                    contentType: "application/json"
+                })
+
+
+        })
+
+    </script>
+
+}
+
+@*<div>
+    @Html.ActionLink("回到課程列表", "List")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

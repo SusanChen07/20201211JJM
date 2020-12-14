@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JJMdbModelStoreContainer" CdmEntityContainer="JJMdbEntities">
+    <EntitySetMapping Name="tMember">
+      <EntityTypeMapping TypeName="JJMdbModel.tMember">
+        <MappingFragment StoreEntitySet="tMember">
+          <ScalarProperty Name="m_Jpoint" ColumnName="m_Jpoint" />
+          <ScalarProperty Name="m_imgPath" ColumnName="m_imgPath" />
+          <ScalarProperty Name="m_hobby" ColumnName="m_hobby" />
+          <ScalarProperty Name="m_role" ColumnName="m_role" />
+          <ScalarProperty Name="m_address" ColumnName="m_address" />
+          <ScalarProperty Name="m_district" ColumnName="m_district" />
+          <ScalarProperty Name="m_phone" ColumnName="m_phone" />
+          <ScalarProperty Name="m_password" ColumnName="m_password" />
+          <ScalarProperty Name="m_email" ColumnName="m_email" />
+          <ScalarProperty Name="m_gender" ColumnName="m_gender" />
+          <ScalarProperty Name="m_birth" ColumnName="m_birth" />
+          <ScalarProperty Name="m_lastName" ColumnName="m_lastName" />
+          <ScalarProperty Name="m_firstName" ColumnName="m_firstName" />
+          <ScalarProperty Name="memberID" ColumnName="memberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTeacher">
+      <EntityTypeMapping TypeName="JJMdbModel.tTeacher">
+        <MappingFragment StoreEntitySet="tTeacher">
+          <ScalarProperty Name="memberID" ColumnName="memberID" />
+          <ScalarProperty Name="t_socialMedia4" ColumnName="t_socialMedia4" />
+          <ScalarProperty Name="t_socialMedia3" ColumnName="t_socialMedia3" />
+          <ScalarProperty Name="t_socialMedia2" ColumnName="t_socialMedia2" />
+          <ScalarProperty Name="t_socialMedia1" ColumnName="t_socialMedia1" />
+          <ScalarProperty Name="t_rateAvg" ColumnName="t_rateAvg" />
+          <ScalarProperty Name="t_classTotal" ColumnName="t_classTotal" />
+          <ScalarProperty Name="t_studentTotal" ColumnName="t_studentTotal" />
+          <ScalarProperty Name="t_money" ColumnName="t_money" />
+          <ScalarProperty Name="t_moneyTotal" ColumnName="t_moneyTotal" />
+          <ScalarProperty Name="t_messageTotal" ColumnName="t_messageTotal" />
+          <ScalarProperty Name="t_intro" ColumnName="t_intro" />
+          <ScalarProperty Name="t_title" ColumnName="t_title" />
+          <ScalarProperty Name="t_certificateImg" ColumnName="t_certificateImg" />
+          <ScalarProperty Name="teacherID" ColumnName="teacherID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tClass">
+      <EntityTypeMapping TypeName="JJMdbModel.tClass">
+        <MappingFragment StoreEntitySet="tClass">
+          <ScalarProperty Name="teacherID" ColumnName="teacherID" />
+          <ScalarProperty Name="c_lable5" ColumnName="c_lable5" />
+          <ScalarProperty Name="c_lable4" ColumnName="c_lable4" />
+          <ScalarProperty Name="c_lable3" ColumnName="c_lable3" />
+          <ScalarProperty Name="c_lable2" ColumnName="c_lable2" />
+          <ScalarProperty Name="c_lable1" ColumnName="c_lable1" />
+          <ScalarProperty Name="c_imgPath3" ColumnName="c_imgPath3" />
+          <ScalarProperty Name="c_imgPath2" ColumnName="c_imgPath2" />
+          <ScalarProperty Name="c_imgPath1" ColumnName="c_imgPath1" />
+          <ScalarProperty Name="c_rate" ColumnName="c_rate" />
+          <ScalarProperty Name="c_requirement" ColumnName="c_requirement" />
+          <ScalarProperty Name="c_level" ColumnName="c_level" />
+          <ScalarProperty Name="c_discount" ColumnName="c_discount" />
+          <ScalarProperty Name="c_onsaleEnd" ColumnName="c_onsaleEnd" />
+          <ScalarProperty Name="c_onsaleStart" ColumnName="c_onsaleStart" />
+          <ScalarProperty Name="c_price" ColumnName="c_price" />
+          <ScalarProperty Name="c_location" ColumnName="c_location" />
+          <ScalarProperty Name="c_student" ColumnName="c_student" />
+          <ScalarProperty Name="c_minStudent" ColumnName="c_minStudent" />
+          <ScalarProperty Name="c_maxStudent" ColumnName="c_maxStudent" />
+          <ScalarProperty Name="c_registerEnd" ColumnName="c_registerEnd" />
+          <ScalarProperty Name="c_registerStart" ColumnName="c_registerStart" />
+          <ScalarProperty Name="c_hourRate" ColumnName="c_hourRate" />
+          <ScalarProperty Name="c_endTime" ColumnName="c_endTime" />
+          <ScalarProperty Name="c_startTime" ColumnName="c_startTime" />
+          <ScalarProperty Name="c_intro" ColumnName="c_intro" />
+          <ScalarProperty Name="c_nameText" ColumnName="c_nameText" />
+          <ScalarProperty Name="c_name" ColumnName="c_name" />
+          <ScalarProperty Name="classID" ColumnName="classID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
